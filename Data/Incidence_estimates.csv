@@ -1,4 +1,4 @@
-Study,Measure,Control,Exposed,Malnutrition Category,IRR,LCI,UCI,Adjusted?,Control Number ,Control number of cases,Malnourished Number ,Malnourished Number of Cases,Total number in study,Follow-up time,Sensitivity,
+Study,Measure,Control,Exposed,Malnutrition Category,IRR,LCI,UCI,Adjusted?,Control Number ,Control number of cases,Malnourished Number ,Malnourished Number of Cases,Total number in study,Follow-up time,Sensitivity,Severe Pneumonia,
 "Ballard, 1995",% expected,>90%,<80%,w/a,1.8,0.5,6.4,Y,,2,,6,106,1 year,Y,
 ,,>90%,<90%,w/h,0.6,0.2,1.9,Y,,16,,3,106,1 year,Y,
 ,,>95%,<90%,h/a,4.5,1.1,17.4,Y,,3,,6,106,1 year,Y,
