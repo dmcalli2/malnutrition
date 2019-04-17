@@ -16,7 +16,7 @@ low height for age - stunting
 
 Malnutritions severities
 
->-2SD / z score or >80% - normal
+'>-2SD / z score or >80% - normal
 <-2SD to <-3SD / z score or 60-80% - moderate
 <-3SD / z score or <60% - severe
 
