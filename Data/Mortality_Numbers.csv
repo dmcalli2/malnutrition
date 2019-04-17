@@ -1,0 +1,90 @@
+Study,Measure,Group,Malnutrition Category,Malnutrition Severity,Survived,Died,Total,Severe Pneumonia,Sensitivity,Collapsed
+"Agweyu, 2018",SD/ z-score,>-2,w/a,None,11766,469,12235,,,
+"Agweyu, 2018",SD/ z-score,<-2 to <-3,w/a,Moderate,1703,140,1843,,,
+"Agweyu, 2018",SD/ z-score,<-3,w/a,Severe,1007,127,1134,,,
+"Agrawal, 1995",% expected,>60%,w/a,Non-Severe,87,5,92,,,y
+"Agrawal, 1995",% expected,<60%,w/a,Severe,25,10,35,,,
+"Banajeh, 1997",% expected,>80%,w/a,None,125,3,128,y,,
+"Banajeh, 1997",% expected,60-80%,w/a,Moderate,257,23,280,y,,
+"Banajeh, 1997",% expected,<60%,w/a,Severe,95,26,121,y,,
+"Bahwere, 2004",SD/ z-score,>-2,w/h,None,477,43,520,,,
+"Bahwere, 2004",SD/ z-score,<-2 to <-3 (- those with oedema),w/h,Moderate,89,10,99,,,
+"Bahwere, 2004",SD/ z-score,<-3 (or kwashiorkor or oedema),w/h,Severe,132,42,174,,,
+"Bokade, 2015",SD/ z-score,>-2,w/a,None,182,8,190,y,,
+"Bokade, 2015",SD/ z-score,<-2 to <-3,w/a,Moderate,43,8,51,y,,
+"Bokade, 2015",SD/ z-score,<-3,w/a,Severe,40,9,49,y,,
+"Chisti, 2010",% expected,>60%,w/a,Non-Severe,17,0,17,y,,y
+"Chisti, 2010",% expected,<60%,w/a,Severe,24,7,31,y,,
+"Chisti, 2011",SD/ z-score,<-3,w/a,Severe,62,18,80,,,
+"Chisti, 2011",SD/ z-score,>-3,w/a,Non-Severe,109,6,115,,,y
+"Collings, 1985",% expected,>80%,w/a,None,239,17,256,,,
+"Collings, 1985",% expected,<80%,w/a,All,128,22,150,,,y
+"Duke, 2001",% expected,>80%,w/a,None,466,20,486,y,,
+"Duke, 2001",% expected,60-80%,w/a,Moderate,156,17,173,y,,
+"Duke, 2001",% expected,<60%,w/a,Severe,24,9,33,y,,
+"Demers, 2000",SD/ z-score,>-2,w/h,None,296,31,327,,,
+"Demers, 2000",SD/ z-score,<-2,w/h,All,36,12,48,,,y
+"Demers, 2000",SD/ z-score,>-2,h/a,None,224,33,257,,,
+"Demers, 2000",SD/ z-score,<-2,h/a,All,112,13,125,,,y
+"Enarson, 2015",% expected,<60% (or oedema),w/h,Severe,634,192,826,y,,
+"Enarson, 2015",% expected,>60% (- those with oedema),w/h,Non-Severe,13442,1441,14883,y,,y
+"Hooli, 2016",SD/ z-score,>-2,w/a,None,2121,220,2341,,,
+"Hooli, 2016",SD/ z-score,<-2 to <-3,w/a,Moderate,222,78,300,,,
+"Hooli, 2016",SD/ z-score,<-3,w/a,Severe,108,126,234,,,
+"Johnson, 2008",% expected,>80%,w/a,None,136,5,141,,,
+"Johnson, 2008",% expected,60-80% (and without kwashiorkor),w/a,Moderate,127,17,144,,,
+"Johnson, 2008",% expected,<60% (and kwashiorkor),w/a,Severe,24,12,36,,,
+"Kuti, 2013",SD/ z-score,>-3,w/h,Non-Severe,305,7,312,y,,y
+"Kuti, 2013",SD/ z-score,<-3,w/h,Severe,69,8,77,y,,
+"Kuti, 2013",SD/ z-score,>-2,h/a,None,311,12,323,y,,
+"Kuti, 2013",SD/ z-score,<-2,h/a,All,63,3,66,y,,y
+"Kuti, 2013",SD/ z-score,>-2,w/a,None,244,8,252,y,,
+"Kuti, 2013",SD/ z-score,<-2,w/a,All,130,7,137,y,,y
+"Lazzerini, 2016",SD/ z-score,>-2,w/a,None,72509,3237,75746,,,
+"Lazzerini, 2016",SD/ z-score,<-2 to <-3,w/a,Moderate,12509,1315,13824,,,
+"Lazzerini, 2016",SD/ z-score,<-3,w/a,Severe,7345,1396,8741,,,
+"Lupisan, 2007",SD/ z-score,>-2,w/a,None,863,17,880,y,,
+"Lupisan, 2007",SD/ z-score,<-2,w/a,All,355,13,368,y,,y
+"Man, 1998",SD/ z-score,>-2,w/a,None,1225,56,1281,,,
+"Man, 1998",SD/ z-score,<-2 to <-3,w/a,Moderate,472,35,507,,,
+"Man, 1998",SD/ z-score,<-3,w/a,Severe,343,62,405,,,
+"Naheed, 2009",SD/ z-score,>-3,w/a,Non-Severe,3824,123,3947,,,y
+"Naheed, 2009",SD/ z-score,<-3,w/a,Severe,181,27,208,,,
+"Nantanda, 2008",SD/ z-score,>-3,w/a,Non-Severe,111,6,117,y,,y
+"Nantanda, 2008",SD/ z-score,<-3,w/a,Severe,22,18,40,y,,
+"Nathoo, 1993",% expected,<60%,w/a,Severe,49,33,82,,,
+"Nathoo, 1993",% expected,>60%,w/a,Non-Severe,556,66,622,,,y
+"Ramachandran, 2012",SD/ z-score,>-2,w/a,None,2005,126,2131,,,
+"Ramachandran, 2012",SD/ z-score,<-2 to <-3,w/a,Moderate,1037,83,1120,,,
+"Ramachandran, 2012",SD/ z-score,<-3,w/a,Severe,781,127,908,,,
+"Sigauque, 2009",SD/ z-score,<-3,w/h,Severe,43,20,63,y,,
+"Sigauque, 2009",SD/ z-score,>-3,w/h,Non-Severe,495,95,590,y,,y
+"Tupasi, 1988",% expected,>74%,w/a,None,418,8,426,,Y,
+"Tupasi, 1988",% expected,60-74%,w/a,Moderate,206,14,220,,Y,
+"Tupasi, 1988",% expected,<60%,w/a,Severe,71,12,83,,Y,
+"Tupasi A, 1990",SD/ z-score,>-2,w/a,None,no data,no data,no data,,,y
+"Tupasi A, 1990",SD/ z-score,<-2,w/a,All,no data,no data,no data,,,
+"Tupasi B,1990",SD/ z-score,>-2,w/a,None,161,17,178,,,
+"Tupasi B,1990",SD/ z-score,<-2 to <-3,w/a,Moderate,123,26,149,,,
+"Tupasi B,1990",SD/ z-score,<-3,w/a,Severe,156,45,201,,,
+"Tupasi B,1990",SD/ z-score,>-2,h/a,None,252,48,300,,,
+"Tupasi B,1990",SD/ z-score,<-2 to <-3,h/a,Moderate,93,14,107,,,
+"Tupasi B,1990",SD/ z-score,<-3,h/a,Severe,88,23,111,,,
+"Webb, 2012",SD/ z-score,>-2,w/a,None,322,12,334,y,,
+"Webb, 2012",SD/ z-score,<-2 to <-3,w/a,Moderate,119,4,123,y,,
+"Webb, 2012",SD/ z-score,<-3 (or kwashiorkor),w/a,Severe,88,23,111,y,,
+"Webb, 2012",SD/ z-score,>-2,w/h,None,369,7,376,y,,
+"Webb, 2012",SD/ z-score,<-2 to <-3,w/h,Moderate,70,4,74,y,,
+"Webb, 2012",SD/ z-score,<-3 (or kwashiorkor),w/h,Severe,51,11,62,y,,
+"Webb, 2012",SD/ z-score,>-2,h/a,None,320,13,333,y,,
+"Webb, 2012",SD/ z-score,<-2 to <-3,h/a,Moderate,93,3,96,y,,
+"Webb, 2012",SD/ z-score,<-3,h/a,Severe,76,5,81,y,,
+"Zabihullah, 2017",SD/ z-score,>-2,w/a,None,340,34,374,,,
+"Zabihullah, 2017",SD/ z-score,<-2 to <-3,w/a,Moderate,96,23,119,,,
+"Zabihullah, 2017",SD/ z-score,<-3,w/a,Severe,103,18,121,,,
+"Zabihullah, 2017",SD/ z-score,>-2,w/h,None,340,13,353,,,
+"Zabihullah, 2017",SD/ z-score,<-2 to <-3,w/h,Moderate,51,2,53,,,
+"Zabihullah, 2017",SD/ z-score,<-3,w/h,Severe,62,3,65,,,
+"Zabihullah, 2017",SD/ z-score,>-2,h/a,None,292,3,295,,,
+"Zabihullah, 2017",SD/ z-score,<-2 to <-3,h/a,Moderate,64,8,72,,,
+"Zabihullah, 2017",SD/ z-score,<-3,h/a,Severe,100,8,108,,,
