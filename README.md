@@ -27,7 +27,6 @@ Study authors contacted where there was either missing data or data was not prov
 Where only the odds ratio, but not the original counts from the 2x2 tables were provided, we estimated these from the confidence intervals as per (http://onlinelibrary.wiley.com/doi/10.1002/sim.2287/abstract). This was required for one study (Nathoo 1993).
 
 
-
 ## Modelling choices
 
 Since the studies [frequently collapsed categories of malnutrition severity](</Data/Collapsed_Uncollapsed numbers.csv>) , we chose to estimate the odds ratios using a Bayesian model, as this will allow us to use all of the data to estimate the odds ratios for each possible comparison.
@@ -53,3 +52,7 @@ Hooli - original numbers from dataset utilised. Original dataset contains a larg
 Nantanda - definition of malnutrition not included in published study but clarified by study author via e-mail
 
 Kuti - Malnutrition case fatality numbers calculated from original dataset provided by study author against 2005 WHO reference growth standards
+
+##Uploaded files
+
+^Incidence_estimates.csv ^contains the results of studies investigating incidence of pneumonia episodes in relation to malnutriton
