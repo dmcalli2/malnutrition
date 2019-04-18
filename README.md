@@ -55,4 +55,4 @@ Kuti - Malnutrition case fatality numbers calculated from original dataset provi
 
 ##Uploaded files
 
-^Incidence_estimates.csv ^contains the results of studies investigating incidence of pneumonia episodes in relation to malnutriton
+>Incidence_estimates.csv >contains the results of studies investigating incidence of pneumonia episodes in relation to malnutriton
