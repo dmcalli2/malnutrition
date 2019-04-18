@@ -53,6 +53,9 @@ Nantanda - definition of malnutrition not included in published study but clarif
 
 Kuti - Malnutrition case fatality numbers calculated from original dataset provided by study author against 2005 WHO reference growth standards
 
-##Uploaded files
+#Uploaded files
 
->Incidence_estimates.csv >contains the results of studies investigating incidence of pneumonia episodes in relation to malnutriton
+- Incidence_estimates.csv contains the results of studies investigating incidence of pneumonia episodes in relation to malnutriton
+- Mortality_Numbers.csv contains the number of children who survived or died in relation to malnutrition status in each study
+- Mortality_odds_ratios.csv contains odds ratios calculated from data within studies in terms of mortality risk in relation to malnutrition status
+- Number_of_studies.csv provides an overview of the number of studies investigating mortality or incidence of childhood pneumonia, the number which have collapsed or uncollapsed data and the number of studies capturing each nutrition metric (w/a, w/h, h/a)
