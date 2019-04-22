@@ -56,6 +56,9 @@ The following is the BUGS/JAGS code for the fixed effects
 
 ## Initialise model and return results
 
+Very small number of iterations so can run code quickly for now. Add
+more later.
+
     ## Compiling model graph
     ##    Resolving undeclared variables
     ##    Allocating nodes
@@ -77,22 +80,127 @@ The following is the BUGS/JAGS code for the fixed effects
     ## Initializing model
 
     ## 
-    ## Iterations = 2001:4000
+    ## Iterations = 1101:1200
     ## Thinning interval = 1 
     ## Number of chains = 1 
-    ## Sample size per chain = 2000 
+    ## Sample size per chain = 100 
     ## 
     ## 1. Empirical mean and standard deviation for each variable,
     ##    plus standard error of the mean:
     ## 
     ##        Mean      SD Naive SE Time-series SE
-    ## d[1] 0.0000 0.00000 0.000000       0.000000
-    ## d[2] 0.9260 0.06882 0.001539       0.004653
-    ## d[3] 0.6201 0.08599 0.001923       0.005042
+    ## d[1] 0.0000 0.00000 0.000000        0.00000
+    ## d[2] 0.9238 0.06715 0.006715        0.01777
+    ## d[3] 0.6320 0.08777 0.008777        0.02065
     ## 
     ## 2. Quantiles for each variable:
     ## 
     ##        2.5%    25%    50%    75%  97.5%
     ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2] 0.7910 0.8806 0.9271 0.9712 1.0626
-    ## d[3] 0.4442 0.5657 0.6208 0.6811 0.7794
+    ## d[2] 0.8098 0.8780 0.9206 0.9697 1.0770
+    ## d[3] 0.4328 0.5705 0.6494 0.6910 0.7791
+
+## Process real data into format for analysis
+
+Process real data, in the first instance assume that the proportion in
+each category is known for all data.
+
+First rename variables and recode. There should be a maximum of three
+groups for each study/malnutrition category type
+combination.
+
+## Categorise pattern of collapsing for each study/manutrition category combination
+
+Calculate which studies have missing event data, and which have missing
+“n” data. IN the present analysis, any with complete n data have
+complete events data.
+
+    ## # A tibble: 3 x 6
+    ## # Groups:   all_n, all_r, col12 [?]
+    ##   all_n all_r col12 col23 studies studies_times_categories
+    ##   <lgl> <lgl> <lgl> <lgl>   <int>                    <int>
+    ## 1 FALSE FALSE FALSE TRUE        9                        9
+    ## 2 FALSE FALSE TRUE  FALSE       4                        6
+    ## 3 TRUE  TRUE  FALSE FALSE      14                       19
+
+Of those studies with collapsed data, 4 collapse into none/moderate and
+9 collapse into moderate severe.
+
+## Calculate the proportion in group 2 for the collapsed studies
+
+Since, in the sample so far, all of those with missing event data have
+missing totals for each category, we need to examine the proportions in
+group 2 where these
+
+Calculate the proportion in the second category within each collapsed
+category. Having done so collapse the Ns. Where the proportion is
+unknown, assume it is the same as the mean.
+
+First need to classify which are collapsed.
+
+![](01_maln_files/figure-gfm/calculatenproprs-1.png)<!-- -->
+
+Take the first malnutrition category for each study. Will need to ask
+group to make a decision on which to use. Then spread the dataframe to
+wide, so that we have a matrix of N’s, events and group labels as per
+the earlier structure.
+
+Check that the restructuring has kept the order of the studies.
+
+    ## [1] TRUE
+
+    ## [1] TRUE
+
+## Try running models on real data
+
+Initially use a fixed proportion
+
+    ## Compiling model graph
+    ##    Resolving undeclared variables
+    ##    Allocating nodes
+    ## Graph information:
+    ##    Observed stochastic nodes: 66
+    ##    Unobserved stochastic nodes: 28
+    ##    Total graph size: 1736
+    ## 
+    ## Initializing model
+
+    ## Compiling model graph
+    ##    Resolving undeclared variables
+    ##    Allocating nodes
+    ## Graph information:
+    ##    Observed stochastic nodes: 5
+    ##    Unobserved stochastic nodes: 3
+    ##    Total graph size: 40
+    ## 
+    ## Initializing model
+
+    ## 
+    ## Iterations = 2001:3000
+    ## Thinning interval = 1 
+    ## Number of chains = 1 
+    ## Sample size per chain = 1000 
+    ## 
+    ## 1. Empirical mean and standard deviation for each variable,
+    ##    plus standard error of the mean:
+    ## 
+    ##        Mean      SD  Naive SE Time-series SE
+    ## d[1] 0.0000 0.00000 0.0000000       0.000000
+    ## d[2] 0.7887 0.02946 0.0009317       0.002197
+    ## d[3] 1.4999 0.02739 0.0008662       0.002147
+    ## 
+    ## 2. Quantiles for each variable:
+    ## 
+    ##        2.5%    25%    50%    75%  97.5%
+    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
+    ## d[2] 0.7306 0.7682 0.7881 0.8091 0.8456
+    ## d[3] 1.4477 1.4813 1.4999 1.5171 1.5529
+
+## Next step
+
+Next step will be to estimate the proportion in category two rather than
+assume it is fixed. Can use existing data, and sample from Beta
+distribution. Or can, get input from subject-matter experts for these
+studies and use that.
+
+Also need to code this in the model.

@@ -16,6 +16,7 @@ Packages
 ```{r}
 library(tidyverse)
 library(rjags)
+library(ggplot2)
 ```
 
 
@@ -77,29 +78,87 @@ First rename variables and recode. There should be a maximum of three groups for
 
 ## Categorise pattern of collapsing for each study/manutrition category combination
 
-Calculate which studies have missing event data, and which have missing "n" data.
+Calculate which studies have missing event data, and which have missing "n" data. IN the present analysis, any with complete n data have complete events data.
 
 ```{r pat_maln}
 mort <- read_csv("Data/Mortality_Numbers.csv")
 names(mort) <- str_to_lower(names(mort)) 
 names(mort) <- str_replace_all(names(mort), " ", "_")
 
+mort <- mort %>% 
+  mutate_at(vars(survived, died, total), as.integer)
+
+mort <- mort %>% 
+  group_by(study, measure) %>% 
+  mutate(all_missing = all(is.na(total))) %>% 
+  ungroup() %>% 
+  filter(!all_missing) %>% 
+  select(-all_missing)
+
 maln_cat3 <- c("None", "Moderate", "Severe")
 
-all_present <- mort %>% 
+mort <- mort %>% 
   group_by(study, malnutrition_category) %>% 
-  summarise(all_n = all(maln_cat3 %in% malnutrition_severity) & !any(is.na(total)),
-            all_r = all(maln_cat3 %in% malnutrition_severity) & !any(is.na(died))) %>% 
-  ungroup()
+  mutate(all_n =  all(maln_cat3 %in% malnutrition_severity) & !any(is.na(total)),
+            all_r =  all(maln_cat3 %in% malnutrition_severity) & !any(is.na(died)),
+            col12 = !all(maln_cat3 %in% malnutrition_severity) & any(malnutrition_severity == "All"),
+            col23 = !all(maln_cat3 %in% malnutrition_severity) & any(malnutrition_severity == "Non-Severe")) %>% 
+  ungroup() 
 
-unique(mort$malnutrition_severity) %>% dput()
-
+all_present_smry <- mort %>% 
+  distinct(study, malnutrition_category, .keep_all = TRUE) %>% 
+  group_by(all_n, all_r, col12, col23) %>% 
+  summarise(studies = sum(!duplicated(study)),
+            studies_times_categories = n())
+col12 <- all_present_smry$studies[all_present_smry$col12]
+col23 <- all_present_smry$studies[all_present_smry$col23]
+all_present_smry
 ```
 
 
+Of those studies with collapsed data, `r col12` collapse into none/moderate and `r col23` collapse into moderate severe.
+
+## Calculate the proportion in group 2 for the collapsed studies
+
+Since, in the sample so far, all of those with missing event data have missing totals for each category, we need to examine the proportions in group 2 where these 
+
+Calculate the proportion in the second category within each collapsed category. Having done so collapse the Ns. Where the proportion is unknown, assume it is the same as the mean.
+
+First need to classify which are collapsed.
+
+```{r calculatenproprs}
+pi2 <- mort %>% 
+  filter(all_n) %>% 
+  select(study, malnutrition_category, malnutrition_severity, total) %>% 
+  mutate(total = as.integer(total)) %>% 
+  spread(malnutrition_severity, total) %>% 
+  mutate(pi2_coll12 = Moderate/(Moderate + None),
+         pi2_coll23 = Moderate/(Moderate + Severe)) %>% 
+  select(study, malnutrition_category, pi2_coll12, pi2_coll23)
+
+pi2_smry <- pi2 %>% 
+  group_by(malnutrition_category) %>% 
+  summarise_at(vars(pi2_coll12, pi2_coll23), mean) %>% 
+  ungroup()
+
+pi2_lng <- pi2 %>% 
+  gather("collapsed_categories", "value", pi2_coll12, pi2_coll23) 
+plot_dist <- ggplot(pi2_lng, aes(x = value, fill = collapsed_categories)) + geom_histogram() +
+  facet_wrap(collapsed_categories ~ malnutrition_category)
+plot_dist
+```
+
 ```{r maln_data}
 mort_slct <- mort %>% 
-  select(study, malnutrition_category, n = total, r = died, maln = malnutrition_severity)
+  select(study, malnutrition_category, n = total, r = died, maln = malnutrition_severity,
+         col12, col23) %>% 
+  inner_join(pi2_smry) %>%
+  mutate(pi2 = case_when(
+    col12 ~ pi2_coll12,
+    col23 ~ pi2_coll23,
+    TRUE ~ 1
+  ))
+  
 
 grp_lbls <-  mort_slct %>% 
   group_by(study, malnutrition_category) %>% 
@@ -115,44 +174,13 @@ grp_lbls <-  mort_slct %>%
 
 ```
 
-## Calculate the proportions 
-
-Calculate the proportion in the second category within each collapsed category. Having done so collapse the Ns. Where the proportion is unknown, assume it is the same as the mean.
-
-First need to classify which are collapsed.
-
-```{r calculatenproprs}
-
-
-pi2 <- grp_lbls %>% 
-  select(study, malnutrition_category, g_lbl, n) %>% 
-  mutate(g_lbl = paste0("g", g_lbl),
-         n = as.integer(n)) %>% 
-  spread(g_lbl, n)
-
-g2_1 <- ns %>% 
-  filter(!is.na(g1), !is.na(g2)) %>% 
-  summarise(res = mean (g2 / (g1 + g2))) 
-
-g2_3 <- ns %>% 
-  filter(!is.na(g2), !is.na(g3)) %>% 
-  summarise(res = mean (g2 / (g2 + g3))) 
-
-
-pi2 <- pi2 %>% 
-  mutate(pi2 = case_when(
-    is.na(g3) ~ 
-  ))
-
-
-```
 
 Take the first malnutrition category for each study. Will need to ask group to make a decision on which to use. Then spread the dataframe to wide, so that we have a matrix of N's, events and group labels as per the earlier structure.
 
 
 ```{r labe_groups}
 grp_lbls2 <- grp_lbls %>% 
-  select(study, malnutrition_category, r, n, g, g_lbl) %>% 
+  select(study, malnutrition_category, r, n, g, g_lbl, pi2) %>% 
   distinct(study, g, .keep_all = TRUE)
 
 grp_lbls2n <- grp_lbls2 %>% 
@@ -186,4 +214,39 @@ identical(grp_lbls2n %>% select(1:2),
 ```
 
 
+## Try running models on real data
 
+Initially use a fixed proportion 
+
+```{r trymodel}
+na <- 3 - apply(grp_lbls2n %>% select(`1`, `2`, `3`) %>% as.matrix(), 1, function(x) x %>% 
+        as.integer() %>% 
+        is.na() %>% 
+        sum())
+list_data2 <- list(r = grp_lbls2r %>% select(`1`, `2`, `3`) %>% as.matrix(),
+                   n = grp_lbls2n %>% select(`1`, `2`, `3`) %>% as.matrix(),
+                   g = grp_lbls2g %>% select(`1`, `2`, `3`) %>% as.matrix(),
+                   na = na,
+                   pi2 = grp_lbls2$pi2,
+                   ng = 3,
+                   ns = nrow(grp_lbls2n))
+
+```
+
+
+```{r runmodel}
+mod1 <- jags.model(file = "Supporting/FE_model.txt",
+                            data = list_data2, n.chains = 1, n.adapt = 1000)
+update(mod1, 1000)
+
+data(LINE)
+LINE$recompile()
+LINE.out <- coda.samples(mod1, c("d"),n.iter = 1000)
+summary(LINE.out)
+```
+
+## Next step
+
+Next step will be to estimate the proportion in category two rather than assume it is fixed. Can use existing data, and sample from Beta distribution. Or can, get input from subject-matter experts for these studies and use that.
+
+Also need to code this in the model.
