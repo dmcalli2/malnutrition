@@ -1,0 +1,189 @@
+---
+title: "Malnutritional analysis"
+output: github_document
+---
+
+This model uses code developed by Nicky Welton to estimate the assocaition between malnutrition and pneumonia mortality. 
+
+```{r setup}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, cache = TRUE)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+
+Packages 
+
+```{r}
+library(tidyverse)
+library(rjags)
+```
+
+
+# Run model with example data
+
+First check the model runs succesfully in Jags using example data.
+
+## Example data
+
+Need to convert the example data into matrices and vectors for JAGS.
+
+```{r example_data}
+metadata <- list(ng=3,ns=24)
+ex_df <- read_delim("Supporting/example_data.txt", delim = "\t")
+matrices <- list(r = NA, n = NA, g = NA)
+matrices[] <- map(names(matrices), ~ ex_df %>% 
+                  select(starts_with(.x), -na) %>% 
+                  as.matrix())
+na <- ex_df %>% pull(na)
+pi2 <- ex_df %>% pull(pi2)
+
+
+list_data <- c(matrices, 
+               list(na = na, pi2 = pi2),
+               metadata)
+knitr::kable(ex_df)
+```
+
+
+## Run model
+
+The following is the BUGS/JAGS code for the fixed effects model.
+
+```{r getcode}
+a <- read_lines("Supporting/FE_model.txt")
+cat(a)
+```
+
+## Initialise model and return results
+
+Very small number of iterations so can run code quickly for now. Add more later.
+
+```{r runexamplemodel}
+mod_example <- jags.model(file = "Supporting/FE_model.txt",
+                            data = list_data, n.chains = 1, n.adapt = 1000)
+update(mod_example, 100)
+
+data(LINE)
+LINE$recompile()
+LINE.out <- coda.samples(mod_example, c("d"),n.iter = 100)
+summary(LINE.out)
+```
+
+## Process real data into format for analysis
+
+Process real data, in the first instance assume that the proportion in each category is known for all data.
+
+First rename variables and recode. There should be a maximum of three groups for each study/malnutrition category type combination.
+
+## Categorise pattern of collapsing for each study/manutrition category combination
+
+Calculate which studies have missing event data, and which have missing "n" data.
+
+```{r pat_maln}
+mort <- read_csv("Data/Mortality_Numbers.csv")
+names(mort) <- str_to_lower(names(mort)) 
+names(mort) <- str_replace_all(names(mort), " ", "_")
+
+maln_cat3 <- c("None", "Moderate", "Severe")
+
+all_present <- mort %>% 
+  group_by(study, malnutrition_category) %>% 
+  summarise(all_n = all(maln_cat3 %in% malnutrition_severity) & !any(is.na(total)),
+            all_r = all(maln_cat3 %in% malnutrition_severity) & !any(is.na(died))) %>% 
+  ungroup()
+
+unique(mort$malnutrition_severity) %>% dput()
+
+```
+
+
+```{r maln_data}
+mort_slct <- mort %>% 
+  select(study, malnutrition_category, n = total, r = died, maln = malnutrition_severity)
+
+grp_lbls <-  mort_slct %>% 
+  group_by(study, malnutrition_category) %>% 
+  mutate(g = seq_along(study)) %>% 
+  ungroup() %>% 
+  mutate(g_lbl = case_when(
+    maln == "None" ~ 1L,
+    maln == "Moderate" ~ 2L,
+    maln == "Severe" ~ 3L,
+    maln == "Non-Severe" ~ 12L,
+    maln == "All" ~ 23L)
+  )
+
+```
+
+## Calculate the proportions 
+
+Calculate the proportion in the second category within each collapsed category. Having done so collapse the Ns. Where the proportion is unknown, assume it is the same as the mean.
+
+First need to classify which are collapsed.
+
+```{r calculatenproprs}
+
+
+pi2 <- grp_lbls %>% 
+  select(study, malnutrition_category, g_lbl, n) %>% 
+  mutate(g_lbl = paste0("g", g_lbl),
+         n = as.integer(n)) %>% 
+  spread(g_lbl, n)
+
+g2_1 <- ns %>% 
+  filter(!is.na(g1), !is.na(g2)) %>% 
+  summarise(res = mean (g2 / (g1 + g2))) 
+
+g2_3 <- ns %>% 
+  filter(!is.na(g2), !is.na(g3)) %>% 
+  summarise(res = mean (g2 / (g2 + g3))) 
+
+
+pi2 <- pi2 %>% 
+  mutate(pi2 = case_when(
+    is.na(g3) ~ 
+  ))
+
+
+```
+
+Take the first malnutrition category for each study. Will need to ask group to make a decision on which to use. Then spread the dataframe to wide, so that we have a matrix of N's, events and group labels as per the earlier structure.
+
+
+```{r labe_groups}
+grp_lbls2 <- grp_lbls %>% 
+  select(study, malnutrition_category, r, n, g, g_lbl) %>% 
+  distinct(study, g, .keep_all = TRUE)
+
+grp_lbls2n <- grp_lbls2 %>% 
+  select(-r, -g_lbl) %>% 
+  spread(g, n)
+
+grp_lbls2n <- grp_lbls2 %>% 
+  select(-r, -g_lbl) %>% 
+  spread(g, n)
+
+grp_lbls2r <- grp_lbls2 %>% 
+  select(-n, -g_lbl) %>% 
+  spread(g, r)
+
+grp_lbls2g <- grp_lbls2 %>% 
+  select(-n, -r) %>% 
+  spread(g, g_lbl)
+
+```
+
+Check that the restructuring has kept the order of the studies.
+
+```{r check_ordering}
+
+identical(grp_lbls2n %>% select(1:2),
+          grp_lbls2g %>%  select(1:2))
+
+identical(grp_lbls2n %>% select(1:2),
+          grp_lbls2r %>%  select(1:2))
+
+```
+
+
+
