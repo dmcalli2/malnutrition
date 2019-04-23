@@ -3,10 +3,10 @@ title: "Malnutritional analysis"
 output: github_document
 ---
 
-This model uses code developed by Nicky Welton to estimate the assocaition between malnutrition and pneumonia mortality. 
+This model uses code developed by Nicky Welton to estimate the association between malnutrition and pneumonia mortality. 
 
 ```{r setup}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache = TRUE)
 knitr::opts_knit$set(root.dir = here::here())
 ```
 
@@ -19,12 +19,11 @@ library(rjags)
 library(ggplot2)
 ```
 
+# Fixed effects model
 
-# Run model with example data
+## Run model with example data
 
 First check the model runs succesfully in Jags using example data.
-
-## Example data
 
 Need to convert the example data into matrices and vectors for JAGS.
 
@@ -52,10 +51,10 @@ The following is the BUGS/JAGS code for the fixed effects model.
 
 ```{r getcode}
 a <- read_lines("Supporting/FE_model.txt")
-cat(a)
+print(a)
 ```
 
-## Initialise model and return results
+## Check model runs with example data in JAGS
 
 Very small number of iterations so can run code quickly for now. Add more later.
 
@@ -112,7 +111,7 @@ all_present_smry <- mort %>%
             studies_times_categories = n())
 col12 <- all_present_smry$studies[all_present_smry$col12]
 col23 <- all_present_smry$studies[all_present_smry$col23]
-all_present_smry
+knitr::kable(all_present_smry)
 ```
 
 
@@ -135,6 +134,23 @@ pi2 <- mort %>%
   mutate(pi2_coll12 = Moderate/(Moderate + None),
          pi2_coll23 = Moderate/(Moderate + Severe)) %>% 
   select(study, malnutrition_category, pi2_coll12, pi2_coll23)
+
+
+pi2_for_mdl <- mort %>% 
+  filter(all_n) %>% 
+  select(study, malnutrition_category, malnutrition_severity, total) %>% 
+  mutate(total = as.integer(total)) %>% 
+  spread(malnutrition_severity, total) %>% 
+  group_by(study, malnutrition_category) %>% 
+  summarise_at(vars(-study, -malnutrition_category), sum) %>% 
+  ungroup()
+
+cat_names <- unique(pi2_for_mdl$malnutrition_category) %>%  sort()
+pi2_for_mdl <- map(cat_names, ~ pi2_for_mdl %>% 
+                     filter(malnutrition_category == .x) %>% 
+                     select(None, Moderate, Severe) %>% 
+                     as.matrix())
+names(pi2_for_mdl) <- cat_names
 
 pi2_smry <- pi2 %>% 
   group_by(malnutrition_category) %>% 
@@ -199,6 +215,11 @@ grp_lbls2g <- grp_lbls2 %>%
   select(-n, -r) %>% 
   spread(g, g_lbl)
 
+grp_lbls2_col12 <- grp_lbls2 %>% 
+  group_by(study) %>% 
+  summarise(res = any(12 %in% g_lbl)) %>% 
+  pull(res)
+
 ```
 
 Check that the restructuring has kept the order of the studies.
@@ -247,6 +268,58 @@ summary(LINE.out)
 
 ## Next step
 
-Next step will be to estimate the proportion in category two rather than assume it is fixed. Can use existing data, and sample from Beta distribution. Or can, get input from subject-matter experts for these studies and use that.
+Next step will be to estimate the proportion of people in category two rather than assume it is fixed. Can use existing data, and sample from Beta distribution. Or can, get input from subject-matter experts for these studies and use that.
 
-Also need to code this in the model.
+In order to prepare for this we developed two models. One model assumes that the proportion of none-moderate which are moderate lies between 0 and 1 and that the proportion of moderate-severe which are moderate lies between 0 and 1 (ie a uniform prior). A second model assumes that the proportion in each category is exchangeable between studies, using a random effects model to estimate the proportion for those studies where it is not recorded.
+
+In these very low MCMC sample models (for speed) they give similar result.
+
+### Model with uniform prior
+
+Add an indicator variables for whether we want proportion in category two of 1 and 2, or of 2 and 3. Where there is no missing data, the proportion of two in 2/3 will be calculated, but this is not used in the code.
+
+In the first instance explore the use of a flat distribution for the proportion in category two
+
+```{r prop_model}
+list_data3 <- list_data2
+list_data3[["pi2"]] <- NULL
+list_data3[["coll12"]] <- grp_lbls2_col12
+mod2 <- jags.model(file = "Supporting/FE_model_estimate_prop.txt",
+                            data = list_data3, n.chains = 1, n.adapt = 1000)
+update(mod2, 1000)
+
+data(LINE)
+LINE$recompile()
+LINE.out <- coda.samples(mod2, c("d", "theta1", "theta2"),n.iter = 1000)
+summary(LINE.out)
+```
+
+### Model assuming proportion in each category is exchangeable
+
+
+```{r prop_model_estimate}
+pi2_choose <- pi2_for_mdl$`w/a`
+pi2_choose12 <- rowSums(pi2_choose[, 1:2])
+pi2_choose23 <- rowSums(pi2_choose[, 2:3])
+
+list_data4 <- list_data3
+list_data4[["n_complete2a"]]   <- pi2_choose[,2]
+list_data4[["n_complete2b"]]   <- pi2_choose[,2]
+list_data4[["n_complete12"]] <- pi2_choose12
+list_data4[["n_complete23"]] <- pi2_choose23
+list_data4[["ns_complete"]] <- length(pi2_choose12)
+
+
+mod3 <- jags.model(file = "Supporting/FE_model_estimate_prop2.txt",
+                            data = list_data4, n.chains = 1, n.adapt = 1000)
+update(mod3, 1000)
+
+data(LINE)
+LINE$recompile()
+LINE.out <- coda.samples(mod3, c("d", "theta1_prop", "theta2_prop"),n.iter = 1000)
+summary(LINE.out)
+```
+
+# Random effects model
+
+Random effects model did not run. Says indexing is incorrect for w. Will need to go over again.
