@@ -16,6 +16,7 @@ Packages
 library(tidyverse)
 library(rjags)
 library(ggplot2)
+library(R2OpenBUGS)
 ```
 
 # Fixed effects model
@@ -427,17 +428,17 @@ summary(LINE.out)
     ## 1. Empirical mean and standard deviation for each variable,
     ##    plus standard error of the mean:
     ## 
-    ##       Mean      SD  Naive SE Time-series SE
-    ## d[1] 0.000 0.00000 0.0000000        0.00000
-    ## d[2] 0.787 0.02970 0.0009393        0.00269
-    ## d[3] 1.491 0.02711 0.0008574        0.00224
+    ##        Mean      SD  Naive SE Time-series SE
+    ## d[1] 0.0000 0.00000 0.0000000       0.000000
+    ## d[2] 0.7848 0.03069 0.0009704       0.002826
+    ## d[3] 1.4894 0.02933 0.0009275       0.002417
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##        2.5%    25%    50%    75% 97.5%
-    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.000
-    ## d[2] 0.7324 0.7653 0.7858 0.8073 0.846
-    ## d[3] 1.4373 1.4729 1.4926 1.5093 1.545
+    ##        2.5%    25%    50%    75%  97.5%
+    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
+    ## d[2] 0.7264 0.7631 0.7844 0.8079 0.8411
+    ## d[3] 1.4317 1.4686 1.4903 1.5079 1.5493
 
 ## Next step
 
@@ -518,19 +519,50 @@ summary(LINE.out)
     ## 
     ##          Mean      SD  Naive SE Time-series SE
     ## d[1]   0.0000 0.00000 0.0000000       0.000000
-    ## d[2]   0.8196 0.03090 0.0009772       0.001687
-    ## d[3]   1.4400 0.03035 0.0009599       0.002365
-    ## theta1 0.2712 0.08690 0.0027480       0.011204
-    ## theta2 0.7081 0.21673 0.0068537       0.014881
+    ## d[2]   0.8225 0.02847 0.0009003       0.001560
+    ## d[3]   1.4411 0.03136 0.0009918       0.002479
+    ## theta1 0.2775 0.10249 0.0032409       0.016129
+    ## theta2 0.7111 0.20837 0.0065892       0.011747
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##          2.5%    25%    50%    75%  97.5%
-    ## d[1]   0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2]   0.7609 0.7989 0.8189 0.8394 0.8828
-    ## d[3]   1.3802 1.4206 1.4408 1.4601 1.4961
-    ## theta1 0.1126 0.2057 0.2732 0.3358 0.4297
-    ## theta2 0.2115 0.5683 0.7473 0.8902 0.9853
+    ##           2.5%    25%    50%    75%  97.5%
+    ## d[1]   0.00000 0.0000 0.0000 0.0000 0.0000
+    ## d[2]   0.76346 0.8045 0.8215 0.8408 0.8786
+    ## d[3]   1.37478 1.4209 1.4437 1.4624 1.4994
+    ## theta1 0.08211 0.2065 0.2715 0.3480 0.4838
+    ## theta2 0.19095 0.5866 0.7484 0.8779 0.9827
+
+``` r
+inits <- function() {
+  list(d = c(NA,-2,1),
+       mu = rep(0, nrow(list_data3$r)))
+}
+list_data3_openbugs <- list_data3
+list_data3_openbugs$coll12 <- as.integer(list_data3_openbugs$coll12)
+mode2_bugs <- bugs(data = list_data3_openbugs, 
+                   parameters.to.save = c("d", "theta1", "theta2"), n.iter = 1000,
+                   inits = inits,
+                   model.file = "FE_model_estimate_prop_openbugs.txt")
+print(mode2_bugs)
+```
+
+    ## Inference for Bugs model at "FE_model_estimate_prop_openbugs.txt", 
+    ## Current: 3 chains, each with 1000 iterations (first 500 discarded)
+    ## Cumulative: n.sims = 1500 iterations saved
+    ##           mean  sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
+    ## d[2]       0.8 0.0   0.8   0.8   0.8   0.8   0.9  1.0   290
+    ## d[3]       1.4 0.0   1.4   1.4   1.4   1.5   1.5  1.0   740
+    ## theta1     0.3 0.1   0.1   0.2   0.3   0.3   0.5  1.0   180
+    ## theta2     0.7 0.2   0.2   0.5   0.7   0.9   1.0  1.1   140
+    ## deviance 507.1 8.0 494.4 501.3 506.1 511.6 525.3  1.0   810
+    ## 
+    ## For each parameter, n.eff is a crude measure of effective sample size,
+    ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
+    ## 
+    ## DIC info (using the rule, pD = Dbar-Dhat)
+    ## pD = 29.5 and DIC = 536.5
+    ## DIC is an estimate of expected predictive error (lower deviance is better).
 
 ### Model assuming proportion in each category is exchangeable
 

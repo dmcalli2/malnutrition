@@ -17,6 +17,7 @@ Packages
 library(tidyverse)
 library(rjags)
 library(ggplot2)
+library(R2OpenBUGS)
 ```
 
 # Fixed effects model
@@ -264,6 +265,7 @@ data(LINE)
 LINE$recompile()
 LINE.out <- coda.samples(mod1, c("d"),n.iter = 1000)
 summary(LINE.out)
+
 ```
 
 ## Next step
@@ -292,6 +294,18 @@ data(LINE)
 LINE$recompile()
 LINE.out <- coda.samples(mod2, c("d", "theta1", "theta2"),n.iter = 1000)
 summary(LINE.out)
+
+inits <- function() {
+  list(d = c(NA,-2,1),
+       mu = rep(0, nrow(list_data3$r)))
+}
+list_data3_openbugs <- list_data3
+list_data3_openbugs$coll12 <- as.integer(list_data3_openbugs$coll12)
+mode2_bugs <- bugs(data = list_data3_openbugs, 
+                   parameters.to.save = c("d", "theta1", "theta2"), n.iter = 1000,
+                   inits = inits,
+                   model.file = "FE_model_estimate_prop_openbugs.txt")
+print(mode2_bugs)
 ```
 
 ### Model assuming proportion in each category is exchangeable
