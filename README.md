@@ -4,7 +4,7 @@ Collaboration to study the effect of malnutrition on pneumonia in LMICs
 
 # Protocol
 
-THis protocol will be updated as decisions regarding the analysis are made.
+This protocol will be updated as decisions regarding the analysis are made.
 
 ## Definitions of malnutrition and categories of malnutrition severity
 
@@ -30,6 +30,10 @@ Where only the odds ratio, but not the original counts from the 2x2 tables were 
 ## Modelling choices
 
 Since the studies [frequently collapsed categories of malnutrition severity](</Data/Collapsed_Uncollapsed numbers.csv>) , we chose to estimate the odds ratios using a Bayesian model, as this will allow us to use all of the data to estimate the odds ratios for each possible comparison.
+
+The modelling can handle the fact that, for some studies, the event data for the malnutrition categories are collapsed. We need to make a decision how to handle the fact that the total number in each malnutrition category is also collaped.
+
+In [01_maln.md](Scripts/01_maln.md) I have explored some options for dealing with this problem.
 
 ## Key Points Regarding Specific Studies
 
@@ -59,3 +63,7 @@ Kuti - Malnutrition case fatality numbers calculated from original dataset provi
 - Mortality_Numbers.csv contains the number of children who survived or died in relation to malnutrition status in each study
 - Mortality_odds_ratios.csv contains odds ratios calculated from data within studies in terms of mortality risk in relation to malnutrition status
 - Number_of_studies.csv provides an overview of the number of studies investigating mortality or incidence of childhood pneumonia, the number which have collapsed or uncollapsed data and the number of studies capturing each nutrition metric (w/a, w/h, h/a)
+
+## Preliminary results
+
+In the scripts folder if you click on the file [01_maln.md](Scripts/01_maln.md) you will find that the results of the initial modelling.

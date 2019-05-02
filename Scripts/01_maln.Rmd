@@ -1,5 +1,5 @@
 ---
-title: "Malnutritional analysis"
+title: "Malnutrition analysis"
 output: github_document
 ---
 
@@ -19,6 +19,18 @@ library(rjags)
 library(ggplot2)
 library(R2OpenBUGS)
 ```
+
+# Nomenclature
+
+For all analyses the malnutrition categories are interpreted as folows:-
+
+coding|label
+------|-------
+1|None
+2|Moderate
+3|Severe
+12|None or moderate
+23|Moderate or severe
 
 # Fixed effects model
 
@@ -55,9 +67,7 @@ a <- read_lines("Supporting/FE_model.txt")
 print(a)
 ```
 
-## Check model runs with example data in JAGS
-
-Very small number of iterations so can run code quickly for now. Add more later.
+## Check model runs with example data
 
 ```{r runexamplemodel}
 mod_example <- jags.model(file = "Supporting/FE_model.txt",
@@ -79,6 +89,7 @@ First rename variables and recode. There should be a maximum of three groups for
 ## Categorise pattern of collapsing for each study/manutrition category combination
 
 Calculate which studies have missing event data, and which have missing "n" data. IN the present analysis, any with complete n data have complete events data.
+
 
 ```{r pat_maln}
 mort <- read_csv("Data/Mortality_Numbers.csv")
@@ -120,9 +131,7 @@ Of those studies with collapsed data, `r col12` collapse into none/moderate and 
 
 ## Calculate the proportion in group 2 for the collapsed studies
 
-Since, in the sample so far, all of those with missing event data have missing totals for each category, we need to examine the proportions in group 2 where these 
-
-Calculate the proportion in the second category within each collapsed category. Having done so collapse the Ns. Where the proportion is unknown, assume it is the same as the mean.
+Since, in the sample so far, all of those with missing event data have missing totals for each category, we can only examine the proportion in group 2 where there is complete data. Calculate the proportion in the second category (moderate malnutrition) within each collapsed category. Having done so collapse the Ns. Where the proportion is unknown, assume it is the same as the mean proportion.
 
 First need to classify which are collapsed.
 
@@ -165,6 +174,8 @@ plot_dist <- ggplot(pi2_lng, aes(x = value, fill = collapsed_categories)) + geom
 plot_dist
 ```
 
+The plot above shows the proportion of participants category 2 of 1 + 2 and in category 2 of 2+3 for all three types of measure. The proportion in 2 (moderate) is sometimes surprisingly low or high. 
+
 ```{r maln_data}
 mort_slct <- mort %>% 
   select(study, malnutrition_category, n = total, r = died, maln = malnutrition_severity,
@@ -192,12 +203,15 @@ grp_lbls <-  mort_slct %>%
 ```
 
 
-Take the first malnutrition category for each study. Will need to ask group to make a decision on which to use. Then spread the dataframe to wide, so that we have a matrix of N's, events and group labels as per the earlier structure.
+First run for the "w/a" definition of malnutrition.
+
+THis code rearranges the dataframe  so that we have a matrix of N's, events and group labels as per the earlier structure.
 
 
 ```{r labe_groups}
 grp_lbls2 <- grp_lbls %>% 
   select(study, malnutrition_category, r, n, g, g_lbl, pi2) %>% 
+  filter(malnutrition_category == "w/a") %>% 
   distinct(study, g, .keep_all = TRUE)
 
 grp_lbls2n <- grp_lbls2 %>% 
@@ -223,7 +237,7 @@ grp_lbls2_col12 <- grp_lbls2 %>%
 
 ```
 
-Check that the restructuring has kept the order of the studies.
+Check that the restructuring has kept the order of the studies. The following tests should be TRUE.
 
 ```{r check_ordering}
 
@@ -238,7 +252,7 @@ identical(grp_lbls2n %>% select(1:2),
 
 ## Try running models on real data
 
-Initially use a fixed proportion 
+Simplest model, assume that the proportion with moderate malnutrition of those with none-moderate, and the proportion with moderate of thsoe with moderate-severe are constant across studies where this is not recorded.
 
 ```{r trymodel}
 na <- 3 - apply(grp_lbls2n %>% select(`1`, `2`, `3`) %>% as.matrix(), 1, function(x) x %>% 
@@ -268,19 +282,21 @@ summary(LINE.out)
 
 ```
 
+The above tables show that the log odds ratio is 0.82 for moderate versus none and 1.47 for severe versus none.
+
 ## Next step
 
-Next step will be to estimate the proportion of people in category two rather than assume it is fixed. Can use existing data, and sample from Beta distribution. Or can, get input from subject-matter experts for these studies and use that.
+Next step will be to estimate the proportion of people in category two rather than assume it is fixed. Can estimate this from the data or can get input from subject-matter experts about the likely proportion.
 
-In order to prepare for this we developed two models. One model assumes that the proportion of none-moderate which are moderate lies between 0 and 1 and that the proportion of moderate-severe which are moderate lies between 0 and 1 (ie a uniform prior). A second model assumes that the proportion in each category is exchangeable between studies, using a random effects model to estimate the proportion for those studies where it is not recorded.
+In order to prepare for this final decision we developed two models. One model assumes (approach one) that the proportion of none-moderate which are moderate lies, with equal probability, somehere between 0 and 1 and that the proportion of moderate-severe which are moderate lies between 0 and 1 (ie a uniform prior). A second model (approach two) assumes that the proportion in each category is exchangeable between studies, using a random effects model to estimate the proportion for those studies where it is not recorded.
 
-In these very low MCMC sample models (for speed) they give similar result.
+These models (which for speed only run for a small number of samples) both give similar result.
 
-### Model with uniform prior
+### Approach One
 
 Add an indicator variables for whether we want proportion in category two of 1 and 2, or of 2 and 3. Where there is no missing data, the proportion of two in 2/3 will be calculated, but this is not used in the code.
 
-In the first instance explore the use of a flat distribution for the proportion in category two
+In the first instance explore the use of a flat distribution for the proportion in category two. This is run in both JAGS and OPENBUGS, giving the same results.
 
 ```{r prop_model}
 list_data3 <- list_data2
@@ -308,7 +324,9 @@ mode2_bugs <- bugs(data = list_data3_openbugs,
 print(mode2_bugs)
 ```
 
-### Model assuming proportion in each category is exchangeable
+### Approach Two
+
+This is the modelling where we estimate the proportion in the moderate category using the data on proportions from other studies.
 
 
 ```{r prop_model_estimate}
@@ -336,4 +354,14 @@ summary(LINE.out)
 
 # Random effects model
 
-Random effects model did not run. Says indexing is incorrect for w. Will need to go over again.
+Return to approach 1, but re-run the model assuming random effects model for the effect of malnutrition on mortality.
+
+```{r re_model}
+mode3_bugs <- bugs(data = list_data3_openbugs, 
+                   parameters.to.save = c("d", "theta1", "theta2"), n.iter = 10000,
+                   inits = inits,
+                   model.file = "RE_model_estimate_prop_openbugs.txt")
+print(mode3_bugs)
+```
+
+This gives very similar results, but with wider confidence intervals, than the fixed effects model.

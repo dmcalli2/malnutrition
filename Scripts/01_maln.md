@@ -1,4 +1,4 @@
-Malnutritional analysis
+Malnutrition analysis
 ================
 
 This model uses code developed by Nicky Welton to estimate the
@@ -18,6 +18,18 @@ library(rjags)
 library(ggplot2)
 library(R2OpenBUGS)
 ```
+
+# Nomenclature
+
+For all analyses the malnutrition categories are interpreted as folows:-
+
+| coding | label              |
+| ------ | ------------------ |
+| 1      | None               |
+| 2      | Moderate           |
+| 3      | Severe             |
+| 12     | None or moderate   |
+| 23     | Moderate or severe |
 
 # Fixed effects model
 
@@ -115,10 +127,7 @@ print(a)
     ## [33] ""                                                                                                                        
     ## [34] "}                                                                                 # *** PROGRAM ENDS"
 
-## Check model runs with example data in JAGS
-
-Very small number of iterations so can run code quickly for now. Add
-more later.
+## Check model runs with example data
 
 ``` r
 mod_example <- jags.model(file = "Supporting/FE_model.txt",
@@ -168,15 +177,15 @@ summary(LINE.out)
     ## 
     ##        Mean      SD Naive SE Time-series SE
     ## d[1] 0.0000 0.00000 0.000000        0.00000
-    ## d[2] 0.9335 0.07021 0.007021        0.01653
-    ## d[3] 0.6156 0.07423 0.007423        0.01859
+    ## d[2] 0.9106 0.07143 0.007143        0.01646
+    ## d[3] 0.5941 0.07767 0.007767        0.01791
     ## 
     ## 2. Quantiles for each variable:
     ## 
     ##        2.5%    25%    50%    75%  97.5%
     ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2] 0.8094 0.8883 0.9256 0.9651 1.1033
-    ## d[3] 0.5117 0.5611 0.6086 0.6544 0.8035
+    ## d[2] 0.7525 0.8742 0.9234 0.9492 1.0330
+    ## d[3] 0.4600 0.5355 0.5978 0.6503 0.7305
 
 ## Process real data into format for analysis
 
@@ -240,12 +249,11 @@ Of those studies with collapsed data, 4 collapse into none/moderate and
 ## Calculate the proportion in group 2 for the collapsed studies
 
 Since, in the sample so far, all of those with missing event data have
-missing totals for each category, we need to examine the proportions in
-group 2 where these
-
-Calculate the proportion in the second category within each collapsed
-category. Having done so collapse the Ns. Where the proportion is
-unknown, assume it is the same as the mean.
+missing totals for each category, we can only examine the proportion in
+group 2 where there is complete data. Calculate the proportion in the
+second category (moderate malnutrition) within each collapsed category.
+Having done so collapse the Ns. Where the proportion is unknown, assume
+it is the same as the mean proportion.
 
 First need to classify which are collapsed.
 
@@ -290,6 +298,10 @@ plot_dist
 
 ![](01_maln_files/figure-gfm/calculatenproprs-1.png)<!-- -->
 
+The plot above shows the proportion of participants category 2 of 1 + 2
+and in category 2 of 2+3 for all three types of measure. The proportion
+in 2 (moderate) is sometimes surprisingly low or high.
+
 ``` r
 mort_slct <- mort %>% 
   select(study, malnutrition_category, n = total, r = died, maln = malnutrition_severity,
@@ -315,14 +327,15 @@ grp_lbls <-  mort_slct %>%
   )
 ```
 
-Take the first malnutrition category for each study. Will need to ask
-group to make a decision on which to use. Then spread the dataframe to
-wide, so that we have a matrix of N’s, events and group labels as per
-the earlier structure.
+First run for the “w/a” definition of malnutrition.
+
+THis code rearranges the dataframe so that we have a matrix of N’s,
+events and group labels as per the earlier structure.
 
 ``` r
 grp_lbls2 <- grp_lbls %>% 
   select(study, malnutrition_category, r, n, g, g_lbl, pi2) %>% 
+  filter(malnutrition_category == "w/a") %>% 
   distinct(study, g, .keep_all = TRUE)
 
 grp_lbls2n <- grp_lbls2 %>% 
@@ -347,7 +360,8 @@ grp_lbls2_col12 <- grp_lbls2 %>%
   pull(res)
 ```
 
-Check that the restructuring has kept the order of the studies.
+Check that the restructuring has kept the order of the studies. The
+following tests should be TRUE.
 
 ``` r
 identical(grp_lbls2n %>% select(1:2),
@@ -365,8 +379,10 @@ identical(grp_lbls2n %>% select(1:2),
 
 ## Try running models on real data
 
-Initially use a fixed
-proportion
+Simplest model, assume that the proportion with moderate malnutrition of
+those with none-moderate, and the proportion with moderate of thsoe with
+moderate-severe are constant across studies where this is not
+recorded.
 
 ``` r
 na <- 3 - apply(grp_lbls2n %>% select(`1`, `2`, `3`) %>% as.matrix(), 1, function(x) x %>% 
@@ -391,9 +407,9 @@ mod1 <- jags.model(file = "Supporting/FE_model.txt",
     ##    Resolving undeclared variables
     ##    Allocating nodes
     ## Graph information:
-    ##    Observed stochastic nodes: 66
-    ##    Unobserved stochastic nodes: 28
-    ##    Total graph size: 1736
+    ##    Observed stochastic nodes: 57
+    ##    Unobserved stochastic nodes: 24
+    ##    Total graph size: 1495
     ## 
     ## Initializing model
 
@@ -430,35 +446,38 @@ summary(LINE.out)
     ## 
     ##        Mean      SD  Naive SE Time-series SE
     ## d[1] 0.0000 0.00000 0.0000000       0.000000
-    ## d[2] 0.7848 0.03069 0.0009704       0.002826
-    ## d[3] 1.4894 0.02933 0.0009275       0.002417
+    ## d[2] 0.8166 0.03092 0.0009779       0.001927
+    ## d[3] 1.4684 0.02792 0.0008829       0.001394
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##        2.5%    25%    50%    75%  97.5%
-    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2] 0.7264 0.7631 0.7844 0.8079 0.8411
-    ## d[3] 1.4317 1.4686 1.4903 1.5079 1.5493
+    ##       2.5%    25%    50%    75%  97.5%
+    ## d[1] 0.000 0.0000 0.0000 0.0000 0.0000
+    ## d[2] 0.755 0.7949 0.8173 0.8377 0.8752
+    ## d[3] 1.415 1.4488 1.4685 1.4872 1.5217
+
+The above tables show that the log odds ratio is 0.82 for moderate
+versus none and 1.47 for severe versus none.
 
 ## Next step
 
 Next step will be to estimate the proportion of people in category two
-rather than assume it is fixed. Can use existing data, and sample from
-Beta distribution. Or can, get input from subject-matter experts for
-these studies and use that.
+rather than assume it is fixed. Can estimate this from the data or can
+get input from subject-matter experts about the likely proportion.
 
-In order to prepare for this we developed two models. One model assumes
-that the proportion of none-moderate which are moderate lies between 0
-and 1 and that the proportion of moderate-severe which are moderate lies
-between 0 and 1 (ie a uniform prior). A second model assumes that the
-proportion in each category is exchangeable between studies, using a
+In order to prepare for this final decision we developed two models. One
+model assumes (approach one) that the proportion of none-moderate which
+are moderate lies, with equal probability, somehere between 0 and 1 and
+that the proportion of moderate-severe which are moderate lies between 0
+and 1 (ie a uniform prior). A second model (approach two) assumes that
+the proportion in each category is exchangeable between studies, using a
 random effects model to estimate the proportion for those studies where
 it is not recorded.
 
-In these very low MCMC sample models (for speed) they give similar
-result.
+These models (which for speed only run for a small number of samples)
+both give similar result.
 
-### Model with uniform prior
+### Approach One
 
 Add an indicator variables for whether we want proportion in category
 two of 1 and 2, or of 2 and 3. Where there is no missing data, the
@@ -466,7 +485,8 @@ proportion of two in 2/3 will be calculated, but this is not used in the
 code.
 
 In the first instance explore the use of a flat distribution for the
-proportion in category two
+proportion in category two. This is run in both JAGS and OPENBUGS,
+giving the same results.
 
 ``` r
 list_data3 <- list_data2
@@ -480,9 +500,9 @@ mod2 <- jags.model(file = "Supporting/FE_model_estimate_prop.txt",
     ##    Resolving undeclared variables
     ##    Allocating nodes
     ## Graph information:
-    ##    Observed stochastic nodes: 66
-    ##    Unobserved stochastic nodes: 30
-    ##    Total graph size: 1714
+    ##    Observed stochastic nodes: 57
+    ##    Unobserved stochastic nodes: 26
+    ##    Total graph size: 1482
     ## 
     ## Initializing model
 
@@ -517,21 +537,21 @@ summary(LINE.out)
     ## 1. Empirical mean and standard deviation for each variable,
     ##    plus standard error of the mean:
     ## 
-    ##          Mean      SD  Naive SE Time-series SE
-    ## d[1]   0.0000 0.00000 0.0000000       0.000000
-    ## d[2]   0.8225 0.02847 0.0009003       0.001560
-    ## d[3]   1.4411 0.03136 0.0009918       0.002479
-    ## theta1 0.2775 0.10249 0.0032409       0.016129
-    ## theta2 0.7111 0.20837 0.0065892       0.011747
+    ##           Mean      SD  Naive SE Time-series SE
+    ## d[1]   0.00000 0.00000 0.0000000       0.000000
+    ## d[2]   0.83112 0.02982 0.0009430       0.001741
+    ## d[3]   1.46035 0.03036 0.0009601       0.001666
+    ## theta1 0.05598 0.04892 0.0015470       0.002621
+    ## theta2 0.76963 0.19427 0.0061434       0.012508
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##           2.5%    25%    50%    75%  97.5%
-    ## d[1]   0.00000 0.0000 0.0000 0.0000 0.0000
-    ## d[2]   0.76346 0.8045 0.8215 0.8408 0.8786
-    ## d[3]   1.37478 1.4209 1.4437 1.4624 1.4994
-    ## theta1 0.08211 0.2065 0.2715 0.3480 0.4838
-    ## theta2 0.19095 0.5866 0.7484 0.8779 0.9827
+    ##            2.5%     25%     50%     75%  97.5%
+    ## d[1]   0.000000 0.00000 0.00000 0.00000 0.0000
+    ## d[2]   0.774545 0.80980 0.83172 0.85032 0.8925
+    ## d[3]   1.402392 1.43998 1.46050 1.48177 1.5195
+    ## theta1 0.003016 0.01977 0.04071 0.07875 0.1817
+    ## theta2 0.252135 0.67737 0.82317 0.91967 0.9912
 
 ``` r
 inits <- function() {
@@ -551,20 +571,23 @@ print(mode2_bugs)
     ## Current: 3 chains, each with 1000 iterations (first 500 discarded)
     ## Cumulative: n.sims = 1500 iterations saved
     ##           mean  sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
-    ## d[2]       0.8 0.0   0.8   0.8   0.8   0.8   0.9  1.0   290
-    ## d[3]       1.4 0.0   1.4   1.4   1.4   1.5   1.5  1.0   740
-    ## theta1     0.3 0.1   0.1   0.2   0.3   0.3   0.5  1.0   180
-    ## theta2     0.7 0.2   0.2   0.5   0.7   0.9   1.0  1.1   140
-    ## deviance 507.1 8.0 494.4 501.3 506.1 511.6 525.3  1.0   810
+    ## d[2]       0.8 0.0   0.8   0.8   0.8   0.8   0.9    1  1100
+    ## d[3]       1.5 0.0   1.4   1.4   1.5   1.5   1.5    1   760
+    ## theta1     0.1 0.1   0.0   0.0   0.0   0.1   0.2    1   560
+    ## theta2     0.8 0.2   0.3   0.7   0.8   0.9   1.0    1  1500
+    ## deviance 434.9 7.4 422.9 429.4 434.1 439.4 451.2    1  1500
     ## 
     ## For each parameter, n.eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
     ## 
     ## DIC info (using the rule, pD = Dbar-Dhat)
-    ## pD = 29.5 and DIC = 536.5
+    ## pD = 24.5 and DIC = 459.4
     ## DIC is an estimate of expected predictive error (lower deviance is better).
 
-### Model assuming proportion in each category is exchangeable
+### Approach Two
+
+This is the modelling where we estimate the proportion in the moderate
+category using the data on proportions from other studies.
 
 ``` r
 pi2_choose <- pi2_for_mdl$`w/a`
@@ -587,9 +610,9 @@ mod3 <- jags.model(file = "Supporting/FE_model_estimate_prop2.txt",
     ##    Resolving undeclared variables
     ##    Allocating nodes
     ## Graph information:
-    ##    Observed stochastic nodes: 92
-    ##    Unobserved stochastic nodes: 60
-    ##    Total graph size: 1887
+    ##    Observed stochastic nodes: 83
+    ##    Unobserved stochastic nodes: 56
+    ##    Total graph size: 1648
     ## 
     ## Initializing model
 
@@ -626,21 +649,49 @@ summary(LINE.out)
     ## 
     ##               Mean      SD  Naive SE Time-series SE
     ## d[1]        0.0000 0.00000 0.0000000       0.000000
-    ## d[2]        0.8219 0.03055 0.0009660       0.001752
-    ## d[3]        1.4467 0.02911 0.0009205       0.002240
-    ## theta1_prop 0.3095 0.05126 0.0016209       0.001745
-    ## theta2_prop 0.6240 0.04021 0.0012717       0.001344
+    ## d[2]        0.8235 0.02944 0.0009311       0.001507
+    ## d[3]        1.4438 0.02903 0.0009180       0.001553
+    ## theta1_prop 0.2974 0.04785 0.0015131       0.001513
+    ## theta2_prop 0.6258 0.03852 0.0012181       0.001218
     ## 
     ## 2. Quantiles for each variable:
     ## 
     ##               2.5%    25%    50%    75%  97.5%
     ## d[1]        0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2]        0.7599 0.8024 0.8227 0.8405 0.8830
-    ## d[3]        1.3921 1.4265 1.4446 1.4659 1.5093
-    ## theta1_prop 0.2140 0.2743 0.3066 0.3423 0.4148
-    ## theta2_prop 0.5435 0.5984 0.6238 0.6509 0.7024
+    ## d[2]        0.7658 0.8041 0.8247 0.8434 0.8777
+    ## d[3]        1.3841 1.4249 1.4442 1.4645 1.4980
+    ## theta1_prop 0.2120 0.2667 0.2941 0.3252 0.4017
+    ## theta2_prop 0.5463 0.6031 0.6272 0.6496 0.6973
 
 # Random effects model
 
-Random effects model did not run. Says indexing is incorrect for w. Will
-need to go over again.
+Return to approach 1, but re-run the model assuming random effects model
+for the effect of malnutrition on mortality.
+
+``` r
+mode3_bugs <- bugs(data = list_data3_openbugs, 
+                   parameters.to.save = c("d", "theta1", "theta2"), n.iter = 10000,
+                   inits = inits,
+                   model.file = "RE_model_estimate_prop_openbugs.txt")
+print(mode3_bugs)
+```
+
+    ## Inference for Bugs model at "RE_model_estimate_prop_openbugs.txt", 
+    ## Current: 3 chains, each with 10000 iterations (first 5000 discarded)
+    ## Cumulative: n.sims = 15000 iterations saved
+    ##           mean   sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
+    ## d[2]       0.8  0.1   0.5   0.7   0.8   0.9   1.1    1  3800
+    ## d[3]       1.6  0.1   1.4   1.6   1.6   1.7   1.9    1  4200
+    ## theta1     0.2  0.2   0.0   0.1   0.1   0.2   0.6    1  9000
+    ## theta2     0.7  0.2   0.2   0.6   0.8   0.9   1.0    1 15000
+    ## deviance 341.5 10.4 323.1 334.1 340.9 348.1 363.4    1  7000
+    ## 
+    ## For each parameter, n.eff is a crude measure of effective sample size,
+    ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
+    ## 
+    ## DIC info (using the rule, pD = Dbar-Dhat)
+    ## pD = 44.5 and DIC = 386.0
+    ## DIC is an estimate of expected predictive error (lower deviance is better).
+
+This gives very similar results, but with wider confidence intervals,
+than the fixed effects model.
