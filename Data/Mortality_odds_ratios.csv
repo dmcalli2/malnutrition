@@ -25,6 +25,7 @@ Study,Measure,Control,Exposed,Malnutrition Category,Severity,OR ,LCI,UCI,Adjuste
 "Duke, 2001",% expected,>60%,<60%,w/a,Non-Severe,6.3,2.7,14.5,,y,
 "Demers, 2000",SD/ z-score,>-2,<-2,w/h,All,3.2,1.5,6.7,,,
 "Demers, 2000",SD/ z-score,>-2,<-2,h/a,All,0.8,0.4,1.6,,,
+"Enarson, 2015",% expected,>60%,<60% (or oedema),w/h,Non-Severe,2.8,2.4,3.4,,y,
 "Johnson, 2008",% expected,>80%,60-80%,w/a,Moderate,3.6,1.3,10.2,,,
 "Johnson, 2008",% expected,>80%,<80% (and those with kwashiorkor),w/a,All,5.2,2,13.9,,,
 "Johnson, 2008",% expected,>80%,<60% (and those with kwashiorkor),w/a,Severe,13.6,4.4,42.1,,,
