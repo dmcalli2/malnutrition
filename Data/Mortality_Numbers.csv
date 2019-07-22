@@ -26,11 +26,6 @@ Study,Measure,Group,Malnutrition Category,Malnutrition Severity,Survived,Died,To
 "Demers, 2000",SD/ z-score,<-2,w/h,All,36,12,48,,,y
 "Demers, 2000",SD/ z-score,>-2,h/a,None,224,33,257,,,
 "Demers, 2000",SD/ z-score,<-2,h/a,All,112,13,125,,,y
-"Enarson, 2015",% expected,<60% (or oedema),w/h,Severe,634,192,826,y,,
-"Enarson, 2015",% expected,>60% (- those with oedema),w/h,Non-Severe,13442,1441,14883,y,,y
-"Hooli, 2016",SD/ z-score,>-2,w/a,None,2121,220,2341,,,
-"Hooli, 2016",SD/ z-score,<-2 to <-3,w/a,Moderate,222,78,300,,,
-"Hooli, 2016",SD/ z-score,<-3,w/a,Severe,108,126,234,,,
 "Johnson, 2008",% expected,>80%,w/a,None,136,5,141,,,
 "Johnson, 2008",% expected,60-80% (and without kwashiorkor),w/a,Moderate,127,17,144,,,
 "Johnson, 2008",% expected,<60% (and kwashiorkor),w/a,Severe,24,12,36,,,
