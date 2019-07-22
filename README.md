@@ -51,7 +51,7 @@ Tupasi A - study quotes only an adjusted OR + CI but not the original data and t
 
 Zabihullah and Webb - study authors indicate that many children who were severely ill did not have their height recorded. This is likely to introduce bias which underestimates low w/h as a risk factor for pneumonia mortality. This may be something relevant to other studies.
 
-Lazzerini - two studies excluded (Hooli/Enarson) as cover the same study population as this data
+Lazzerini/Hooli - these two studies cover the same children on the same database both looking at weight/age. Only Lazzerini included as more recent and includes more children. Hooli also had lots of missing data making its results slightly questionable.
 
 Nantanda - definition of malnutrition not included in published study but clarified by study author via e-mail
 
