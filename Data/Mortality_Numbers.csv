@@ -58,8 +58,6 @@ Study,Measure,Group,Malnutrition Category,Malnutrition Severity,Survived,Died,To
 "Tupasi, 1988",% expected,>74%,w/a,None,418,8,426,,Y,
 "Tupasi, 1988",% expected,60-74%,w/a,Moderate,206,14,220,,Y,
 "Tupasi, 1988",% expected,<60%,w/a,Severe,71,12,83,,Y,
-"Tupasi A, 1990",SD/ z-score,>-2,w/a,None,no data,no data,no data,,,y
-"Tupasi A, 1990",SD/ z-score,<-2,w/a,All,no data,no data,no data,,,
 "Tupasi B,1990",SD/ z-score,>-2,w/a,None,161,17,178,,,
 "Tupasi B,1990",SD/ z-score,<-2 to <-3,w/a,Moderate,123,26,149,,,
 "Tupasi B,1990",SD/ z-score,<-3,w/a,Severe,156,45,201,,,
