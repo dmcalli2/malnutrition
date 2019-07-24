@@ -47,7 +47,7 @@ Sehgal - study previously included but excluded as includes bronchiolitis in cas
 
 Nathoo - new study included as able to calculate original numbers from relative risk with CIs 
 
-Tupasi A - study quotes only an adjusted OR + CI but not the original data and the original numbers cannot be back-calculated due to only an adjusted OR being available
+Tupasi, 1990 - two publications from same study so only the publication with most complete data used
 
 Zabihullah and Webb - study authors indicate that many children who were severely ill did not have their height recorded. This is likely to introduce bias which underestimates low w/h as a risk factor for pneumonia mortality. This may be something relevant to other studies.
 
