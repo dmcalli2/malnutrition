@@ -57,7 +57,7 @@ Study,Measure,Control,Exposed,Malnutrition Category,Severity,OR ,LCI,UCI,Adjuste
 "Ramachandran, 2012",SD/ z-score,>-2,<-2 to <-3,w/a,Moderate,1.3,1,1.7,,,
 "Ramachandran, 2012",SD/ z-score,>-2,<-2,w/a,All,1.8,1.5,2.3,,,
 "Ramachandran, 2012",SD/ z-score,>-2,<-3,w/a,Severe,2.6,2,3.4,,,
-"Ramachandran, 2012",SD/ z-score,>-3,<-3,w/a,Non-Severe,2.5,2,3.2,,,
+"Ramachandran, 2012",SD/ z-score,>-3,<-3,w/a,Non-Severe,2.4,1.9,3,,,
 "Sigauque, 2009",SD/ z-score,>-3,<-3,w/h,Non-Severe,2.4,1.4,4.3,,y,
 "Tupasi, 1988",% expected,>74%,60-74%,w/a,Moderate,3.6,1.5,8.6,,,y
 "Tupasi, 1988",% expected,>74%,<75%,w/a,All,4.9,2.2,11,,,y
