@@ -41,8 +41,6 @@ Tupasi 1988 - This study uses an upper cut off of 75% of expected weight for age
 
 Ballard 1995 - This study uses upper cut offs of 90% expected weight for age and weight for height and an upper cut off of 95% expected height for age which is different to the upper cutoff of 80% used in most studies
 
-Victoria 1990 - This is a community surveillance study which measures the incidence of hospital admission of childhood pneumonia (as opposed to others which measure the incidence of developing childhood pneumonia). This can be used as a proxy for the incidence of developing severe pneumonia.
-
 Sehgal - study previously included but excluded as includes bronchiolitis in cases
 
 Nathoo - new study included as able to calculate original numbers from relative risk with CIs 
@@ -55,14 +53,14 @@ Lazzerini/Hooli/Enarson - these three studies cover the same children on the sam
 
 Nantanda - definition of malnutrition not included in published study but clarified by study author via e-mail
 
-Kuti - Malnutrition case fatality numbers calculated from original dataset provided by study author against 2005 WHO reference growth standards
+Kuti - Malnutrition case fatality numbers calculated from original dataset provided by study author against WHO reference growth standards
 
 ## Uploaded files
 
 - Incidence_estimates.csv contains the results of studies investigating incidence of pneumonia episodes in relation to malnutriton
 - Mortality_Numbers.csv contains the number of children who survived or died in relation to malnutrition status in each study
 - Mortality_odds_ratios.csv contains odds ratios calculated from data within studies in terms of mortality risk in relation to malnutrition status
-- Number_of_studies.csv provides an overview of the number of studies investigating mortality or incidence of childhood pneumonia, the number which have collapsed or uncollapsed data and the number of studies capturing each nutrition metric (w/a, w/h, h/a)
+
 
 ## Preliminary results
 
