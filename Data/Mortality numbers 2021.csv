@@ -1,0 +1,95 @@
+Study,Measure,Group,Malnutrition Category,Malnutrition Severity,Survived,Died,Total,Severe Pneumonia,Collapsed,Pre or Post-2000
+"Agweyu, 2018",SD/ z-score,>-2,w/a,None,11766,469,12235,,,post
+"Agweyu, 2018",SD/ z-score,<-2 to <-3,w/a,Moderate,1703,140,1843,,,post
+"Agweyu, 2018",SD/ z-score,<-3,w/a,Severe,1007,127,1134,,,post
+"Agrawal, 1995",% expected,>60%,w/a,Non-Severe,87,5,92,,y,pre
+"Agrawal, 1995",% expected,<60%,w/a,Severe,25,10,35,,,pre
+"Banajeh, 1997",% expected,>80%,w/a,None,125,3,128,y,,pre
+"Banajeh, 1997",% expected,60-80%,w/a,Moderate,257,23,280,y,,pre
+"Banajeh, 1997",% expected,<60%,w/a,Severe,95,26,121,y,,pre
+"Bahwere, 2004",SD/ z-score,>-2,w/h,None,477,43,520,,,pre
+"Bahwere, 2004",SD/ z-score,<-2 to <-3 (- those with oedema),w/h,Moderate,89,10,99,,,pre
+"Bahwere, 2004",SD/ z-score,<-3 (or kwashiorkor or oedema),w/h,Severe,132,42,174,,,pre
+"Bokade, 2015",SD/ z-score,>-2,w/a,None,182,8,190,y,,post
+"Bokade, 2015",SD/ z-score,<-2 to <-3,w/a,Moderate,43,8,51,y,,post
+"Bokade, 2015",SD/ z-score,<-3,w/a,Severe,40,9,49,y,,post
+"Chisti, 2010",% expected,>60%,w/a,Non-Severe,17,0,17,y,y,post
+"Chisti, 2010",% expected,<60%,w/a,Severe,24,7,31,y,,post
+"Chisti, 2011",SD/ z-score,<-3,w/a,Severe,62,18,80,,,post
+"Chisti, 2011",SD/ z-score,>-3,w/a,Non-Severe,109,6,115,,y,post
+"Collings, 1985",% expected,>80%,w/a,None,239,17,256,,,pre
+"Collings, 1985",% expected,<80%,w/a,All,128,22,150,,y,pre
+"Duke, 2001",% expected,>80%,w/a,None,466,20,486,y,,pre
+"Duke, 2001",% expected,60-80%,w/a,Moderate,156,17,173,y,,pre
+"Duke, 2001",% expected,<60%,w/a,Severe,24,9,33,y,,pre
+"Dembele, 2019",SD/ z-score,>-2,w/a,None,2935,97,3032,y,,post
+"Dembele, 2019",SD/ z-score,<-2 to <-3,w/a,Moderate,850,41,891,y,,post
+"Dembele, 2019",SD/ z-score,<-3,w/a,Severe,828,90,918,y,,post
+"Dembele, 2019",SD/ z-score,>-2,h/a,None,1464,38,1502,y,,post
+"Dembele, 2019",SD/ z-score,<-2 to <-3,h/a,Moderate,460,11,471,y,,post
+"Dembele, 2019",SD/ z-score,<-3,h/a,Severe,753,30,783,y,,post
+"Demers, 2000",SD/ z-score,>-2,w/h,None,296,31,327,y,,pre
+"Demers, 2000",SD/ z-score,<-2,w/h,All,36,12,48,,y,pre
+"Demers, 2000",SD/ z-score,>-2,h/a,None,224,33,257,,,pre
+"Demers, 2000",SD/ z-score,<-2,h/a,All,112,13,125,,y,pre
+"Johnson, 2008",% expected,>80%,w/a,None,136,5,141,,,unspecified
+"Johnson, 2008",% expected,60-80% (and without kwashiorkor),w/a,Moderate,127,17,144,,,unspecified
+"Johnson, 2008",% expected,<60% (and kwashiorkor),w/a,Severe,24,12,36,,,unspecified
+"Kuti, 2013",SD/ z-score,>-2,w/h,None,221,6,227,y,,post
+"Kuti, 2013",SD/ z-score,<-2 to <-3,w/h,Moderate,84,1,85,y,,post
+"Kuti, 2013",SD/ z-score,<-3,w/h,Severe,69,8,77,y,,post
+"Kuti, 2013",SD/ z-score,>-2,h/a,None,276,10,286,y,,post
+"Kuti, 2013",SD/ z-score,<-2 to <-3,h/a,Moderate,56,3,59,y,,post
+"Kuti, 2013",SD/ z-score,<-3,h/a,Severe,42,2,44,y,,post
+"Kuti, 2013",SD/ z-score,>-2,w/a,None,210,6,216,y,,post
+"Kuti, 2013",SD/ z-score,<-2 to <-3,w/a,Moderate,78,2,80,y,,post
+"Kuti, 2013",SD/ z-score,<-3,w/a,Severe,86,7,93,y,,post
+"Lazzerini, 2016",SD/ z-score,>-2,w/a,None,72509,3237,75746,,,post
+"Lazzerini, 2016",SD/ z-score,<-2 to <-3,w/a,Moderate,12509,1315,13824,,,post
+"Lazzerini, 2016",SD/ z-score,<-3,w/a,Severe,7345,1396,8741,,,post
+"Lupisan, 2007",SD/ z-score,>-2,w/a,None,863,17,880,y,,pre
+"Lupisan, 2007",SD/ z-score,<-2,w/a,All,355,13,368,y,y,pre
+"Man, 1998",SD/ z-score,>-2,w/a,None,1225,56,1281,,,pre
+"Man, 1998",SD/ z-score,<-2 to <-3,w/a,Moderate,472,35,507,,,pre
+"Man, 1998",SD/ z-score,<-3,w/a,Severe,343,62,405,,,pre
+"Naheed, 2009",SD/ z-score,>-3,w/a,Non-Severe,3824,123,3947,,y,post
+"Naheed, 2009",SD/ z-score,<-3,w/a,Severe,181,27,208,,,post
+"Nantanda, 2008",SD/ z-score,>-3,w/a,Non-Severe,111,6,117,y,y,post
+"Nantanda, 2008",SD/ z-score,<-3,w/a,Severe,22,18,40,y,,post
+"Nathoo, 1993",% expected,<60%,w/a,Severe,49,33,82,,,pre
+"Nathoo, 1993",% expected,>60%,w/a,Non-Severe,556,66,622,,y,pre
+"Post, 1992",SD/ z-score,>-2,w/a,None,91,54,145,,,pre
+"Post, 1992",SD/ z-score,<-2 to <-3,w/a,Moderate,22,26,48,,,pre
+"Post, 1992",SD/ z-score,<-3,w/a,Severe,13,47,60,,,pre
+"Ramachandran, 2012",SD/ z-score,>-2,w/a,None,2005,126,2131,,,post
+"Ramachandran, 2012",SD/ z-score,<-2 to <-3,w/a,Moderate,1037,83,1120,,,post
+"Ramachandran, 2012",SD/ z-score,<-3,w/a,Severe,781,127,908,,,post
+"Sigauque, 2009",SD/ z-score,<-3,w/h,Severe,43,20,63,y,,post
+"Sigauque, 2009",SD/ z-score,>-3,w/h,Non-Severe,495,95,590,y,y,post
+"Tupasi, 1988",% expected,>74%,w/a,None,418,8,426,,,pre
+"Tupasi, 1988",% expected,60-74%,w/a,Moderate,206,14,220,,,pre
+"Tupasi, 1988",% expected,<60%,w/a,Severe,71,12,83,,,pre
+"Tupasi, 1990",SD/ z-score,>-2,w/a,None,161,17,178,,,pre
+"Tupasi, 1990",SD/ z-score,<-2 to <-3,w/a,Moderate,123,26,149,,,pre
+"Tupasi, 1990",SD/ z-score,<-3,w/a,Severe,156,45,201,,,pre
+"Tupasi, 1990",SD/ z-score,>-2,h/a,None,252,48,300,,,pre
+"Tupasi, 1990",SD/ z-score,<-2 to <-3,h/a,Moderate,93,14,107,,,pre
+"Tupasi, 1990",SD/ z-score,<-3,h/a,Severe,88,23,111,,,pre
+"Webb, 2012",SD/ z-score,>-2,w/a,None,322,12,334,y,,post
+"Webb, 2012",SD/ z-score,<-2 to <-3,w/a,Moderate,119,4,123,y,,post
+"Webb, 2012",SD/ z-score,<-3 (or kwashiorkor),w/a,Severe,88,23,111,y,,post
+"Webb, 2012",SD/ z-score,>-2,w/h,None,369,7,376,y,,post
+"Webb, 2012",SD/ z-score,<-2 to <-3,w/h,Moderate,70,4,74,y,,post
+"Webb, 2012",SD/ z-score,<-3 (or kwashiorkor),w/h,Severe,51,11,62,y,,post
+"Webb, 2012",SD/ z-score,>-2,h/a,None,320,13,333,y,,post
+"Webb, 2012",SD/ z-score,<-2 to <-3,h/a,Moderate,93,3,96,y,,post
+"Webb, 2012",SD/ z-score,<-3,h/a,Severe,76,5,81,y,,post
+"Zabihullah, 2017",SD/ z-score,>-2,w/a,None,340,34,374,,,post
+"Zabihullah, 2017",SD/ z-score,<-2 to <-3,w/a,Moderate,96,23,119,,,post
+"Zabihullah, 2017",SD/ z-score,<-3,w/a,Severe,103,18,121,,,post
+"Zabihullah, 2017",SD/ z-score,>-2,w/h,None,340,13,353,,,post
+"Zabihullah, 2017",SD/ z-score,<-2 to <-3,w/h,Moderate,51,2,53,,,post
+"Zabihullah, 2017",SD/ z-score,<-3,w/h,Severe,62,3,65,,,post
+"Zabihullah, 2017",SD/ z-score,>-2,h/a,None,292,3,295,,,post
+"Zabihullah, 2017",SD/ z-score,<-2 to <-3,h/a,Moderate,64,8,72,,,post
+"Zabihullah, 2017",SD/ z-score,<-3,h/a,Severe,100,8,108,,,post
