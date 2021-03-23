@@ -1,0 +1,67 @@
+model{                                                                       
+for(i in 1:ns){                                                               # LOOP THROUGH STUDIES
+
+  pi2[i] <- ifelse(coll12[i], theta1_pred, theta2_pred)      # Impute pi2 for different collapse types
+  delta[i,1]<-0
+  mu[i] ~ dnorm(0,.0001)                                  # vague priors for all trial baselines
+  for (k in 1:na[i]) {                                                       # LOOP THROUGH GROUPS
+    r[i,k] ~ dbin(p[i,k],n[i,k])                                           # binomial likelihood
+    logit(p[i,k]) <- mu[i] + delta[i,k]                                   # model for linear predictor
+     rhat[i,k] <- p[i,k] * n[i,k]                                            # expected value of the numerators
+     dev[i,k] <- 2 * (r[i,k] * (log(r[i,k])-log(rhat[i,k]))             #Deviance contribution
+         + (n[i,k]-r[i,k]) * (log(n[i,k]-r[i,k]) - log(n[i,k]-rhat[i,k])))
+  }
+  resdev[i] <- sum(dev[i,1:na[i]])                        # summed residual deviance contribution for this trial
+  for (k in 2:na[i]) {                                    # LOOP THROUGH ARMS
+     delta[i,k] <-  di[i,g[i,k]] - di[i,g[i,1]]           # NMA model
+  }
+  for (k in 1:ng){
+    di[i,k]<-d[k]
+    }
+  di[i,12]<-pi2[i]*d[2]
+  di[i,23]<-pi2[i]*d[2]+(1-pi2[i])*d[3]
+}
+
+totresdev <- sum(resdev[])                                #Total Residual Deviance
+d[1]<- 0                                                  # group effect is zero for reference group
+for (k in 2:ng)  { d[k] ~ dnorm(0,.0001)}                 # vague priors for group effects
+
+# pairwise ORs and LORs for all possible pair-wise comparisons
+for (c in 1:(ng-1)) {  for (k in (c+1):ng) {
+       or[c,k] <- exp(d[k] - d[c])
+       lor[c,k] <- (d[k]-d[c])
+      }
+}
+  # Separate model to estimate proportion of patients in category two
+  for (j in 1:ns_complete){
+    n_complete2a [j] ~ dbinom(theta1[j], n_complete12[j])
+    n_complete2b [j] ~ dbinom(theta2[j], n_complete23[j] )
+    
+    ## Make it a random effects model to allow for variation in the proportions
+    logit(theta1[j]) <- theta1_tform[j]
+    logit(theta2[j]) <- theta2_tform[j]
+    
+    theta1_tform[j] ~ dnorm(theta1_mu, theta1_prec)
+    theta2_tform[j] ~ dnorm(theta2_mu, theta2_prec)
+  }
+  
+  theta1_mu ~ dnorm(0, 0.001)
+  theta1_prec <- 1/ theta1_sd^2
+  theta1_sd ~ dnorm(0, 0.01)T(0,)
+
+  theta2_mu ~ dnorm(0, 0.001)
+  theta2_prec <- 1/ theta2_sd^2
+  theta2_sd ~ dnorm(0, 0.01)T(0,)
+  
+  ## prediction for proportions in each
+  theta1_pred ~ dnorm(theta1_mu, theta1_prec)
+  theta2_pred ~ dnorm(theta2_mu, theta2_prec)
+  
+  ## transform theta1_mu into proportion
+  theta1_exp <- exp(theta1_mu)
+  theta2_exp <- exp(theta2_mu)
+
+  theta1_prop <- theta1_exp/ (1+ theta1_exp)
+  theta2_prop <- theta2_exp/ (1+ theta2_exp)
+
+}                                                         # *** PROGRAM ENDS

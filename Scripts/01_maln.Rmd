@@ -1,6 +1,8 @@
 ---
 title: "Malnutrition analysis"
 output: github_document
+params:
+  restrict: "all"
 ---
 
 This model uses code developed by Nicky Welton to estimate the association between malnutrition and pneumonia mortality. 
@@ -94,7 +96,20 @@ Calculate which studies have missing event data, and which have missing "n" data
 ```{r pat_maln}
 mort <- read_csv("Data/Mortality_Numbers.csv")
 names(mort) <- str_to_lower(names(mort)) 
-names(mort) <- str_replace_all(names(mort), " ", "_")
+names(mort) <- str_replace_all(names(mort), "\\s|\\-", "_")
+
+if(params$restrict == "pre"){
+  mort <- mort %>% 
+    filter(pre_or_post_2000 == "pre")
+}
+
+if(params$restrict == "post"){
+  mort <- mort %>% 
+    filter(pre_or_post_2000 == "post")
+}
+
+mort <- mort %>% 
+  select(-pre_or_post_2000)
 
 mort <- mort %>% 
   mutate_at(vars(survived, died, total), as.integer)
@@ -152,7 +167,7 @@ pi2_for_mdl <- mort %>%
   mutate(total = as.integer(total)) %>% 
   spread(malnutrition_severity, total) %>% 
   group_by(study, malnutrition_category) %>% 
-  summarise_at(vars(-study, -malnutrition_category), sum) %>% 
+  summarise_all(sum) %>% 
   ungroup()
 
 cat_names <- unique(pi2_for_mdl$malnutrition_category) %>%  sort()

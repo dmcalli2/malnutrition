@@ -187,15 +187,15 @@ summary(LINE.out)
     ## 
     ##        Mean      SD Naive SE Time-series SE
     ## d[1] 0.0000 0.00000 0.000000        0.00000
-    ## d[2] 0.9455 0.07168 0.007168        0.02273
-    ## d[3] 0.6199 0.08597 0.008597        0.02021
+    ## d[2] 0.9035 0.06153 0.006153        0.01594
+    ## d[3] 0.6239 0.08752 0.008752        0.02195
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##        2.5%    25%   50%    75%  97.5%
-    ## d[1] 0.0000 0.0000 0.000 0.0000 0.0000
-    ## d[2] 0.7718 0.9044 0.953 0.9919 1.0641
-    ## d[3] 0.4613 0.5544 0.626 0.6855 0.7776
+    ##        2.5%    25%    50%    75% 97.5%
+    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.000
+    ## d[2] 0.7898 0.8530 0.9160 0.9469 1.004
+    ## d[3] 0.4634 0.5697 0.6079 0.6830 0.806
 
 ## Process real data into format for analysis
 
@@ -261,12 +261,12 @@ knitr::kable(all_present_smry)
 
 | all\_n | all\_r | col12 | col23 | studies | studies\_times\_categories |
 |:-------|:-------|:------|:------|--------:|---------------------------:|
-| FALSE  | FALSE  | FALSE | TRUE  |       7 |                          7 |
+| FALSE  | FALSE  | FALSE | TRUE  |       2 |                          2 |
 | FALSE  | FALSE  | TRUE  | FALSE |       3 |                          4 |
-| TRUE   | TRUE   | FALSE | FALSE |      16 |                         24 |
+| TRUE   | TRUE   | FALSE | FALSE |       7 |                          8 |
 
 Of those studies with collapsed data, 3 collapse into none/moderate and
-7 collapse into moderate severe.
+2 collapse into moderate severe.
 
 ## Calculate the proportion in group 2 for the collapsed studies
 
@@ -318,7 +318,7 @@ plot_dist <- ggplot(pi2_lng, aes(x = value, fill = collapsed_categories)) + geom
 plot_dist
 ```
 
-![](01_maln_files/figure-gfm/calculatenproprs-1.png)<!-- -->
+![](01_maln_pre2000_files/figure-gfm/calculatenproprs-1.png)<!-- -->
 
 The plot above shows the proportion of participants category 2 of 1 + 2
 and in category 2 of 2+3 for all three types of measure. The proportion
@@ -428,9 +428,9 @@ mod1 <- jags.model(file = "Supporting/FE_model.txt",
     ##    Resolving undeclared variables
     ##    Allocating nodes
     ## Graph information:
-    ##    Observed stochastic nodes: 61
-    ##    Unobserved stochastic nodes: 25
-    ##    Total graph size: 1256
+    ##    Observed stochastic nodes: 26
+    ##    Unobserved stochastic nodes: 12
+    ##    Total graph size: 557
     ## 
     ## Initializing model
     ## 
@@ -476,17 +476,17 @@ summary(LINE.out)
     ## 1. Empirical mean and standard deviation for each variable,
     ##    plus standard error of the mean:
     ## 
-    ##        Mean      SD  Naive SE Time-series SE
-    ## d[1] 0.0000 0.00000 0.0000000       0.000000
-    ## d[2] 0.7833 0.02910 0.0009203       0.001645
-    ## d[3] 1.4240 0.02847 0.0009003       0.001643
+    ##        Mean     SD Naive SE Time-series SE
+    ## d[1] 0.0000 0.0000 0.000000       0.000000
+    ## d[2] 0.7399 0.1069 0.003382       0.007979
+    ## d[3] 1.6410 0.1086 0.003435       0.008177
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##        2.5%    25%    50%    75%  97.5%
-    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2] 0.7255 0.7645 0.7831 0.8018 0.8404
-    ## d[3] 1.3720 1.4042 1.4240 1.4434 1.4828
+    ##        2.5%    25%   50%    75%  97.5%
+    ## d[1] 0.0000 0.0000 0.000 0.0000 0.0000
+    ## d[2] 0.5232 0.6693 0.742 0.8131 0.9387
+    ## d[3] 1.4319 1.5696 1.642 1.7182 1.8529
 
 The above tables show that the log odds ratio is 0.82 for moderate
 versus none and 1.47 for severe versus none.
@@ -532,9 +532,9 @@ mod2 <- jags.model(file = "Supporting/FE_model_estimate_prop.txt",
     ##    Resolving undeclared variables
     ##    Allocating nodes
     ## Graph information:
-    ##    Observed stochastic nodes: 61
-    ##    Unobserved stochastic nodes: 27
-    ##    Total graph size: 1214
+    ##    Observed stochastic nodes: 26
+    ##    Unobserved stochastic nodes: 14
+    ##    Total graph size: 541
     ## 
     ## Initializing model
     ## 
@@ -580,21 +580,21 @@ summary(LINE.out)
     ## 1. Empirical mean and standard deviation for each variable,
     ##    plus standard error of the mean:
     ## 
-    ##           Mean      SD  Naive SE Time-series SE
-    ## d[1]   0.00000 0.00000 0.0000000       0.000000
-    ## d[2]   0.79629 0.03026 0.0009569       0.001877
-    ## d[3]   1.41485 0.03002 0.0009493       0.001795
-    ## theta1 0.05857 0.05264 0.0016646       0.003112
-    ## theta2 0.69754 0.22307 0.0070542       0.012955
+    ##          Mean     SD Naive SE Time-series SE
+    ## d[1]   0.0000 0.0000 0.000000       0.000000
+    ## d[2]   0.7322 0.1145 0.003621       0.008986
+    ## d[3]   1.6036 0.1171 0.003703       0.010237
+    ## theta1 0.2012 0.1781 0.005631       0.013488
+    ## theta2 0.7649 0.1814 0.005737       0.010704
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##            2.5%     25%     50%     75%  97.5%
-    ## d[1]   0.000000 0.00000 0.00000 0.00000 0.0000
-    ## d[2]   0.741394 0.77610 0.79534 0.81540 0.8551
-    ## d[3]   1.359562 1.39306 1.41393 1.43512 1.4749
-    ## theta1 0.001572 0.01864 0.04429 0.08655 0.1941
-    ## theta2 0.194995 0.55027 0.73795 0.87573 0.9896
+    ##            2.5%     25%    50%    75%  97.5%
+    ## d[1]   0.000000 0.00000 0.0000 0.0000 0.0000
+    ## d[2]   0.514941 0.65227 0.7325 0.8081 0.9620
+    ## d[3]   1.383443 1.52495 1.6001 1.6737 1.8526
+    ## theta1 0.005004 0.06675 0.1532 0.2812 0.6723
+    ## theta2 0.308071 0.66248 0.8037 0.9083 0.9926
 
 ``` r
 inits <- function() {
@@ -614,17 +614,17 @@ print(mode2_bugs)
     ## Current: 3 chains, each with 1000 iterations (first 500 discarded)
     ## Cumulative: n.sims = 1500 iterations saved
     ##           mean  sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
-    ## d[2]       0.8 0.0   0.7   0.8   0.8   0.8   0.9    1   250
-    ## d[3]       1.4 0.0   1.4   1.4   1.4   1.4   1.5    1   450
-    ## theta1     0.1 0.1   0.0   0.0   0.0   0.1   0.2    1  1500
-    ## theta2     0.7 0.2   0.2   0.6   0.8   0.9   1.0    1   560
-    ## deviance 414.1 7.3 401.1 409.2 413.6 418.5 430.1    1  1500
+    ## d[2]       0.7 0.1   0.5   0.6   0.7   0.8   0.9    1  1500
+    ## d[3]       1.6 0.1   1.4   1.5   1.6   1.7   1.8    1  1500
+    ## theta1     0.2 0.2   0.0   0.1   0.2   0.3   0.6    1  1500
+    ## theta2     0.8 0.2   0.3   0.6   0.8   0.9   1.0    1   320
+    ## deviance 149.6 5.2 141.2 145.9 148.9 152.8 161.1    1  1500
     ## 
     ## For each parameter, n.eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
     ## 
     ## DIC info (using the rule, pD = Dbar-Dhat)
-    ## pD = 25.6 and DIC = 439.7
+    ## pD = 12.5 and DIC = 162.1
     ## DIC is an estimate of expected predictive error (lower deviance is better).
 
 ### Approach Two
@@ -653,9 +653,9 @@ mod3 <- jags.model(file = "Supporting/FE_model_estimate_prop2.txt",
     ##    Resolving undeclared variables
     ##    Allocating nodes
     ## Graph information:
-    ##    Observed stochastic nodes: 91
-    ##    Unobserved stochastic nodes: 61
-    ##    Total graph size: 1351
+    ##    Observed stochastic nodes: 38
+    ##    Unobserved stochastic nodes: 30
+    ##    Total graph size: 606
     ## 
     ## Initializing model
     ## 
@@ -701,21 +701,21 @@ summary(LINE.out)
     ## 1. Empirical mean and standard deviation for each variable,
     ##    plus standard error of the mean:
     ## 
-    ##               Mean      SD  Naive SE Time-series SE
-    ## d[1]        0.0000 0.00000 0.0000000       0.000000
-    ## d[2]        0.7946 0.02957 0.0009352       0.001945
-    ## d[3]        1.3984 0.03009 0.0009517       0.001814
-    ## theta1_prop 0.3024 0.04059 0.0012835       0.001431
-    ## theta2_prop 0.6003 0.03906 0.0012351       0.001322
+    ##               Mean      SD Naive SE Time-series SE
+    ## d[1]        0.0000 0.00000 0.000000       0.000000
+    ## d[2]        0.7197 0.12936 0.004091       0.011417
+    ## d[3]        1.5331 0.12035 0.003806       0.010944
+    ## theta1_prop 0.3811 0.08102 0.002562       0.002715
+    ## theta2_prop 0.6320 0.08062 0.002549       0.002797
     ## 
     ## 2. Quantiles for each variable:
     ## 
     ##               2.5%    25%    50%    75%  97.5%
     ## d[1]        0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2]        0.7409 0.7749 0.7939 0.8148 0.8537
-    ## d[3]        1.3383 1.3783 1.3995 1.4192 1.4558
-    ## theta1_prop 0.2294 0.2763 0.2999 0.3264 0.3866
-    ## theta2_prop 0.5234 0.5754 0.6003 0.6260 0.6804
+    ## d[2]        0.4614 0.6374 0.7242 0.8035 0.9736
+    ## d[3]        1.2914 1.4521 1.5345 1.6116 1.7631
+    ## theta1_prop 0.2267 0.3310 0.3787 0.4259 0.5577
+    ## theta2_prop 0.4495 0.5922 0.6371 0.6819 0.7719
 
 # Random effects model
 
@@ -733,18 +733,18 @@ print(mode3_bugs)
     ## Inference for Bugs model at "RE_model_estimate_prop_openbugs.txt", 
     ## Current: 3 chains, each with 10000 iterations (first 5000 discarded)
     ## Cumulative: n.sims = 15000 iterations saved
-    ##           mean   sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
-    ## d[2]       0.7  0.1   0.5   0.6   0.7   0.8   0.9    1 12000
-    ## d[3]       1.5  0.1   1.3   1.4   1.5   1.6   1.8    1 15000
-    ## theta1     0.1  0.1   0.0   0.0   0.1   0.2   0.5    1  4000
-    ## theta2     0.6  0.2   0.1   0.5   0.7   0.8   1.0    1  1600
-    ## deviance 364.4 11.5 344.1 356.2 363.9 371.7 388.7    1   950
+    ##           mean  sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
+    ## d[2]       0.7 0.2   0.4   0.6   0.7   0.8   1.1    1  4000
+    ## d[3]       1.7 0.2   1.4   1.6   1.7   1.8   2.0    1  2800
+    ## theta1     0.3 0.2   0.0   0.1   0.2   0.4   0.8    1   790
+    ## theta2     0.7 0.2   0.2   0.6   0.8   0.9   1.0    1  1000
+    ## deviance 145.7 6.5 134.3 141.2 145.4 149.8 159.8    1  2300
     ## 
     ## For each parameter, n.eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
     ## 
     ## DIC info (using the rule, pD = Dbar-Dhat)
-    ## pD = 43.4 and DIC = 407.8
+    ## pD = 17.2 and DIC = 163.0
     ## DIC is an estimate of expected predictive error (lower deviance is better).
 
 This gives very similar results, but with wider confidence intervals,
