@@ -1,7 +1,7 @@
 model{                                                                       
 for(i in 1:ns){                                                               # LOOP THROUGH STUDIES
 
-  pi2[i] <- ifelse(coll12[i], theta1_pred, theta2_pred)      # Impute pi2 for different collapse types
+  pi2[i] <- ifelse(coll12[i], theta1_pred[i], theta2_pred[i])      # Impute pi2 for different collapse types
   delta[i,1]<-0
   mu[i] ~ dnorm(0,.0001)                                  # vague priors for all trial baselines
   for (k in 1:na[i]) {                                                       # LOOP THROUGH GROUPS
@@ -53,11 +53,14 @@ for (c in 1:(ng-1)) {  for (k in (c+1):ng) {
   theta2_prec <- 1/ theta2_sd^2
   theta2_sd ~ dnorm(0, 0.01)T(0,)
   
-  ## prediction for proportions in each
-  theta1_pred ~ dnorm(theta1_mu, theta1_prec)
-  theta2_pred ~ dnorm(theta2_mu, theta2_prec)
+  for(i in 1:ns){                                                               # LOOP THROUGH STUDIES
+
+  ## prediction for proportions in each study
+  theta1_pred[i] ~ dnorm(theta1_mu, theta1_prec)
+  theta2_pred[i] ~ dnorm(theta2_mu, theta2_prec)
+  }
   
-  ## transform theta1_mu into proportion
+  ## transform theta1_mu into proportion for results
   theta1_exp <- exp(theta1_mu)
   theta2_exp <- exp(theta2_mu)
 
