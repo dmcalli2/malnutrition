@@ -56,15 +56,16 @@ for (c in 1:(ng-1)) {  for (k in (c+1):ng) {
   for(i in 1:ns){                                                               # LOOP THROUGH STUDIES
 
   ## prediction for proportions in each study
-  theta1_pred[i] ~ dnorm(theta1_mu, theta1_prec)
-  theta2_pred[i] ~ dnorm(theta2_mu, theta2_prec)
+  theta1_pred_lp[i] ~ dnorm(theta1_mu, theta1_prec)
+  theta2_pred_lp[i] ~ dnorm(theta2_mu, theta2_prec)
+  
+  logit(theta1_pred[i]) <- theta1_pred_lp[i]
+  logit(theta2_pred[i]) <- theta2_pred_lp[i]
+
   }
   
   ## transform theta1_mu into proportion for results
-  theta1_exp <- exp(theta1_mu)
-  theta2_exp <- exp(theta2_mu)
-
-  theta1_prop <- theta1_exp/ (1+ theta1_exp)
-  theta2_prop <- theta2_exp/ (1+ theta2_exp)
+  logit(theta1_prop) <- theta1_mu
+  logit(theta2_prop) <- theta2_mu
 
 }                                                         # *** PROGRAM ENDS

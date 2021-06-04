@@ -18,6 +18,7 @@ Packages
 ```{r}
 library(tidyverse)
 library(rjags)
+library(mcmcplots)
 library(ggplot2)
 library(R2OpenBUGS)
 ```
@@ -287,9 +288,8 @@ list_data2 <- list(r = grp_lbls2r %>% select(`1`, `2`, `3`) %>% as.matrix(),
 
 ```{r runmodel}
 mod1 <- jags.model(file = "Supporting/FE_model.txt",
-                            data = list_data2, n.chains = 1, n.adapt = 1000)
+                            data = list_data2, n.chains = 2, n.adapt = 1000)
 update(mod1, 1000)
-
 data(LINE)
 LINE$recompile()
 LINE.out <- coda.samples(mod1, c("d"),n.iter = 1000)
@@ -339,6 +339,24 @@ mode2_bugs <- bugs(data = list_data3_openbugs,
 print(mode2_bugs)
 ```
 
+Show get similar result with Dirichlet prior, just a check on Dirichlet coding. Note that it is somewhat different as fewer samples.
+
+```{r prop_model_dirich}
+list_data3 <- list_data2
+list_data3[["pi2"]] <- NULL
+list_data3[["coll12"]] <- grp_lbls2_col12
+mod2 <- jags.model(file = "Supporting/FE_model_estimate_prop_dirich.txt",
+                            data = list_data3, n.chains = 1, n.adapt = 1000)
+update(mod2, 1000)
+
+data(LINE)
+LINE$recompile()
+LINE.out <- coda.samples(mod2, c("d", "theta"),n.iter = 1000)
+summary(LINE.out)
+
+```
+
+
 ### Approach Two
 
 This is the modelling where we estimate the proportion in the moderate category using the data on proportions from other studies.
@@ -358,25 +376,31 @@ list_data4[["ns_complete"]] <- length(pi2_choose12)
 
 
 mod3 <- jags.model(file = "Supporting/FE_model_estimate_prop2.txt",
-                            data = list_data4, n.chains = 1, n.adapt = 1000)
+                            data = list_data4, n.chains = 2, n.adapt = 1000)
 update(mod3, 1000)
-
+# mcmcplot(as.mcmc(mod3))
 data(LINE)
 LINE$recompile()
 LINE.out <- coda.samples(mod3, c("d", "theta1_prop", "theta2_prop"),n.iter = 1000)
 summary(LINE.out)
 ```
 
+
+
 # Random effects model
 
 Return to approach 1, but re-run the model assuming random effects model for the effect of malnutrition on mortality.
 
-```{r re_model}
-mode3_bugs <- bugs(data = list_data3_openbugs, 
-                   parameters.to.save = c("d", "theta1", "theta2"), n.iter = 10000,
+```{r re_model_re_prop}
+list_data4_openbugs <- c(list_data3_openbugs, list_data4[c("n_complete2a", "n_complete2b", 
+                                                         "n_complete12", "n_complete23", 
+                                                         "ns_complete")])
+mode4_bugs <- bugs(data = list_data4_openbugs, 
+                   parameters.to.save = c("d", "theta1_prop", "theta2_prop"), n.iter = 10000,
                    inits = inits,
-                   model.file = "RE_model_estimate_prop_openbugs.txt")
-print(mode3_bugs)
+                   model.file = "RE_model_RE_estimate_prop_openbugs.txt")
+mcmcplot(as.mcmc(mode4_bugs))
+print(mode4_bugs)
 ```
 
 This gives very similar results, but with wider confidence intervals, than the fixed effects model.
