@@ -39,7 +39,7 @@ coding|label
 
 ## Run model with example data
 
-First check the model runs succesfully in Jags using example data.
+First check the model runs successfully in Jags using example data.
 
 Need to convert the example data into matrices and vectors for JAGS.
 
@@ -91,7 +91,7 @@ First rename variables and recode. There should be a maximum of three groups for
 
 ## Categorise pattern of collapsing for each study/manutrition category combination
 
-Calculate which studies have missing event data, and which have missing "n" data. IN the present analysis, any with complete n data have complete events data.
+Calculate which studies have missing event data, and which have missing "n" data. In the present analysis, any with complete n (ie count) data have complete events data.
 
 
 ```{r pat_maln}
@@ -147,7 +147,7 @@ Of those studies with collapsed data, `r col12` collapse into none/moderate and 
 
 ## Calculate the proportion in group 2 for the collapsed studies
 
-Since, in the sample so far, all of those with missing event data have missing totals for each category, we can only examine the proportion in group 2 where there is complete data. Calculate the proportion in the second category (moderate malnutrition) within each collapsed category. Having done so collapse the Ns. Where the proportion is unknown, assume it is the same as the mean proportion.
+Since all of those with missing event data have missing totals for each category, we can only examine the proportion in group 2 where there is complete data. Calculate the proportion in the second category (moderate malnutrition) within each collapsed category. Having done so collapse the Ns. Where the proportion is unknown, assume it is the same as the mean proportion.
 
 First need to classify which are collapsed.
 
@@ -221,7 +221,7 @@ grp_lbls <-  mort_slct %>%
 
 First run for the "w/a" definition of malnutrition.
 
-THis code rearranges the dataframe  so that we have a matrix of N's, events and group labels as per the earlier structure.
+This code rearranges the dataframe  so that we have a matrix of N's, events and group labels as per the earlier structure.
 
 
 ```{r labe_groups}
@@ -268,7 +268,7 @@ identical(grp_lbls2n %>% select(1:2),
 
 ## Try running models on real data
 
-Simplest model, assume that the proportion with moderate malnutrition of those with none-moderate, and the proportion with moderate of thsoe with moderate-severe are constant across studies where this is not recorded.
+Simplest model, assume that the proportion with moderate malnutrition of those with none-moderate, and the proportion with moderate of those with moderate-severe in those studies with collapsed data is the same as the average for those studies where there data are not collapsed.
 
 ```{r trymodel}
 na <- 3 - apply(grp_lbls2n %>% select(`1`, `2`, `3`) %>% as.matrix(), 1, function(x) x %>% 
@@ -294,16 +294,18 @@ data(LINE)
 LINE$recompile()
 LINE.out <- coda.samples(mod1, c("d"),n.iter = 1000)
 summary(LINE.out)
-
+a <- summary(LINE.out)
+a <- a$statistics[,"Mean"]
+a <- round(a,2)
 ```
 
-The above tables show that the log odds ratio is 0.82 for moderate versus none and 1.47 for severe versus none.
+The above tables show that the log odds ratio is `r a[2]` for moderate versus none and `r a[3]` for severe versus none.
 
 ## Next step
 
-Next step will be to estimate the proportion of people in category two rather than assume it is fixed. Can estimate this from the data or can get input from subject-matter experts about the likely proportion.
+Next step will be to estimate the proportion of people in category two rather than assume it is fixed. Can estimate this from the data or can get input from subject-matter experts about the likely proportion. The following estimates it from the data.
 
-In order to prepare for this final decision we developed two models. One model assumes (approach one) that the proportion of none-moderate which are moderate lies, with equal probability, somehere between 0 and 1 and that the proportion of moderate-severe which are moderate lies between 0 and 1 (ie a uniform prior). A second model (approach two) assumes that the proportion in each category is exchangeable between studies, using a random effects model to estimate the proportion for those studies where it is not recorded.
+In order to prepare for this final decision we developed two models. One model assumes (approach one) that the proportion of none-moderate which are moderate lies, with equal probability, somewhere between 0 and 1 and that the proportion of moderate-severe which are moderate lies between 0 and 1 (ie a uniform prior). A second model (approach two) assumes that the proportion in each category is exchangeable between studies, using a random effects model to estimate the proportion for those studies where it is not recorded.
 
 These models (which for speed only run for a small number of samples) both give similar result.
 
@@ -339,7 +341,7 @@ mode2_bugs <- bugs(data = list_data3_openbugs,
 print(mode2_bugs)
 ```
 
-Show get similar result with Dirichlet prior, just a check on Dirichlet coding. Note that it is somewhat different as fewer samples.
+Show get similar result with Dirichlet prior, just a check on Dirichlet coding. **Not sure that I (DM) have coded this correctly.**
 
 ```{r prop_model_dirich}
 list_data3 <- list_data2
@@ -387,9 +389,24 @@ summary(LINE.out)
 
 
 
-# Random effects model
+# Random effects model - RE for effects but not for proportions
 
 Return to approach 1, but re-run the model assuming random effects model for the effect of malnutrition on mortality.
+
+```{r re_model}
+mode3_bugs <- bugs(data = list_data3_openbugs, 
+                   parameters.to.save = c("d", "theta1", "theta2"), n.iter = 10000,
+                   inits = inits,
+                   model.file = "RE_model_estimate_prop_openbugs.txt")
+print(mode3_bugs)
+```
+
+
+# RE for effects and for proportions
+
+Combine approaches 1 and 3, where assuming random effects for effect of malnutrition, and random effects for proportion in each malnutrition category.
+
+Uncomment  `mcmcplot(as.mcmc(mode4_bugs))` to see model diagnostics.Look reasonable to me without too much autocorrelation. Chains appear to converge.
 
 ```{r re_model_re_prop}
 list_data4_openbugs <- c(list_data3_openbugs, list_data4[c("n_complete2a", "n_complete2b", 
@@ -399,8 +416,6 @@ mode4_bugs <- bugs(data = list_data4_openbugs,
                    parameters.to.save = c("d", "theta1_prop", "theta2_prop"), n.iter = 10000,
                    inits = inits,
                    model.file = "RE_model_RE_estimate_prop_openbugs.txt")
-mcmcplot(as.mcmc(mode4_bugs))
+# mcmcplot(as.mcmc(mode4_bugs))
 print(mode4_bugs)
 ```
-
-This gives very similar results, but with wider confidence intervals, than the fixed effects model.
