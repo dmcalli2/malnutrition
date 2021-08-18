@@ -35,7 +35,7 @@ For all analyses the malnutrition categories are interpreted as folows:-
 
 ## Run model with example data
 
-First check the model runs succesfully in Jags using example data.
+First check the model runs successfully in Jags using example data.
 
 Need to convert the example data into matrices and vectors for JAGS.
 
@@ -198,8 +198,8 @@ groups for each study/malnutrition category type combination.
 ## Categorise pattern of collapsing for each study/manutrition category combination
 
 Calculate which studies have missing event data, and which have missing
-“n” data. IN the present analysis, any with complete n data have
-complete events data.
+“n” data. In the present analysis, any with complete n (ie count) data
+have complete events data.
 
 ``` r
 mort <- read_csv("Data/Mortality_Numbers.csv")
@@ -260,12 +260,12 @@ Of those studies with collapsed data, 3 collapse into none/moderate and
 
 ## Calculate the proportion in group 2 for the collapsed studies
 
-Since, in the sample so far, all of those with missing event data have
-missing totals for each category, we can only examine the proportion in
-group 2 where there is complete data. Calculate the proportion in the
-second category (moderate malnutrition) within each collapsed category.
-Having done so collapse the Ns. Where the proportion is unknown, assume
-it is the same as the mean proportion.
+Since all of those with missing event data have missing totals for each
+category, we can only examine the proportion in group 2 where there is
+complete data. Calculate the proportion in the second category (moderate
+malnutrition) within each collapsed category. Having done so collapse
+the Ns. Where the proportion is unknown, assume it is the same as the
+mean proportion.
 
 First need to classify which are collapsed.
 
@@ -341,7 +341,7 @@ grp_lbls <-  mort_slct %>%
 
 First run for the “w/a” definition of malnutrition.
 
-THis code rearranges the dataframe so that we have a matrix of N’s,
+This code rearranges the dataframe so that we have a matrix of N’s,
 events and group labels as per the earlier structure.
 
 ``` r
@@ -392,8 +392,9 @@ identical(grp_lbls2n %>% select(1:2),
 ## Try running models on real data
 
 Simplest model, assume that the proportion with moderate malnutrition of
-those with none-moderate, and the proportion with moderate of thsoe with
-moderate-severe are constant across studies where this is not recorded.
+those with none-moderate, and the proportion with moderate of those with
+moderate-severe in those studies with collapsed data is the same as the
+average for those studies where there data are not collapsed.
 
 ``` r
 na <- 3 - apply(grp_lbls2n %>% select(`1`, `2`, `3`) %>% as.matrix(), 1, function(x) x %>% 
@@ -456,28 +457,35 @@ summary(LINE.out)
     ## 
     ##        Mean      SD  Naive SE Time-series SE
     ## d[1] 0.0000 0.00000 0.0000000       0.000000
-    ## d[2] 0.7878 0.03009 0.0006729       0.001178
-    ## d[3] 1.4275 0.02853 0.0006380       0.001194
+    ## d[2] 0.7844 0.03007 0.0006723       0.001225
+    ## d[3] 1.4249 0.02825 0.0006318       0.001287
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##        2.5%    25%    50%    75%  97.5%
-    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2] 0.7291 0.7675 0.7877 0.8084 0.8464
-    ## d[3] 1.3737 1.4081 1.4266 1.4473 1.4840
+    ##        2.5%    25%    50%   75%  97.5%
+    ## d[1] 0.0000 0.0000 0.0000 0.000 0.0000
+    ## d[2] 0.7238 0.7645 0.7841 0.806 0.8419
+    ## d[3] 1.3692 1.4055 1.4255 1.443 1.4801
 
-The above tables show that the log odds ratio is 0.82 for moderate
-versus none and 1.47 for severe versus none.
+``` r
+a <- summary(LINE.out)
+a <- a$statistics[,"Mean"]
+a <- round(a,2)
+```
+
+The above tables show that the log odds ratio is 0.78 for moderate
+versus none and 1.42 for severe versus none.
 
 ## Next step
 
 Next step will be to estimate the proportion of people in category two
 rather than assume it is fixed. Can estimate this from the data or can
-get input from subject-matter experts about the likely proportion.
+get input from subject-matter experts about the likely proportion. The
+following estimates it from the data.
 
 In order to prepare for this final decision we developed two models. One
 model assumes (approach one) that the proportion of none-moderate which
-are moderate lies, with equal probability, somehere between 0 and 1 and
+are moderate lies, with equal probability, somewhere between 0 and 1 and
 that the proportion of moderate-severe which are moderate lies between 0
 and 1 (ie a uniform prior). A second model (approach two) assumes that
 the proportion in each category is exchangeable between studies, using a
@@ -549,19 +557,19 @@ summary(LINE.out)
     ## 
     ##           Mean      SD  Naive SE Time-series SE
     ## d[1]   0.00000 0.00000 0.0000000       0.000000
-    ## d[2]   0.79962 0.03080 0.0009739       0.002443
-    ## d[3]   1.41853 0.03029 0.0009579       0.002079
-    ## theta1 0.06116 0.05657 0.0017889       0.003657
-    ## theta2 0.71604 0.21233 0.0067145       0.011925
+    ## d[2]   0.79737 0.02911 0.0009206       0.001695
+    ## d[3]   1.41606 0.02964 0.0009374       0.001705
+    ## theta1 0.06938 0.06183 0.0019551       0.004580
+    ## theta2 0.69633 0.23303 0.0073691       0.013050
     ## 
     ## 2. Quantiles for each variable:
     ## 
     ##            2.5%     25%     50%     75%  97.5%
     ## d[1]   0.000000 0.00000 0.00000 0.00000 0.0000
-    ## d[2]   0.740299 0.77832 0.80007 0.81975 0.8586
-    ## d[3]   1.363350 1.39648 1.41733 1.44017 1.4785
-    ## theta1 0.001768 0.02077 0.04577 0.08636 0.2109
-    ## theta2 0.201019 0.59670 0.75516 0.88150 0.9900
+    ## d[2]   0.737691 0.77703 0.79905 0.81737 0.8496
+    ## d[3]   1.354987 1.39646 1.41718 1.43757 1.4705
+    ## theta1 0.001181 0.02119 0.05075 0.09939 0.2297
+    ## theta2 0.155408 0.56000 0.74264 0.88235 0.9875
 
 ``` r
 inits <- function() {
@@ -574,28 +582,28 @@ mode2_bugs <- bugs(data = list_data3_openbugs,
                    parameters.to.save = c("d", "theta1", "theta2"), n.iter = 1000,
                    inits = inits,
                    model.file = "FE_model_estimate_prop_openbugs.txt")
-print(mode2_bugs)
+print(mode2_bugs, digits.summary = 3)
 ```
 
     ## Inference for Bugs model at "FE_model_estimate_prop_openbugs.txt", 
     ## Current: 3 chains, each with 1000 iterations (first 500 discarded)
     ## Cumulative: n.sims = 1500 iterations saved
-    ##           mean  sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
-    ## d[2]       0.8 0.0   0.7   0.8   0.8   0.8   0.9    1   250
-    ## d[3]       1.4 0.0   1.4   1.4   1.4   1.4   1.5    1   450
-    ## theta1     0.1 0.1   0.0   0.0   0.0   0.1   0.2    1  1500
-    ## theta2     0.7 0.2   0.2   0.6   0.8   0.9   1.0    1   560
-    ## deviance 414.1 7.3 401.1 409.2 413.6 418.5 430.1    1  1500
+    ##             mean    sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+    ## d[2]       0.798 0.029   0.740   0.779   0.799   0.817   0.854 1.008   250
+    ## d[3]       1.416 0.029   1.359   1.397   1.416   1.437   1.476 1.007   450
+    ## theta1     0.064 0.058   0.002   0.020   0.047   0.090   0.219 1.001  1500
+    ## theta2     0.707 0.215   0.201   0.572   0.752   0.880   0.989 1.017   560
+    ## deviance 414.108 7.323 401.147 409.175 413.600 418.500 430.052 1.001  1500
     ## 
     ## For each parameter, n.eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
     ## 
     ## DIC info (using the rule, pD = Dbar-Dhat)
-    ## pD = 25.6 and DIC = 439.7
+    ## pD = 25.560 and DIC = 439.700
     ## DIC is an estimate of expected predictive error (lower deviance is better).
 
 Show get similar result with Dirichlet prior, just a check on Dirichlet
-coding. Note that it is somewhat different as fewer samples.
+coding. **Not sure that I (DM) have coded this correctly.**
 
 ``` r
 list_data3 <- list_data2
@@ -753,24 +761,24 @@ mode3_bugs <- bugs(data = list_data3_openbugs,
                    parameters.to.save = c("d", "theta1", "theta2"), n.iter = 10000,
                    inits = inits,
                    model.file = "RE_model_estimate_prop_openbugs.txt")
-print(mode3_bugs)
+print(mode3_bugs, digits.summary = 3)
 ```
 
     ## Inference for Bugs model at "RE_model_estimate_prop_openbugs.txt", 
     ## Current: 3 chains, each with 10000 iterations (first 5000 discarded)
     ## Cumulative: n.sims = 15000 iterations saved
-    ##           mean   sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
-    ## d[2]       0.7  0.1   0.5   0.6   0.7   0.8   0.9    1 12000
-    ## d[3]       1.5  0.1   1.3   1.4   1.5   1.6   1.8    1 15000
-    ## theta1     0.1  0.1   0.0   0.0   0.1   0.2   0.5    1  4000
-    ## theta2     0.6  0.2   0.1   0.5   0.7   0.8   1.0    1  1600
-    ## deviance 364.4 11.5 344.1 356.2 363.9 371.7 388.7    1   950
+    ##             mean     sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+    ## d[2]       0.711  0.114   0.487   0.635   0.709   0.783   0.944 1.001 12000
+    ## d[3]       1.508  0.113   1.306   1.429   1.501   1.577   1.753 1.001 15000
+    ## theta1     0.136  0.129   0.003   0.041   0.097   0.191   0.480 1.001  4000
+    ## theta2     0.642  0.242   0.114   0.475   0.680   0.843   0.984 1.002  1600
+    ## deviance 364.435 11.458 344.100 356.200 363.900 371.700 388.700 1.003   950
     ## 
     ## For each parameter, n.eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
     ## 
     ## DIC info (using the rule, pD = Dbar-Dhat)
-    ## pD = 43.4 and DIC = 407.8
+    ## pD = 43.390 and DIC = 407.800
     ## DIC is an estimate of expected predictive error (lower deviance is better).
 
 # RE for effects and for proportions
@@ -778,6 +786,10 @@ print(mode3_bugs)
 Combine approaches 1 and 3, where assuming random effects for effect of
 malnutrition, and random effects for proportion in each malnutrition
 category.
+
+Uncomment `mcmcplot(as.mcmc(mode4_bugs))` to see model diagnostics.Look
+reasonable to me without too much autocorrelation. Chains appear to
+converge.
 
 ``` r
 list_data4_openbugs <- c(list_data3_openbugs, list_data4[c("n_complete2a", "n_complete2b", 
@@ -788,22 +800,22 @@ mode4_bugs <- bugs(data = list_data4_openbugs,
                    inits = inits,
                    model.file = "RE_model_RE_estimate_prop_openbugs.txt")
 # mcmcplot(as.mcmc(mode4_bugs))
-print(mode4_bugs)
+print(mode4_bugs, digits.summary = 3)
 ```
 
     ## Inference for Bugs model at "RE_model_RE_estimate_prop_openbugs.txt", 
     ## Current: 3 chains, each with 10000 iterations (first 5000 discarded)
     ## Cumulative: n.sims = 15000 iterations saved
-    ##              mean   sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
-    ## d[2]          0.7  0.1   0.5   0.6   0.7   0.8   0.9    1  6000
-    ## d[3]          1.5  0.1   1.3   1.5   1.5   1.6   1.8    1  7700
-    ## theta1_prop   0.3  0.0   0.2   0.3   0.3   0.3   0.4    1  3900
-    ## theta2_prop   0.6  0.0   0.5   0.6   0.6   0.6   0.7    1 15000
-    ## deviance    599.9 14.0 574.4 590.3 599.2 608.8 629.6    1  5200
+    ##                mean     sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+    ## d[2]          0.698  0.120   0.459   0.621   0.698   0.776   0.938 1.001  6000
+    ## d[3]          1.533  0.116   1.320   1.454   1.528   1.605   1.779 1.001  7700
+    ## theta1_prop   0.287  0.039   0.213   0.261   0.286   0.311   0.368 1.001  3900
+    ## theta2_prop   0.595  0.040   0.513   0.569   0.595   0.620   0.671 1.001 15000
+    ## deviance    599.929 14.036 574.400 590.300 599.200 608.800 629.600 1.001  5200
     ## 
     ## For each parameter, n.eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
     ## 
     ## DIC info (using the rule, pD = Dbar-Dhat)
-    ## pD = 73.8 and DIC = 673.8
+    ## pD = 73.830 and DIC = 673.800
     ## DIC is an estimate of expected predictive error (lower deviance is better).

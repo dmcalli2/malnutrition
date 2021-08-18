@@ -338,7 +338,7 @@ mode2_bugs <- bugs(data = list_data3_openbugs,
                    parameters.to.save = c("d", "theta1", "theta2"), n.iter = 1000,
                    inits = inits,
                    model.file = "FE_model_estimate_prop_openbugs.txt")
-print(mode2_bugs)
+print(mode2_bugs, digits.summary = 3)
 ```
 
 Show get similar result with Dirichlet prior, just a check on Dirichlet coding. **Not sure that I (DM) have coded this correctly.**
@@ -398,7 +398,7 @@ mode3_bugs <- bugs(data = list_data3_openbugs,
                    parameters.to.save = c("d", "theta1", "theta2"), n.iter = 10000,
                    inits = inits,
                    model.file = "RE_model_estimate_prop_openbugs.txt")
-print(mode3_bugs)
+print(mode3_bugs, digits.summary = 3)
 ```
 
 
@@ -417,5 +417,5 @@ mode4_bugs <- bugs(data = list_data4_openbugs,
                    inits = inits,
                    model.file = "RE_model_RE_estimate_prop_openbugs.txt")
 # mcmcplot(as.mcmc(mode4_bugs))
-print(mode4_bugs)
+print(mode4_bugs, digits.summary = 3)
 ```

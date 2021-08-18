@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="data:text/css,%0A%40font%2Dface%20%7B%0Afont%2Dfamily%3A%20octicons%2Dlink%3B%0Asrc%3A%20url%28data%3Afont%2Fwoff%3Bcharset%3Dutf%2D8%3Bbase64%2Cd09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM%2B8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB%2FaFGpk3jaTY6xa8JAGMW%2FO62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v%2Bk%2F0an2i%2BitHDw3v2%2B9%2BDBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3%2FI7AtxEJLtzzuZfI%2BVVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy%2FLt7Kc%2B0vWY%2FgAgIIEqAN9we0pwKXreiMasxvabDQMM4riO%2BqxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw%2Bymhce7vwM9jSqO8JyVd5RH9gyTt2%2BJ%2FyUmYlIR0s04n6%2B7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv%2FocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi%2BW2%2BMjCzMIDApSwvXzC97Z4Ig8N%2FBxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh%2F8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT%2BAEjAwuDFpBmA9KMDEwMCh9i%2Fv8H8sH0%2F4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9%2FlqYwOGZxeUelN2U2R6%2BcArgtCJpauW7UQBqnFkUsjAY%2FkOU1cP%2BDAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl%2BvvmM%2FbyA48e6tWrKArm4ZJlCbdsrxksL1AwWn%2FyBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO%2F%2FsdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd%2F89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF%2B9JOS0nbaaYDCQfwCJ7Au3AHj%2BLO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm%2BEBXuAbHmIMSRMs%2B4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL%2BhD7C1xoaHeLJSEao0FEW14ckxC%2BTU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13%2F%2Blm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl%2B9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O%2FAdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB%2F%2F%2FAA8AAQAAAAAAAAAAAAAAAAABAAAAAA%3D%3D%29%20format%28%27woff%27%29%3B%0A%7D%0Abody%20%7B%0A%2Dwebkit%2Dtext%2Dsize%2Dadjust%3A%20100%25%3B%0Atext%2Dsize%2Dadjust%3A%20100%25%3B%0Acolor%3A%20%23333%3B%0Afont%2Dfamily%3A%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20%22Segoe%20UI%22%2C%20Arial%2C%20freesans%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0Afont%2Dsize%3A%2016px%3B%0Aline%2Dheight%3A%201%2E6%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0A%7D%0Aa%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0A%7D%0Aa%3Aactive%2C%0Aa%3Ahover%20%7B%0Aoutline%3A%200%3B%0A%7D%0Astrong%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%202em%3B%0Amargin%3A%200%2E67em%200%3B%0A%7D%0Aimg%20%7B%0Aborder%3A%200%3B%0A%7D%0Ahr%20%7B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Aheight%3A%200%3B%0A%7D%0Apre%20%7B%0Aoverflow%3A%20auto%3B%0A%7D%0Acode%2C%0Akbd%2C%0Apre%20%7B%0Afont%2Dfamily%3A%20monospace%2C%20monospace%3B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Ainput%20%7B%0Acolor%3A%20inherit%3B%0Afont%3A%20inherit%3B%0Amargin%3A%200%3B%0A%7D%0Ahtml%20input%5Bdisabled%5D%20%7B%0Acursor%3A%20default%3B%0A%7D%0Ainput%20%7B%0Aline%2Dheight%3A%20normal%3B%0A%7D%0Ainput%5Btype%3D%22checkbox%22%5D%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0Apadding%3A%200%3B%0A%7D%0Atable%20%7B%0Aborder%2Dcollapse%3A%20collapse%3B%0Aborder%2Dspacing%3A%200%3B%0A%7D%0Atd%2C%0Ath%20%7B%0Apadding%3A%200%3B%0A%7D%0A%2A%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0A%7D%0Ainput%20%7B%0Afont%3A%2013px%20%2F%201%2E4%20Helvetica%2C%20arial%2C%20nimbussansl%2C%20liberationsans%2C%20freesans%2C%20clean%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%234078c0%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%2C%0Aa%3Aactive%20%7B%0Atext%2Ddecoration%3A%20underline%3B%0A%7D%0Ahr%20%7B%0Aheight%3A%200%3B%0Amargin%3A%2015px%200%3B%0Aoverflow%3A%20hidden%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23ddd%3B%0A%7D%0Ahr%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Ahr%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Amargin%2Dtop%3A%2015px%3B%0Amargin%2Dbottom%3A%2015px%3B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%2030px%3B%0A%7D%0Ah2%20%7B%0Afont%2Dsize%3A%2021px%3B%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%2016px%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%2014px%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0Ah6%20%7B%0Afont%2Dsize%3A%2011px%3B%0A%7D%0Ablockquote%20%7B%0Amargin%3A%200%3B%0A%7D%0Aul%2C%0Aol%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Aol%20ol%2C%0Aul%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Droman%3B%0A%7D%0Aul%20ul%20ol%2C%0Aul%20ol%20ol%2C%0Aol%20ul%20ol%2C%0Aol%20ol%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Dalpha%3B%0A%7D%0Add%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0Apre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Afont%3A%2012px%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0A%7D%0A%2Eselect%3A%3A%2Dms%2Dexpand%20%7B%0Aopacity%3A%200%3B%0A%7D%0A%2Eocticon%20%7B%0Afont%3A%20normal%20normal%20normal%2016px%2F1%20octicons%2Dlink%3B%0Adisplay%3A%20inline%2Dblock%3B%0Atext%2Ddecoration%3A%20none%3B%0Atext%2Drendering%3A%20auto%3B%0A%2Dwebkit%2Dfont%2Dsmoothing%3A%20antialiased%3B%0A%2Dmoz%2Dosx%2Dfont%2Dsmoothing%3A%20grayscale%3B%0A%2Dwebkit%2Duser%2Dselect%3A%20none%3B%0A%2Dmoz%2Duser%2Dselect%3A%20none%3B%0A%2Dms%2Duser%2Dselect%3A%20none%3B%0Auser%2Dselect%3A%20none%3B%0A%7D%0A%2Eocticon%2Dlink%3Abefore%20%7B%0Acontent%3A%20%27%5Cf05c%27%3B%0A%7D%0A%2Emarkdown%2Dbody%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%20%21important%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%20%21important%3B%0A%7D%0Aa%3Anot%28%5Bhref%5D%29%20%7B%0Acolor%3A%20inherit%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Eanchor%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%2Dright%3A%202px%3B%0Amargin%2Dleft%3A%20%2D18px%3B%0A%7D%0A%2Eanchor%3Afocus%20%7B%0Aoutline%3A%20none%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%2016px%3B%0Afont%2Dweight%3A%20bold%3B%0Aline%2Dheight%3A%201%2E4%3B%0A%7D%0Ah1%20%2Eocticon%2Dlink%2C%0Ah2%20%2Eocticon%2Dlink%2C%0Ah3%20%2Eocticon%2Dlink%2C%0Ah4%20%2Eocticon%2Dlink%2C%0Ah5%20%2Eocticon%2Dlink%2C%0Ah6%20%2Eocticon%2Dlink%20%7B%0Acolor%3A%20%23000%3B%0Avertical%2Dalign%3A%20middle%3B%0Avisibility%3A%20hidden%3B%0A%7D%0Ah1%3Ahover%20%2Eanchor%2C%0Ah2%3Ahover%20%2Eanchor%2C%0Ah3%3Ahover%20%2Eanchor%2C%0Ah4%3Ahover%20%2Eanchor%2C%0Ah5%3Ahover%20%2Eanchor%2C%0Ah6%3Ahover%20%2Eanchor%20%7B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Ah1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%20%7B%0Avisibility%3A%20visible%3B%0A%7D%0Ah1%20%7B%0Apadding%2Dbottom%3A%200%2E3em%3B%0Afont%2Dsize%3A%202%2E25em%3B%0Aline%2Dheight%3A%201%2E2%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23eee%3B%0A%7D%0Ah1%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%3B%0A%7D%0Ah2%20%7B%0Apadding%2Dbottom%3A%200%2E3em%3B%0Afont%2Dsize%3A%201%2E75em%3B%0Aline%2Dheight%3A%201%2E225%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23eee%3B%0A%7D%0Ah2%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%3B%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%201%2E5em%3B%0Aline%2Dheight%3A%201%2E43%3B%0A%7D%0Ah3%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%201%2E25em%3B%0A%7D%0Ah4%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Ah5%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ah6%20%7B%0Afont%2Dsize%3A%201em%3B%0Acolor%3A%20%23777%3B%0A%7D%0Ah6%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ap%2C%0Ablockquote%2C%0Aul%2C%0Aol%2C%0Adl%2C%0Atable%2C%0Apre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Ahr%20%7B%0Aheight%3A%204px%3B%0Apadding%3A%200%3B%0Amargin%3A%2016px%200%3B%0Abackground%2Dcolor%3A%20%23e7e7e7%3B%0Aborder%3A%200%20none%3B%0A%7D%0Aul%2C%0Aol%20%7B%0Apadding%2Dleft%3A%202em%3B%0A%7D%0Aul%20ul%2C%0Aul%20ol%2C%0Aol%20ol%2C%0Aol%20ul%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Ali%3Ep%20%7B%0Amargin%2Dtop%3A%2016px%3B%0A%7D%0Adl%20%7B%0Apadding%3A%200%3B%0A%7D%0Adl%20dt%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%2016px%3B%0Afont%2Dsize%3A%201em%3B%0Afont%2Dstyle%3A%20italic%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Adl%20dd%20%7B%0Apadding%3A%200%2016px%3B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Ablockquote%20%7B%0Apadding%3A%200%2015px%3B%0Acolor%3A%20%23777%3B%0Aborder%2Dleft%3A%204px%20solid%20%23ddd%3B%0A%7D%0Ablockquote%3E%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Ablockquote%3E%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Atable%20%7B%0Adisplay%3A%20block%3B%0Awidth%3A%20100%25%3B%0Aoverflow%3A%20auto%3B%0Aword%2Dbreak%3A%20normal%3B%0Aword%2Dbreak%3A%20keep%2Dall%3B%0A%7D%0Atable%20th%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Atable%20th%2C%0Atable%20td%20%7B%0Apadding%3A%206px%2013px%3B%0Aborder%3A%201px%20solid%20%23ddd%3B%0A%7D%0Atable%20tr%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Aborder%2Dtop%3A%201px%20solid%20%23ccc%3B%0A%7D%0Atable%20tr%3Anth%2Dchild%282n%29%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0A%7D%0Aimg%20%7B%0Amax%2Dwidth%3A%20100%25%3B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Abackground%2Dcolor%3A%20%23fff%3B%0A%7D%0Acode%20%7B%0Apadding%3A%200%3B%0Apadding%2Dtop%3A%200%2E2em%3B%0Apadding%2Dbottom%3A%200%2E2em%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%2085%25%3B%0Abackground%2Dcolor%3A%20rgba%280%2C0%2C0%2C0%2E04%29%3B%0Aborder%2Dradius%3A%203px%3B%0A%7D%0Acode%3Abefore%2C%0Acode%3Aafter%20%7B%0Aletter%2Dspacing%3A%20%2D0%2E2em%3B%0Acontent%3A%20%22%5C00a0%22%3B%0A%7D%0Apre%3Ecode%20%7B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%20100%25%3B%0Aword%2Dbreak%3A%20normal%3B%0Awhite%2Dspace%3A%20pre%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%3B%0A%7D%0A%2Ehighlight%20%7B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0A%2Ehighlight%20pre%2C%0Apre%20%7B%0Apadding%3A%2016px%3B%0Aoverflow%3A%20auto%3B%0Afont%2Dsize%3A%2085%25%3B%0Aline%2Dheight%3A%201%2E45%3B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0A%7D%0A%2Ehighlight%20pre%20%7B%0Amargin%2Dbottom%3A%200%3B%0Aword%2Dbreak%3A%20normal%3B%0A%7D%0Apre%20%7B%0Aword%2Dwrap%3A%20normal%3B%0A%7D%0Apre%20code%20%7B%0Adisplay%3A%20inline%3B%0Amax%2Dwidth%3A%20initial%3B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Aoverflow%3A%20initial%3B%0Aline%2Dheight%3A%20inherit%3B%0Aword%2Dwrap%3A%20normal%3B%0Abackground%2Dcolor%3A%20transparent%3B%0Aborder%3A%200%3B%0A%7D%0Apre%20code%3Abefore%2C%0Apre%20code%3Aafter%20%7B%0Acontent%3A%20normal%3B%0A%7D%0Akbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%203px%205px%3B%0Afont%2Dsize%3A%2011px%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20%23555%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20%23fcfcfc%3B%0Aborder%3A%20solid%201px%20%23ccc%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23bbb%3B%0Aborder%2Dradius%3A%203px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20%23bbb%3B%0A%7D%0A%2Epl%2Dc%20%7B%0Acolor%3A%20%23969896%3B%0A%7D%0A%2Epl%2Dc1%2C%0A%2Epl%2Ds%20%2Epl%2Dv%20%7B%0Acolor%3A%20%230086b3%3B%0A%7D%0A%2Epl%2De%2C%0A%2Epl%2Den%20%7B%0Acolor%3A%20%23795da3%3B%0A%7D%0A%2Epl%2Ds%20%2Epl%2Ds1%2C%0A%2Epl%2Dsmi%20%7B%0Acolor%3A%20%23333%3B%0A%7D%0A%2Epl%2Dent%20%7B%0Acolor%3A%20%2363a35c%3B%0A%7D%0A%2Epl%2Dk%20%7B%0Acolor%3A%20%23a71d5d%3B%0A%7D%0A%2Epl%2Dpds%2C%0A%2Epl%2Ds%2C%0A%2Epl%2Ds%20%2Epl%2Dpse%20%2Epl%2Ds1%2C%0A%2Epl%2Dsr%2C%0A%2Epl%2Dsr%20%2Epl%2Dcce%2C%0A%2Epl%2Dsr%20%2Epl%2Dsra%2C%0A%2Epl%2Dsr%20%2Epl%2Dsre%20%7B%0Acolor%3A%20%23183691%3B%0A%7D%0A%2Epl%2Dv%20%7B%0Acolor%3A%20%23ed6a43%3B%0A%7D%0A%2Epl%2Did%20%7B%0Acolor%3A%20%23b52a1d%3B%0A%7D%0A%2Epl%2Dii%20%7B%0Abackground%2Dcolor%3A%20%23b52a1d%3B%0Acolor%3A%20%23f8f8f8%3B%0A%7D%0A%2Epl%2Dsr%20%2Epl%2Dcce%20%7B%0Acolor%3A%20%2363a35c%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dml%20%7B%0Acolor%3A%20%23693a17%3B%0A%7D%0A%2Epl%2Dmh%2C%0A%2Epl%2Dmh%20%2Epl%2Den%2C%0A%2Epl%2Dms%20%7B%0Acolor%3A%20%231d3e81%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmq%20%7B%0Acolor%3A%20%23008080%3B%0A%7D%0A%2Epl%2Dmi%20%7B%0Acolor%3A%20%23333%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%2Epl%2Dmb%20%7B%0Acolor%3A%20%23333%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmd%20%7B%0Abackground%2Dcolor%3A%20%23ffecec%3B%0Acolor%3A%20%23bd2c00%3B%0A%7D%0A%2Epl%2Dmi1%20%7B%0Abackground%2Dcolor%3A%20%23eaffea%3B%0Acolor%3A%20%2355a532%3B%0A%7D%0A%2Epl%2Dmdr%20%7B%0Acolor%3A%20%23795da3%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmo%20%7B%0Acolor%3A%20%231d3e81%3B%0A%7D%0Akbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%203px%205px%3B%0Afont%3A%2011px%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20%23555%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20%23fcfcfc%3B%0Aborder%3A%20solid%201px%20%23ccc%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23bbb%3B%0Aborder%2Dradius%3A%203px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20%23bbb%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%20%7B%0Alist%2Dstyle%2Dtype%3A%20none%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%2B%2Etask%2Dlist%2Ditem%20%7B%0Amargin%2Dtop%3A%203px%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%20input%20%7B%0Amargin%3A%200%200%2E35em%200%2E25em%20%2D1%2E6em%3B%0Avertical%2Dalign%3A%20middle%3B%0A%7D%0A%3Achecked%2B%2Eradio%2Dlabel%20%7B%0Az%2Dindex%3A%201%3B%0Aposition%3A%20relative%3B%0Aborder%2Dcolor%3A%20%234078c0%3B%0A%7D%0A%2EsourceLine%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0Acode%20%2Ekw%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Edt%20%7B%20color%3A%20%23ed6a43%3B%20%7D%0Acode%20%2Edv%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Ebn%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Efl%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Ech%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Est%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Eco%20%7B%20color%3A%20%23969896%3B%20%7D%0Acode%20%2Eot%20%7B%20color%3A%20%230086b3%3B%20%7D%0Acode%20%2Eal%20%7B%20color%3A%20%23a61717%3B%20%7D%0Acode%20%2Efu%20%7B%20color%3A%20%2363a35c%3B%20%7D%0Acode%20%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%0Acode%20%2Ewa%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Ecn%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Esc%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Evs%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Ess%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Eim%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eva%20%7Bcolor%3A%20%23008080%3B%20%7D%0Acode%20%2Ecf%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eop%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Ebu%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eex%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Epp%20%7B%20color%3A%20%23999999%3B%20%7D%0Acode%20%2Eat%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Edo%20%7B%20color%3A%20%23969896%3B%20%7D%0Acode%20%2Ean%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Ecv%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Ein%20%7B%20color%3A%20%23008080%3B%20%7D%0A">
+<style>
+body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  padding-top: 0px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 id="malnutrition-analysis">Malnutrition analysis</h1>
+<p>This model uses code developed by Nicky Welton to estimate the association between malnutrition and pneumonia mortality.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> here<span class="sc">::</span><span class="fu">here</span>())</span></code></pre></div>
+<p>Packages</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rjags)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mcmcplots)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(R2OpenBUGS)</span></code></pre></div>
+<h1 id="nomenclature">Nomenclature</h1>
+<p>For all analyses the malnutrition categories are interpreted as folows:-</p>
+<table>
+<thead>
+<tr class="header">
+<th>coding</th>
+<th>label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Moderate</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Severe</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>None or moderate</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>Moderate or severe</td>
+</tr>
+</tbody>
+</table>
+<h1 id="fixed-effects-model">Fixed effects model</h1>
+<h2 id="run-model-with-example-data">Run model with example data</h2>
+<p>First check the model runs successfully in Jags using example data.</p>
+<p>Need to convert the example data into matrices and vectors for JAGS.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">ng=</span><span class="dv">3</span>,<span class="at">ns=</span><span class="dv">24</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ex_df <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;Supporting/example_data.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>matrices <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">r =</span> <span class="cn">NA</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">g =</span> <span class="cn">NA</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>matrices[] <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="fu">names</span>(matrices), <span class="sc">~</span> ex_df <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">select</span>(<span class="fu">starts_with</span>(.x), <span class="sc">-</span>na) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">as.matrix</span>())</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> ex_df <span class="sc">%&gt;%</span> <span class="fu">pull</span>(na)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>pi2 <span class="ot">&lt;-</span> ex_df <span class="sc">%&gt;%</span> <span class="fu">pull</span>(pi2)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>list_data <span class="ot">&lt;-</span> <span class="fu">c</span>(matrices, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>               <span class="fu">list</span>(<span class="at">na =</span> na, <span class="at">pi2 =</span> pi2),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>               metadata)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ex_df)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">r1</th>
+<th align="right">n1</th>
+<th align="right">r2</th>
+<th align="right">n2</th>
+<th align="right">r3</th>
+<th align="right">n3</th>
+<th align="right">g1</th>
+<th align="right">g2</th>
+<th align="right">g3</th>
+<th align="right">na</th>
+<th align="right">pi2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">140</td>
+<td align="right">23</td>
+<td align="right">140</td>
+<td align="right">10</td>
+<td align="right">138</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">78</td>
+<td align="right">12</td>
+<td align="right">85</td>
+<td align="right">29</td>
+<td align="right">170</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="odd">
+<td align="right">75</td>
+<td align="right">731</td>
+<td align="right">363</td>
+<td align="right">714</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">106</td>
+<td align="right">9</td>
+<td align="right">205</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="odd">
+<td align="right">58</td>
+<td align="right">549</td>
+<td align="right">237</td>
+<td align="right">1561</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">33</td>
+<td align="right">9</td>
+<td align="right">48</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">100</td>
+<td align="right">31</td>
+<td align="right">98</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">31</td>
+<td align="right">26</td>
+<td align="right">95</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">39</td>
+<td align="right">17</td>
+<td align="right">77</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="even">
+<td align="right">79</td>
+<td align="right">702</td>
+<td align="right">77</td>
+<td align="right">694</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="odd">
+<td align="right">18</td>
+<td align="right">671</td>
+<td align="right">21</td>
+<td align="right">535</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="even">
+<td align="right">64</td>
+<td align="right">642</td>
+<td align="right">107</td>
+<td align="right">761</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.6</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">62</td>
+<td align="right">8</td>
+<td align="right">90</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.5</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">234</td>
+<td align="right">34</td>
+<td align="right">237</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.4</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">20</td>
+<td align="right">9</td>
+<td align="right">20</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">23</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">116</td>
+<td align="right">19</td>
+<td align="right">149</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">23</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.5</td>
+</tr>
+<tr class="odd">
+<td align="right">95</td>
+<td align="right">1107</td>
+<td align="right">143</td>
+<td align="right">1031</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">23</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.6</td>
+</tr>
+<tr class="even">
+<td align="right">15</td>
+<td align="right">187</td>
+<td align="right">36</td>
+<td align="right">504</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">23</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.5</td>
+</tr>
+<tr class="odd">
+<td align="right">78</td>
+<td align="right">584</td>
+<td align="right">73</td>
+<td align="right">675</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">23</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.6</td>
+</tr>
+<tr class="even">
+<td align="right">69</td>
+<td align="right">1177</td>
+<td align="right">54</td>
+<td align="right">888</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">23</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.3</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="right">49</td>
+<td align="right">16</td>
+<td align="right">43</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">23</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.8</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">66</td>
+<td align="right">32</td>
+<td align="right">127</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">76</td>
+<td align="right">20</td>
+<td align="right">74</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">1.0</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">55</td>
+<td align="right">3</td>
+<td align="right">26</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0.7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="run-model">Run model</h2>
+<p>The following is the BUGS/JAGS code for the fixed effects model.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">read_lines</span>(<span class="st">&quot;Supporting/FE_model.txt&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code></pre></div>
+<pre><code>##  [1] &quot;model{                                                                       &quot;                                           
+##  [2] &quot;for(i in 1:ns){                                                               # LOOP THROUGH STUDIES&quot;                    
+##  [3] &quot;    delta[i,1]&lt;-0&quot;                                                                                                       
+##  [4] &quot;  mu[i] ~ dnorm(0,.0001)                                              # vague priors for all trial baselines&quot;            
+##  [5] &quot;  for (k in 1:na[i]) {                                                       # LOOP THROUGH GROUPS&quot;                      
+##  [6] &quot;    r[i,k] ~ dbin(p[i,k],n[i,k])                                           # binomial likelihood&quot;                        
+##  [7] &quot;    logit(p[i,k]) &lt;- mu[i] + delta[i,k]                                   # model for linear predictor&quot;                  
+##  [8] &quot;     rhat[i,k] &lt;- p[i,k] * n[i,k]                                            # expected value of the numerators&quot;         
+##  [9] &quot;     dev[i,k] &lt;- 2 * (r[i,k] * (log(r[i,k])-log(rhat[i,k]))             #Deviance contribution&quot;                          
+## [10] &quot;         + (n[i,k]-r[i,k]) * (log(n[i,k]-r[i,k]) - log(n[i,k]-rhat[i,k])))&quot;                                              
+## [11] &quot;  }&quot;                                                                                                                     
+## [12] &quot;  resdev[i] &lt;- sum(dev[i,1:na[i]])                        # summed residual deviance contribution for this trial&quot;        
+## [13] &quot;  for (k in 2:na[i]) {                                           # LOOP THROUGH ARMS&quot;                                    
+## [14] &quot;     delta[i,k] &lt;-  di[i,g[i,k]] - di[i,g[i,1]]             # NMA model&quot;                                                 
+## [15] &quot;  }&quot;                                                                                                                     
+## [16] &quot;  for (k in 1:ng){&quot;                                                                                                      
+## [17] &quot;    di[i,k]&lt;-d[k]&quot;                                                                                                       
+## [18] &quot;    }&quot;                                                                                                                   
+## [19] &quot;  di[i,12]&lt;-pi2[i]*d[2]&quot;                                                                                                 
+## [20] &quot;  di[i,23]&lt;-pi2[i]*d[2]+(1-pi2[i])*d[3]&quot;                                                                                 
+## [21] &quot;}&quot;                                                                                                                       
+## [22] &quot;&quot;                                                                                                                        
+## [23] &quot;totresdev &lt;- sum(resdev[])                                           #Total Residual Deviance&quot;                           
+## [24] &quot;d[1]&lt;- 0                                                                      # group effect is zero for reference group&quot;
+## [25] &quot;for (k in 2:ng)  { d[k] ~ dnorm(0,.0001)}                           # vague priors for group effects&quot;                    
+## [26] &quot;&quot;                                                                                                                        
+## [27] &quot;# pairwise ORs and LORs for all possible pair-wise comparisons&quot;                                                          
+## [28] &quot;for (c in 1:(ng-1)) {  for (k in (c+1):ng) {&quot;                                                                            
+## [29] &quot;       or[c,k] &lt;- exp(d[k] - d[c])&quot;                                                                                      
+## [30] &quot;       lor[c,k] &lt;- (d[k]-d[c])&quot;                                                                                          
+## [31] &quot;      }&quot;                                                                                                                 
+## [32] &quot;}&quot;                                                                                                                       
+## [33] &quot;&quot;                                                                                                                        
+## [34] &quot;}                                                                                 # *** PROGRAM ENDS&quot;</code></pre>
+<h2 id="check-model-runs-with-example-data">Check model runs with example data</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod_example <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(<span class="at">file =</span> <span class="st">&quot;Supporting/FE_model.txt&quot;</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> list_data, <span class="at">n.chains =</span> <span class="dv">1</span>, <span class="at">n.adapt =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 50
+##    Unobserved stochastic nodes: 26
+##    Total graph size: 1074
+## 
+## Initializing model
+## 
+##   |                                                          |                                                  |   0%  |                                                          |+                                                 |   2%  |                                                          |++                                                |   4%  |                                                          |+++                                               |   6%  |                                                          |++++                                              |   8%  |                                                          |+++++                                             |  10%  |                                                          |++++++                                            |  12%  |                                                          |+++++++                                           |  14%  |                                                          |++++++++                                          |  16%  |                                                          |+++++++++                                         |  18%  |                                                          |++++++++++                                        |  20%  |                                                          |+++++++++++                                       |  22%  |                                                          |++++++++++++                                      |  24%  |                                                          |+++++++++++++                                     |  26%  |                                                          |++++++++++++++                                    |  28%  |                                                          |+++++++++++++++                                   |  30%  |                                                          |++++++++++++++++                                  |  32%  |                                                          |+++++++++++++++++                                 |  34%  |                                                          |++++++++++++++++++                                |  36%  |                                                          |+++++++++++++++++++                               |  38%  |                                                          |++++++++++++++++++++                              |  40%  |                                                          |+++++++++++++++++++++                             |  42%  |                                                          |++++++++++++++++++++++                            |  44%  |                                                          |+++++++++++++++++++++++                           |  46%  |                                                          |++++++++++++++++++++++++                          |  48%  |                                                          |+++++++++++++++++++++++++                         |  50%  |                                                          |++++++++++++++++++++++++++                        |  52%  |                                                          |+++++++++++++++++++++++++++                       |  54%  |                                                          |++++++++++++++++++++++++++++                      |  56%  |                                                          |+++++++++++++++++++++++++++++                     |  58%  |                                                          |++++++++++++++++++++++++++++++                    |  60%  |                                                          |+++++++++++++++++++++++++++++++                   |  62%  |                                                          |++++++++++++++++++++++++++++++++                  |  64%  |                                                          |+++++++++++++++++++++++++++++++++                 |  66%  |                                                          |++++++++++++++++++++++++++++++++++                |  68%  |                                                          |+++++++++++++++++++++++++++++++++++               |  70%  |                                                          |++++++++++++++++++++++++++++++++++++              |  72%  |                                                          |+++++++++++++++++++++++++++++++++++++             |  74%  |                                                          |++++++++++++++++++++++++++++++++++++++            |  76%  |                                                          |+++++++++++++++++++++++++++++++++++++++           |  78%  |                                                          |++++++++++++++++++++++++++++++++++++++++          |  80%  |                                                          |+++++++++++++++++++++++++++++++++++++++++         |  82%  |                                                          |++++++++++++++++++++++++++++++++++++++++++        |  84%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++       |  86%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++      |  88%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++     |  90%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++    |  92%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++   |  94%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++  |  96%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++++ |  98%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++++| 100%</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(mod_example, <span class="dv">100</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(LINE)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>LINE<span class="sc">$</span><span class="fu">recompile</span>()</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 5
+##    Unobserved stochastic nodes: 3
+##    Total graph size: 36
+## 
+## Initializing model</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>LINE.out <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(mod_example, <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>),<span class="at">n.iter =</span> <span class="dv">100</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LINE.out)</span></code></pre></div>
+<pre><code>## 
+## Iterations = 1101:1200
+## Thinning interval = 1 
+## Number of chains = 1 
+## Sample size per chain = 100 
+## 
+## 1. Empirical mean and standard deviation for each variable,
+##    plus standard error of the mean:
+## 
+##        Mean      SD Naive SE Time-series SE
+## d[1] 0.0000 0.00000 0.000000        0.00000
+## d[2] 0.9183 0.05939 0.005939        0.00905
+## d[3] 0.6189 0.06925 0.006925        0.01684
+## 
+## 2. Quantiles for each variable:
+## 
+##        2.5%    25%   50%    75%  97.5%
+## d[1] 0.0000 0.0000 0.000 0.0000 0.0000
+## d[2] 0.8260 0.8678 0.913 0.9600 1.0315
+## d[3] 0.4889 0.5726 0.620 0.6637 0.7525</code></pre>
+<h2 id="process-real-data-into-format-for-analysis">Process real data into format for analysis</h2>
+<p>Process real data, in the first instance assume that the proportion in each category is known for all data.</p>
+<p>First rename variables and recode. There should be a maximum of three groups for each study/malnutrition category type combination.</p>
+<h2 id="categorise-pattern-of-collapsing-for-each-studymanutrition-category-combination">Categorise pattern of collapsing for each study/manutrition category combination</h2>
+<p>Calculate which studies have missing event data, and which have missing “n” data. In the present analysis, any with complete n (ie count) data have complete events data.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mort <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Data/Mortality_Numbers.csv&quot;</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mort) <span class="ot">&lt;-</span> <span class="fu">str_to_lower</span>(<span class="fu">names</span>(mort)) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mort) <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(<span class="fu">names</span>(mort), <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s|</span><span class="sc">\\</span><span class="st">-&quot;</span>, <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(params<span class="sc">$</span>restrict <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>){</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  mort <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(pre_or_post_2000 <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(params<span class="sc">$</span>restrict <span class="sc">==</span> <span class="st">&quot;post&quot;</span>){</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  mort <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(pre_or_post_2000 <span class="sc">==</span> <span class="st">&quot;post&quot;</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>mort <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>pre_or_post_2000)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>mort <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(survived, died, total), as.integer)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>mort <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(study, measure) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">all_missing =</span> <span class="fu">all</span>(<span class="fu">is.na</span>(total))) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>all_missing) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>all_missing)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>maln_cat3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;None&quot;</span>, <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Severe&quot;</span>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>mort <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(study, malnutrition_category) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">all_n =</span>  <span class="fu">all</span>(maln_cat3 <span class="sc">%in%</span> malnutrition_severity) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.na</span>(total)),</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">all_r =</span>  <span class="fu">all</span>(maln_cat3 <span class="sc">%in%</span> malnutrition_severity) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.na</span>(died)),</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">col12 =</span> <span class="sc">!</span><span class="fu">all</span>(maln_cat3 <span class="sc">%in%</span> malnutrition_severity) <span class="sc">&amp;</span> <span class="fu">any</span>(malnutrition_severity <span class="sc">==</span> <span class="st">&quot;All&quot;</span>),</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">col23 =</span> <span class="sc">!</span><span class="fu">all</span>(maln_cat3 <span class="sc">%in%</span> malnutrition_severity) <span class="sc">&amp;</span> <span class="fu">any</span>(malnutrition_severity <span class="sc">==</span> <span class="st">&quot;Non-Severe&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() </span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>all_present_smry <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(study, malnutrition_category, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(all_n, all_r, col12, col23) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">studies =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">duplicated</span>(study)),</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>            <span class="at">studies_times_categories =</span> <span class="fu">n</span>())</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>col12 <span class="ot">&lt;-</span> all_present_smry<span class="sc">$</span>studies[all_present_smry<span class="sc">$</span>col12]</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>col23 <span class="ot">&lt;-</span> all_present_smry<span class="sc">$</span>studies[all_present_smry<span class="sc">$</span>col23]</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(all_present_smry)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">all_n</th>
+<th align="left">all_r</th>
+<th align="left">col12</th>
+<th align="left">col23</th>
+<th align="right">studies</th>
+<th align="right">studies_times_categories</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="right">2</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">7</td>
+<td align="right">8</td>
+</tr>
+</tbody>
+</table>
+<p>Of those studies with collapsed data, 3 collapse into none/moderate and 2 collapse into moderate severe.</p>
+<h2 id="calculate-the-proportion-in-group-2-for-the-collapsed-studies">Calculate the proportion in group 2 for the collapsed studies</h2>
+<p>Since all of those with missing event data have missing totals for each category, we can only examine the proportion in group 2 where there is complete data. Calculate the proportion in the second category (moderate malnutrition) within each collapsed category. Having done so collapse the Ns. Where the proportion is unknown, assume it is the same as the mean proportion.</p>
+<p>First need to classify which are collapsed.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pi2 <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(all_n) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, malnutrition_category, malnutrition_severity, total) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">as.integer</span>(total)) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(malnutrition_severity, total) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pi2_coll12 =</span> Moderate<span class="sc">/</span>(Moderate <span class="sc">+</span> None),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">pi2_coll23 =</span> Moderate<span class="sc">/</span>(Moderate <span class="sc">+</span> Severe)) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, malnutrition_category, pi2_coll12, pi2_coll23)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>pi2_for_mdl <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(all_n) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, malnutrition_category, malnutrition_severity, total) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">as.integer</span>(total)) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(malnutrition_severity, total) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(study, malnutrition_category) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(sum) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>cat_names <span class="ot">&lt;-</span> <span class="fu">unique</span>(pi2_for_mdl<span class="sc">$</span>malnutrition_category) <span class="sc">%&gt;%</span>  <span class="fu">sort</span>()</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>pi2_for_mdl <span class="ot">&lt;-</span> <span class="fu">map</span>(cat_names, <span class="sc">~</span> pi2_for_mdl <span class="sc">%&gt;%</span> </span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">filter</span>(malnutrition_category <span class="sc">==</span> .x) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">select</span>(None, Moderate, Severe) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">as.matrix</span>())</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pi2_for_mdl) <span class="ot">&lt;-</span> cat_names</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>pi2_smry <span class="ot">&lt;-</span> pi2 <span class="sc">%&gt;%</span> </span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(malnutrition_category) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_at</span>(<span class="fu">vars</span>(pi2_coll12, pi2_coll23), mean) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>pi2_lng <span class="ot">&lt;-</span> pi2 <span class="sc">%&gt;%</span> </span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&quot;collapsed_categories&quot;</span>, <span class="st">&quot;value&quot;</span>, pi2_coll12, pi2_coll23) </span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>plot_dist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pi2_lng, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill =</span> collapsed_categories)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(collapsed_categories <span class="sc">~</span> malnutrition_category)</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>plot_dist</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>The plot above shows the proportion of participants category 2 of 1 + 2 and in category 2 of 2+3 for all three types of measure. The proportion in 2 (moderate) is sometimes surprisingly low or high.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mort_slct <span class="ot">&lt;-</span> mort <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, malnutrition_category, <span class="at">n =</span> total, <span class="at">r =</span> died, <span class="at">maln =</span> malnutrition_severity,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>         col12, col23) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(pi2_smry) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pi2 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    col12 <span class="sc">~</span> pi2_coll12,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    col23 <span class="sc">~</span> pi2_coll23,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>grp_lbls <span class="ot">&lt;-</span>  mort_slct <span class="sc">%&gt;%</span> </span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(study, malnutrition_category) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">g =</span> <span class="fu">seq_along</span>(study)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">g_lbl =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    maln <span class="sc">==</span> <span class="st">&quot;None&quot;</span> <span class="sc">~</span> 1L,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    maln <span class="sc">==</span> <span class="st">&quot;Moderate&quot;</span> <span class="sc">~</span> 2L,</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    maln <span class="sc">==</span> <span class="st">&quot;Severe&quot;</span> <span class="sc">~</span> 3L,</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    maln <span class="sc">==</span> <span class="st">&quot;Non-Severe&quot;</span> <span class="sc">~</span> 12L,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    maln <span class="sc">==</span> <span class="st">&quot;All&quot;</span> <span class="sc">~</span> 23L)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>First run for the “w/a” definition of malnutrition.</p>
+<p>This code rearranges the dataframe so that we have a matrix of N’s, events and group labels as per the earlier structure.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>grp_lbls2 <span class="ot">&lt;-</span> grp_lbls <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, malnutrition_category, r, n, g, g_lbl, pi2) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(malnutrition_category <span class="sc">==</span> <span class="st">&quot;w/a&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(study, g, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>grp_lbls2n <span class="ot">&lt;-</span> grp_lbls2 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>r, <span class="sc">-</span>g_lbl) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(g, n)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>grp_lbls2n <span class="ot">&lt;-</span> grp_lbls2 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>r, <span class="sc">-</span>g_lbl) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(g, n)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>grp_lbls2r <span class="ot">&lt;-</span> grp_lbls2 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n, <span class="sc">-</span>g_lbl) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(g, r)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>grp_lbls2g <span class="ot">&lt;-</span> grp_lbls2 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n, <span class="sc">-</span>r) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(g, g_lbl)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>grp_lbls2_col12 <span class="ot">&lt;-</span> grp_lbls2 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(study) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">res =</span> <span class="fu">any</span>(<span class="dv">12</span> <span class="sc">%in%</span> g_lbl)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(res)</span></code></pre></div>
+<p>Check that the restructuring has kept the order of the studies. The following tests should be TRUE.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(grp_lbls2n <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>          grp_lbls2g <span class="sc">%&gt;%</span>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(grp_lbls2n <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>          grp_lbls2r <span class="sc">%&gt;%</span>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<h2 id="try-running-models-on-real-data">Try running models on real data</h2>
+<p>Simplest model, assume that the proportion with moderate malnutrition of those with none-moderate, and the proportion with moderate of those with moderate-severe in those studies with collapsed data is the same as the average for those studies where there data are not collapsed.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">-</span> <span class="fu">apply</span>(grp_lbls2n <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span>) <span class="sc">%&gt;%</span> <span class="fu">as.matrix</span>(), <span class="dv">1</span>, <span class="cf">function</span>(x) x <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">as.integer</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sum</span>())</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>list_data2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">r =</span> grp_lbls2r <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span>) <span class="sc">%&gt;%</span> <span class="fu">as.matrix</span>(),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">n =</span> grp_lbls2n <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span>) <span class="sc">%&gt;%</span> <span class="fu">as.matrix</span>(),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">g =</span> grp_lbls2g <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span>) <span class="sc">%&gt;%</span> <span class="fu">as.matrix</span>(),</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na =</span> na,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">pi2 =</span> grp_lbls2<span class="sc">$</span>pi2,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ng =</span> <span class="dv">3</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ns =</span> <span class="fu">nrow</span>(grp_lbls2n))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(<span class="at">file =</span> <span class="st">&quot;Supporting/FE_model.txt&quot;</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> list_data2, <span class="at">n.chains =</span> <span class="dv">2</span>, <span class="at">n.adapt =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 26
+##    Unobserved stochastic nodes: 12
+##    Total graph size: 557
+## 
+## Initializing model
+## 
+##   |                                                          |                                                  |   0%  |                                                          |+                                                 |   2%  |                                                          |++                                                |   4%  |                                                          |+++                                               |   6%  |                                                          |++++                                              |   8%  |                                                          |+++++                                             |  10%  |                                                          |++++++                                            |  12%  |                                                          |+++++++                                           |  14%  |                                                          |++++++++                                          |  16%  |                                                          |+++++++++                                         |  18%  |                                                          |++++++++++                                        |  20%  |                                                          |+++++++++++                                       |  22%  |                                                          |++++++++++++                                      |  24%  |                                                          |+++++++++++++                                     |  26%  |                                                          |++++++++++++++                                    |  28%  |                                                          |+++++++++++++++                                   |  30%  |                                                          |++++++++++++++++                                  |  32%  |                                                          |+++++++++++++++++                                 |  34%  |                                                          |++++++++++++++++++                                |  36%  |                                                          |+++++++++++++++++++                               |  38%  |                                                          |++++++++++++++++++++                              |  40%  |                                                          |+++++++++++++++++++++                             |  42%  |                                                          |++++++++++++++++++++++                            |  44%  |                                                          |+++++++++++++++++++++++                           |  46%  |                                                          |++++++++++++++++++++++++                          |  48%  |                                                          |+++++++++++++++++++++++++                         |  50%  |                                                          |++++++++++++++++++++++++++                        |  52%  |                                                          |+++++++++++++++++++++++++++                       |  54%  |                                                          |++++++++++++++++++++++++++++                      |  56%  |                                                          |+++++++++++++++++++++++++++++                     |  58%  |                                                          |++++++++++++++++++++++++++++++                    |  60%  |                                                          |+++++++++++++++++++++++++++++++                   |  62%  |                                                          |++++++++++++++++++++++++++++++++                  |  64%  |                                                          |+++++++++++++++++++++++++++++++++                 |  66%  |                                                          |++++++++++++++++++++++++++++++++++                |  68%  |                                                          |+++++++++++++++++++++++++++++++++++               |  70%  |                                                          |++++++++++++++++++++++++++++++++++++              |  72%  |                                                          |+++++++++++++++++++++++++++++++++++++             |  74%  |                                                          |++++++++++++++++++++++++++++++++++++++            |  76%  |                                                          |+++++++++++++++++++++++++++++++++++++++           |  78%  |                                                          |++++++++++++++++++++++++++++++++++++++++          |  80%  |                                                          |+++++++++++++++++++++++++++++++++++++++++         |  82%  |                                                          |++++++++++++++++++++++++++++++++++++++++++        |  84%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++       |  86%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++      |  88%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++     |  90%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++    |  92%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++   |  94%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++  |  96%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++++ |  98%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++++| 100%</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(mod1, <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(LINE)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>LINE<span class="sc">$</span><span class="fu">recompile</span>()</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 5
+##    Unobserved stochastic nodes: 3
+##    Total graph size: 36
+## 
+## Initializing model</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>LINE.out <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(mod1, <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>),<span class="at">n.iter =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LINE.out)</span></code></pre></div>
+<pre><code>## 
+## Iterations = 2001:3000
+## Thinning interval = 1 
+## Number of chains = 2 
+## Sample size per chain = 1000 
+## 
+## 1. Empirical mean and standard deviation for each variable,
+##    plus standard error of the mean:
+## 
+##       Mean     SD Naive SE Time-series SE
+## d[1] 0.000 0.0000 0.000000       0.000000
+## d[2] 0.748 0.1162 0.002598       0.006241
+## d[3] 1.655 0.1157 0.002588       0.006972
+## 
+## 2. Quantiles for each variable:
+## 
+##        2.5%   25%    50%    75%  97.5%
+## d[1] 0.0000 0.000 0.0000 0.0000 0.0000
+## d[2] 0.5195 0.671 0.7476 0.8291 0.9673
+## d[3] 1.4159 1.582 1.6597 1.7336 1.8664</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">summary</span>(LINE.out)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> a<span class="sc">$</span>statistics[,<span class="st">&quot;Mean&quot;</span>]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">round</span>(a,<span class="dv">2</span>)</span></code></pre></div>
+<p>The above tables show that the log odds ratio is 0.75 for moderate versus none and 1.66 for severe versus none.</p>
+<h2 id="next-step">Next step</h2>
+<p>Next step will be to estimate the proportion of people in category two rather than assume it is fixed. Can estimate this from the data or can get input from subject-matter experts about the likely proportion. The following estimates it from the data.</p>
+<p>In order to prepare for this final decision we developed two models. One model assumes (approach one) that the proportion of none-moderate which are moderate lies, with equal probability, somewhere between 0 and 1 and that the proportion of moderate-severe which are moderate lies between 0 and 1 (ie a uniform prior). A second model (approach two) assumes that the proportion in each category is exchangeable between studies, using a random effects model to estimate the proportion for those studies where it is not recorded.</p>
+<p>These models (which for speed only run for a small number of samples) both give similar result.</p>
+<h3 id="approach-one">Approach One</h3>
+<p>Add an indicator variables for whether we want proportion in category two of 1 and 2, or of 2 and 3. Where there is no missing data, the proportion of two in 2/3 will be calculated, but this is not used in the code.</p>
+<p>In the first instance explore the use of a flat distribution for the proportion in category two. This is run in both JAGS and OPENBUGS, giving the same results.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>list_data3 <span class="ot">&lt;-</span> list_data2</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>list_data3[[<span class="st">&quot;pi2&quot;</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>list_data3[[<span class="st">&quot;coll12&quot;</span>]] <span class="ot">&lt;-</span> grp_lbls2_col12</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(<span class="at">file =</span> <span class="st">&quot;Supporting/FE_model_estimate_prop.txt&quot;</span>,</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> list_data3, <span class="at">n.chains =</span> <span class="dv">1</span>, <span class="at">n.adapt =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 26
+##    Unobserved stochastic nodes: 14
+##    Total graph size: 541
+## 
+## Initializing model
+## 
+##   |                                                          |                                                  |   0%  |                                                          |+                                                 |   2%  |                                                          |++                                                |   4%  |                                                          |+++                                               |   6%  |                                                          |++++                                              |   8%  |                                                          |+++++                                             |  10%  |                                                          |++++++                                            |  12%  |                                                          |+++++++                                           |  14%  |                                                          |++++++++                                          |  16%  |                                                          |+++++++++                                         |  18%  |                                                          |++++++++++                                        |  20%  |                                                          |+++++++++++                                       |  22%  |                                                          |++++++++++++                                      |  24%  |                                                          |+++++++++++++                                     |  26%  |                                                          |++++++++++++++                                    |  28%  |                                                          |+++++++++++++++                                   |  30%  |                                                          |++++++++++++++++                                  |  32%  |                                                          |+++++++++++++++++                                 |  34%  |                                                          |++++++++++++++++++                                |  36%  |                                                          |+++++++++++++++++++                               |  38%  |                                                          |++++++++++++++++++++                              |  40%  |                                                          |+++++++++++++++++++++                             |  42%  |                                                          |++++++++++++++++++++++                            |  44%  |                                                          |+++++++++++++++++++++++                           |  46%  |                                                          |++++++++++++++++++++++++                          |  48%  |                                                          |+++++++++++++++++++++++++                         |  50%  |                                                          |++++++++++++++++++++++++++                        |  52%  |                                                          |+++++++++++++++++++++++++++                       |  54%  |                                                          |++++++++++++++++++++++++++++                      |  56%  |                                                          |+++++++++++++++++++++++++++++                     |  58%  |                                                          |++++++++++++++++++++++++++++++                    |  60%  |                                                          |+++++++++++++++++++++++++++++++                   |  62%  |                                                          |++++++++++++++++++++++++++++++++                  |  64%  |                                                          |+++++++++++++++++++++++++++++++++                 |  66%  |                                                          |++++++++++++++++++++++++++++++++++                |  68%  |                                                          |+++++++++++++++++++++++++++++++++++               |  70%  |                                                          |++++++++++++++++++++++++++++++++++++              |  72%  |                                                          |+++++++++++++++++++++++++++++++++++++             |  74%  |                                                          |++++++++++++++++++++++++++++++++++++++            |  76%  |                                                          |+++++++++++++++++++++++++++++++++++++++           |  78%  |                                                          |++++++++++++++++++++++++++++++++++++++++          |  80%  |                                                          |+++++++++++++++++++++++++++++++++++++++++         |  82%  |                                                          |++++++++++++++++++++++++++++++++++++++++++        |  84%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++       |  86%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++      |  88%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++     |  90%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++    |  92%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++   |  94%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++  |  96%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++++ |  98%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++++| 100%</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(mod2, <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(LINE)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>LINE<span class="sc">$</span><span class="fu">recompile</span>()</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 5
+##    Unobserved stochastic nodes: 3
+##    Total graph size: 36
+## 
+## Initializing model</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>LINE.out <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(mod2, <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;theta1&quot;</span>, <span class="st">&quot;theta2&quot;</span>),<span class="at">n.iter =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LINE.out)</span></code></pre></div>
+<pre><code>## 
+## Iterations = 2001:3000
+## Thinning interval = 1 
+## Number of chains = 1 
+## Sample size per chain = 1000 
+## 
+## 1. Empirical mean and standard deviation for each variable,
+##    plus standard error of the mean:
+## 
+##          Mean     SD Naive SE Time-series SE
+## d[1]   0.0000 0.0000 0.000000       0.000000
+## d[2]   0.7090 0.1134 0.003585       0.009056
+## d[3]   1.5916 0.1058 0.003347       0.007797
+## theta1 0.2071 0.1738 0.005495       0.012920
+## theta2 0.7618 0.1759 0.005564       0.009399
+## 
+## 2. Quantiles for each variable:
+## 
+##            2.5%     25%    50%    75%  97.5%
+## d[1]   0.000000 0.00000 0.0000 0.0000 0.0000
+## d[2]   0.473610 0.63860 0.7118 0.7856 0.9181
+## d[3]   1.383114 1.52307 1.5884 1.6604 1.8107
+## theta1 0.005676 0.07043 0.1636 0.2949 0.6352
+## theta2 0.371684 0.65049 0.7988 0.9070 0.9923</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>inits <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">d =</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">nrow</span>(list_data3<span class="sc">$</span>r)))</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>list_data3_openbugs <span class="ot">&lt;-</span> list_data3</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>list_data3_openbugs<span class="sc">$</span>coll12 <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(list_data3_openbugs<span class="sc">$</span>coll12)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>mode2_bugs <span class="ot">&lt;-</span> <span class="fu">bugs</span>(<span class="at">data =</span> list_data3_openbugs, </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">parameters.to.save =</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;theta1&quot;</span>, <span class="st">&quot;theta2&quot;</span>), <span class="at">n.iter =</span> <span class="dv">1000</span>,</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">inits =</span> inits,</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">model.file =</span> <span class="st">&quot;FE_model_estimate_prop_openbugs.txt&quot;</span>)</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mode2_bugs, <span class="at">digits.summary =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## Inference for Bugs model at &quot;FE_model_estimate_prop_openbugs.txt&quot;, 
+## Current: 3 chains, each with 1000 iterations (first 500 discarded)
+## Cumulative: n.sims = 1500 iterations saved
+##             mean    sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+## d[2]       0.723 0.117   0.488   0.645   0.726   0.804   0.946 1.000  1500
+## d[3]       1.602 0.117   1.373   1.517   1.597   1.682   1.841 1.001  1500
+## theta1     0.207 0.176   0.006   0.071   0.160   0.301   0.640 1.005  1500
+## theta2     0.756 0.185   0.317   0.646   0.788   0.902   0.990 1.012   320
+## deviance 149.580 5.239 141.200 145.900 148.900 152.825 161.100 1.000  1500
+## 
+## For each parameter, n.eff is a crude measure of effective sample size,
+## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
+## 
+## DIC info (using the rule, pD = Dbar-Dhat)
+## pD = 12.490 and DIC = 162.100
+## DIC is an estimate of expected predictive error (lower deviance is better).</code></pre>
+<p>Show get similar result with Dirichlet prior, just a check on Dirichlet coding. <strong>Not sure that I (DM) have coded this correctly.</strong></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>list_data3 <span class="ot">&lt;-</span> list_data2</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>list_data3[[<span class="st">&quot;pi2&quot;</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>list_data3[[<span class="st">&quot;coll12&quot;</span>]] <span class="ot">&lt;-</span> grp_lbls2_col12</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(<span class="at">file =</span> <span class="st">&quot;Supporting/FE_model_estimate_prop_dirich.txt&quot;</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> list_data3, <span class="at">n.chains =</span> <span class="dv">1</span>, <span class="at">n.adapt =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 26
+##    Unobserved stochastic nodes: 13
+##    Total graph size: 543
+## 
+## Initializing model
+## 
+##   |                                                          |                                                  |   0%  |                                                          |+                                                 |   2%  |                                                          |++                                                |   4%  |                                                          |+++                                               |   6%  |                                                          |++++                                              |   8%  |                                                          |+++++                                             |  10%  |                                                          |++++++                                            |  12%  |                                                          |+++++++                                           |  14%  |                                                          |++++++++                                          |  16%  |                                                          |+++++++++                                         |  18%  |                                                          |++++++++++                                        |  20%  |                                                          |+++++++++++                                       |  22%  |                                                          |++++++++++++                                      |  24%  |                                                          |+++++++++++++                                     |  26%  |                                                          |++++++++++++++                                    |  28%  |                                                          |+++++++++++++++                                   |  30%  |                                                          |++++++++++++++++                                  |  32%  |                                                          |+++++++++++++++++                                 |  34%  |                                                          |++++++++++++++++++                                |  36%  |                                                          |+++++++++++++++++++                               |  38%  |                                                          |++++++++++++++++++++                              |  40%  |                                                          |+++++++++++++++++++++                             |  42%  |                                                          |++++++++++++++++++++++                            |  44%  |                                                          |+++++++++++++++++++++++                           |  46%  |                                                          |++++++++++++++++++++++++                          |  48%  |                                                          |+++++++++++++++++++++++++                         |  50%  |                                                          |++++++++++++++++++++++++++                        |  52%  |                                                          |+++++++++++++++++++++++++++                       |  54%  |                                                          |++++++++++++++++++++++++++++                      |  56%  |                                                          |+++++++++++++++++++++++++++++                     |  58%  |                                                          |++++++++++++++++++++++++++++++                    |  60%  |                                                          |+++++++++++++++++++++++++++++++                   |  62%  |                                                          |++++++++++++++++++++++++++++++++                  |  64%  |                                                          |+++++++++++++++++++++++++++++++++                 |  66%  |                                                          |++++++++++++++++++++++++++++++++++                |  68%  |                                                          |+++++++++++++++++++++++++++++++++++               |  70%  |                                                          |++++++++++++++++++++++++++++++++++++              |  72%  |                                                          |+++++++++++++++++++++++++++++++++++++             |  74%  |                                                          |++++++++++++++++++++++++++++++++++++++            |  76%  |                                                          |+++++++++++++++++++++++++++++++++++++++           |  78%  |                                                          |++++++++++++++++++++++++++++++++++++++++          |  80%  |                                                          |+++++++++++++++++++++++++++++++++++++++++         |  82%  |                                                          |++++++++++++++++++++++++++++++++++++++++++        |  84%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++       |  86%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++      |  88%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++     |  90%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++    |  92%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++   |  94%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++  |  96%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++++ |  98%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++++| 100%</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(mod2, <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(LINE)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>LINE<span class="sc">$</span><span class="fu">recompile</span>()</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 5
+##    Unobserved stochastic nodes: 3
+##    Total graph size: 36
+## 
+## Initializing model</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>LINE.out <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(mod2, <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;theta&quot;</span>),<span class="at">n.iter =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LINE.out)</span></code></pre></div>
+<pre><code>## 
+## Iterations = 2001:3000
+## Thinning interval = 1 
+## Number of chains = 1 
+## Sample size per chain = 1000 
+## 
+## 1. Empirical mean and standard deviation for each variable,
+##    plus standard error of the mean:
+## 
+##            Mean      SD Naive SE Time-series SE
+## d[1]     0.0000 0.00000 0.000000       0.000000
+## d[2]     0.7423 0.12134 0.003837       0.009389
+## d[3]     1.5994 0.11531 0.003647       0.009946
+## theta[1] 0.1964 0.15132 0.004785       0.019973
+## theta[2] 0.1175 0.09561 0.003023       0.010662
+## theta[3] 0.6861 0.16937 0.005356       0.026885
+## 
+## 2. Quantiles for each variable:
+## 
+##              2.5%     25%     50%    75%  97.5%
+## d[1]     0.000000 0.00000 0.00000 0.0000 0.0000
+## d[2]     0.496199 0.66680 0.73942 0.8244 0.9751
+## d[3]     1.358140 1.52988 1.60047 1.6781 1.8295
+## theta[1] 0.005393 0.07078 0.17015 0.2902 0.6159
+## theta[2] 0.007612 0.03951 0.09029 0.1766 0.3470
+## theta[3] 0.322654 0.59191 0.70898 0.8013 0.9594</code></pre>
+<h3 id="approach-two">Approach Two</h3>
+<p>This is the modelling where we estimate the proportion in the moderate category using the data on proportions from other studies.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>pi2_choose <span class="ot">&lt;-</span> pi2_for_mdl<span class="sc">$</span><span class="st">`</span><span class="at">w/a</span><span class="st">`</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>pi2_choose12 <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(pi2_choose[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>pi2_choose23 <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(pi2_choose[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>list_data4 <span class="ot">&lt;-</span> list_data3</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>list_data4[[<span class="st">&quot;n_complete2a&quot;</span>]]   <span class="ot">&lt;-</span> pi2_choose[,<span class="dv">2</span>]</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>list_data4[[<span class="st">&quot;n_complete2b&quot;</span>]]   <span class="ot">&lt;-</span> pi2_choose[,<span class="dv">2</span>]</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>list_data4[[<span class="st">&quot;n_complete12&quot;</span>]] <span class="ot">&lt;-</span> pi2_choose12</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>list_data4[[<span class="st">&quot;n_complete23&quot;</span>]] <span class="ot">&lt;-</span> pi2_choose23</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>list_data4[[<span class="st">&quot;ns_complete&quot;</span>]] <span class="ot">&lt;-</span> <span class="fu">length</span>(pi2_choose12)</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(<span class="at">file =</span> <span class="st">&quot;Supporting/FE_model_estimate_prop2.txt&quot;</span>,</span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> list_data4, <span class="at">n.chains =</span> <span class="dv">2</span>, <span class="at">n.adapt =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 38
+##    Unobserved stochastic nodes: 48
+##    Total graph size: 681
+## 
+## Initializing model
+## 
+##   |                                                          |                                                  |   0%  |                                                          |+                                                 |   2%  |                                                          |++                                                |   4%  |                                                          |+++                                               |   6%  |                                                          |++++                                              |   8%  |                                                          |+++++                                             |  10%  |                                                          |++++++                                            |  12%  |                                                          |+++++++                                           |  14%  |                                                          |++++++++                                          |  16%  |                                                          |+++++++++                                         |  18%  |                                                          |++++++++++                                        |  20%  |                                                          |+++++++++++                                       |  22%  |                                                          |++++++++++++                                      |  24%  |                                                          |+++++++++++++                                     |  26%  |                                                          |++++++++++++++                                    |  28%  |                                                          |+++++++++++++++                                   |  30%  |                                                          |++++++++++++++++                                  |  32%  |                                                          |+++++++++++++++++                                 |  34%  |                                                          |++++++++++++++++++                                |  36%  |                                                          |+++++++++++++++++++                               |  38%  |                                                          |++++++++++++++++++++                              |  40%  |                                                          |+++++++++++++++++++++                             |  42%  |                                                          |++++++++++++++++++++++                            |  44%  |                                                          |+++++++++++++++++++++++                           |  46%  |                                                          |++++++++++++++++++++++++                          |  48%  |                                                          |+++++++++++++++++++++++++                         |  50%  |                                                          |++++++++++++++++++++++++++                        |  52%  |                                                          |+++++++++++++++++++++++++++                       |  54%  |                                                          |++++++++++++++++++++++++++++                      |  56%  |                                                          |+++++++++++++++++++++++++++++                     |  58%  |                                                          |++++++++++++++++++++++++++++++                    |  60%  |                                                          |+++++++++++++++++++++++++++++++                   |  62%  |                                                          |++++++++++++++++++++++++++++++++                  |  64%  |                                                          |+++++++++++++++++++++++++++++++++                 |  66%  |                                                          |++++++++++++++++++++++++++++++++++                |  68%  |                                                          |+++++++++++++++++++++++++++++++++++               |  70%  |                                                          |++++++++++++++++++++++++++++++++++++              |  72%  |                                                          |+++++++++++++++++++++++++++++++++++++             |  74%  |                                                          |++++++++++++++++++++++++++++++++++++++            |  76%  |                                                          |+++++++++++++++++++++++++++++++++++++++           |  78%  |                                                          |++++++++++++++++++++++++++++++++++++++++          |  80%  |                                                          |+++++++++++++++++++++++++++++++++++++++++         |  82%  |                                                          |++++++++++++++++++++++++++++++++++++++++++        |  84%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++       |  86%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++      |  88%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++     |  90%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++    |  92%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++   |  94%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++  |  96%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++++ |  98%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++++| 100%</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(mod3, <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mcmcplot(as.mcmc(mod3))</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(LINE)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>LINE<span class="sc">$</span><span class="fu">recompile</span>()</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 5
+##    Unobserved stochastic nodes: 3
+##    Total graph size: 36
+## 
+## Initializing model</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>LINE.out <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(mod3, <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;theta1_prop&quot;</span>, <span class="st">&quot;theta2_prop&quot;</span>),<span class="at">n.iter =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LINE.out)</span></code></pre></div>
+<pre><code>## 
+## Iterations = 2001:3000
+## Thinning interval = 1 
+## Number of chains = 2 
+## Sample size per chain = 1000 
+## 
+## 1. Empirical mean and standard deviation for each variable,
+##    plus standard error of the mean:
+## 
+##               Mean      SD Naive SE Time-series SE
+## d[1]        0.0000 0.00000 0.000000       0.000000
+## d[2]        0.6999 0.12359 0.002764       0.006013
+## d[3]        1.5924 0.11322 0.002532       0.007079
+## theta1_prop 0.3396 0.09382 0.002098       0.003758
+## theta2_prop 0.6490 0.09527 0.002130       0.003565
+## 
+## 2. Quantiles for each variable:
+## 
+##               2.5%    25%    50%    75%  97.5%
+## d[1]        0.0000 0.0000 0.0000 0.0000 0.0000
+## d[2]        0.4616 0.6136 0.6999 0.7833 0.9407
+## d[3]        1.3651 1.5192 1.5943 1.6652 1.8122
+## theta1_prop 0.1536 0.2806 0.3401 0.3969 0.5352
+## theta2_prop 0.4552 0.5904 0.6480 0.7105 0.8340</code></pre>
+<h1 id="random-effects-model---re-for-effects-but-not-for-proportions">Random effects model - RE for effects but not for proportions</h1>
+<p>Return to approach 1, but re-run the model assuming random effects model for the effect of malnutrition on mortality.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>mode3_bugs <span class="ot">&lt;-</span> <span class="fu">bugs</span>(<span class="at">data =</span> list_data3_openbugs, </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">parameters.to.save =</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;theta1&quot;</span>, <span class="st">&quot;theta2&quot;</span>), <span class="at">n.iter =</span> <span class="dv">10000</span>,</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">inits =</span> inits,</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">model.file =</span> <span class="st">&quot;RE_model_estimate_prop_openbugs.txt&quot;</span>)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mode3_bugs, <span class="at">digits.summary =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## Inference for Bugs model at &quot;RE_model_estimate_prop_openbugs.txt&quot;, 
+## Current: 3 chains, each with 10000 iterations (first 5000 discarded)
+## Cumulative: n.sims = 15000 iterations saved
+##             mean    sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+## d[2]       0.738 0.170   0.411   0.628   0.736   0.848   1.082 1.001  4000
+## d[3]       1.664 0.169   1.350   1.553   1.656   1.763   2.030 1.005  2800
+## theta1     0.282 0.226   0.009   0.100   0.226   0.414   0.845 1.005   790
+## theta2     0.709 0.218   0.199   0.578   0.753   0.887   0.989 1.008  1000
+## deviance 145.750 6.492 134.300 141.200 145.400 149.800 159.800 1.003  2300
+## 
+## For each parameter, n.eff is a crude measure of effective sample size,
+## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
+## 
+## DIC info (using the rule, pD = Dbar-Dhat)
+## pD = 17.250 and DIC = 163.000
+## DIC is an estimate of expected predictive error (lower deviance is better).</code></pre>
+<h1 id="re-for-effects-and-for-proportions">RE for effects and for proportions</h1>
+<p>Combine approaches 1 and 3, where assuming random effects for effect of malnutrition, and random effects for proportion in each malnutrition category.</p>
+<p>Uncomment <code>mcmcplot(as.mcmc(mode4_bugs))</code> to see model diagnostics.Look reasonable to me without too much autocorrelation. Chains appear to converge.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>list_data4_openbugs <span class="ot">&lt;-</span> <span class="fu">c</span>(list_data3_openbugs, list_data4[<span class="fu">c</span>(<span class="st">&quot;n_complete2a&quot;</span>, <span class="st">&quot;n_complete2b&quot;</span>, </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>                                                         <span class="st">&quot;n_complete12&quot;</span>, <span class="st">&quot;n_complete23&quot;</span>, </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>                                                         <span class="st">&quot;ns_complete&quot;</span>)])</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>mode4_bugs <span class="ot">&lt;-</span> <span class="fu">bugs</span>(<span class="at">data =</span> list_data4_openbugs, </span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">parameters.to.save =</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;theta1_prop&quot;</span>, <span class="st">&quot;theta2_prop&quot;</span>), <span class="at">n.iter =</span> <span class="dv">10000</span>,</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">inits =</span> inits,</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">model.file =</span> <span class="st">&quot;RE_model_RE_estimate_prop_openbugs.txt&quot;</span>)</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="co"># mcmcplot(as.mcmc(mode4_bugs))</span></span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mode4_bugs, <span class="at">digits.summary =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## Inference for Bugs model at &quot;RE_model_RE_estimate_prop_openbugs.txt&quot;, 
+## Current: 3 chains, each with 10000 iterations (first 5000 discarded)
+## Cumulative: n.sims = 15000 iterations saved
+##                mean    sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+## d[2]          0.734 0.165   0.408   0.628   0.731   0.837   1.072 1.001  4500
+## d[3]          1.664 0.161   1.363   1.557   1.654   1.762   2.003 1.001 15000
+## theta1_prop   0.358 0.096   0.163   0.301   0.357   0.413   0.559 1.003  3900
+## theta2_prop   0.645 0.096   0.441   0.590   0.646   0.703   0.833 1.001  5700
+## deviance    233.115 8.040 218.900 227.500 232.600 238.200 250.402 1.002  1400
+## 
+## For each parameter, n.eff is a crude measure of effective sample size,
+## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
+## 
+## DIC info (using the rule, pD = Dbar-Dhat)
+## pD = 29.030 and DIC = 262.100
+## DIC is an estimate of expected predictive error (lower deviance is better).</code></pre>
+
+</body>
+</html>

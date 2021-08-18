@@ -65,3 +65,13 @@ Kuti - Malnutrition case fatality numbers calculated from original dataset provi
 ## Preliminary results
 
 In the scripts folder if you click on the file [01_maln.md](Scripts/01_maln.md) you will find that the results of the initial modelling.
+
+## Notes
+
+### JAGS/OpenBUGS code
+JAGS code is stored in Supporting/
+OpenBUGS code is stored in the top level folder as it doesn't run otherwise.
+
+### render_stratified.R - run analyses stratified into different periods
+
+

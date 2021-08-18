@@ -14,6 +14,7 @@ Packages
 ``` r
 library(tidyverse)
 library(rjags)
+library(mcmcplots)
 library(ggplot2)
 library(R2OpenBUGS)
 ```
@@ -34,7 +35,7 @@ For all analyses the malnutrition categories are interpreted as folows:-
 
 ## Run model with example data
 
-First check the model runs succesfully in Jags using example data.
+First check the model runs successfully in Jags using example data.
 
 Need to convert the example data into matrices and vectors for JAGS.
 
@@ -187,15 +188,15 @@ summary(LINE.out)
     ## 
     ##        Mean      SD Naive SE Time-series SE
     ## d[1] 0.0000 0.00000 0.000000        0.00000
-    ## d[2] 0.9267 0.05441 0.005441        0.01334
-    ## d[3] 0.6366 0.07629 0.007629        0.01450
+    ## d[2] 0.9183 0.05939 0.005939        0.00905
+    ## d[3] 0.6189 0.06925 0.006925        0.01684
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##        2.5%    25%    50%    75%  97.5%
-    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2] 0.8209 0.8867 0.9311 0.9697 1.0133
-    ## d[3] 0.4970 0.5984 0.6415 0.6783 0.7816
+    ##        2.5%    25%   50%    75%  97.5%
+    ## d[1] 0.0000 0.0000 0.000 0.0000 0.0000
+    ## d[2] 0.8260 0.8678 0.913 0.9600 1.0315
+    ## d[3] 0.4889 0.5726 0.620 0.6637 0.7525
 
 ## Process real data into format for analysis
 
@@ -208,8 +209,8 @@ groups for each study/malnutrition category type combination.
 ## Categorise pattern of collapsing for each study/manutrition category combination
 
 Calculate which studies have missing event data, and which have missing
-“n” data. IN the present analysis, any with complete n data have
-complete events data.
+“n” data. In the present analysis, any with complete n (ie count) data
+have complete events data.
 
 ``` r
 mort <- read_csv("Data/Mortality_Numbers.csv")
@@ -270,12 +271,12 @@ Of those studies with collapsed data, 3 collapse into none/moderate and
 
 ## Calculate the proportion in group 2 for the collapsed studies
 
-Since, in the sample so far, all of those with missing event data have
-missing totals for each category, we can only examine the proportion in
-group 2 where there is complete data. Calculate the proportion in the
-second category (moderate malnutrition) within each collapsed category.
-Having done so collapse the Ns. Where the proportion is unknown, assume
-it is the same as the mean proportion.
+Since all of those with missing event data have missing totals for each
+category, we can only examine the proportion in group 2 where there is
+complete data. Calculate the proportion in the second category (moderate
+malnutrition) within each collapsed category. Having done so collapse
+the Ns. Where the proportion is unknown, assume it is the same as the
+mean proportion.
 
 First need to classify which are collapsed.
 
@@ -351,7 +352,7 @@ grp_lbls <-  mort_slct %>%
 
 First run for the “w/a” definition of malnutrition.
 
-THis code rearranges the dataframe so that we have a matrix of N’s,
+This code rearranges the dataframe so that we have a matrix of N’s,
 events and group labels as per the earlier structure.
 
 ``` r
@@ -402,8 +403,9 @@ identical(grp_lbls2n %>% select(1:2),
 ## Try running models on real data
 
 Simplest model, assume that the proportion with moderate malnutrition of
-those with none-moderate, and the proportion with moderate of thsoe with
-moderate-severe are constant across studies where this is not recorded.
+those with none-moderate, and the proportion with moderate of those with
+moderate-severe in those studies with collapsed data is the same as the
+average for those studies where there data are not collapsed.
 
 ``` r
 na <- 3 - apply(grp_lbls2n %>% select(`1`, `2`, `3`) %>% as.matrix(), 1, function(x) x %>% 
@@ -421,7 +423,7 @@ list_data2 <- list(r = grp_lbls2r %>% select(`1`, `2`, `3`) %>% as.matrix(),
 
 ``` r
 mod1 <- jags.model(file = "Supporting/FE_model.txt",
-                            data = list_data2, n.chains = 1, n.adapt = 1000)
+                            data = list_data2, n.chains = 2, n.adapt = 1000)
 ```
 
     ## Compiling model graph
@@ -470,36 +472,43 @@ summary(LINE.out)
     ## 
     ## Iterations = 2001:3000
     ## Thinning interval = 1 
-    ## Number of chains = 1 
+    ## Number of chains = 2 
     ## Sample size per chain = 1000 
     ## 
     ## 1. Empirical mean and standard deviation for each variable,
     ##    plus standard error of the mean:
     ## 
-    ##        Mean     SD Naive SE Time-series SE
-    ## d[1] 0.0000 0.0000 0.000000       0.000000
-    ## d[2] 0.7452 0.1206 0.003815       0.009066
-    ## d[3] 1.6552 0.1210 0.003826       0.009826
+    ##       Mean     SD Naive SE Time-series SE
+    ## d[1] 0.000 0.0000 0.000000       0.000000
+    ## d[2] 0.748 0.1162 0.002598       0.006241
+    ## d[3] 1.655 0.1157 0.002588       0.006972
     ## 
     ## 2. Quantiles for each variable:
     ## 
-    ##        2.5%    25%    50%    75%  97.5%
-    ## d[1] 0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2] 0.5085 0.6603 0.7471 0.8318 0.9782
-    ## d[3] 1.4208 1.5680 1.6642 1.7429 1.8727
+    ##        2.5%   25%    50%    75%  97.5%
+    ## d[1] 0.0000 0.000 0.0000 0.0000 0.0000
+    ## d[2] 0.5195 0.671 0.7476 0.8291 0.9673
+    ## d[3] 1.4159 1.582 1.6597 1.7336 1.8664
 
-The above tables show that the log odds ratio is 0.82 for moderate
-versus none and 1.47 for severe versus none.
+``` r
+a <- summary(LINE.out)
+a <- a$statistics[,"Mean"]
+a <- round(a,2)
+```
+
+The above tables show that the log odds ratio is 0.75 for moderate
+versus none and 1.66 for severe versus none.
 
 ## Next step
 
 Next step will be to estimate the proportion of people in category two
 rather than assume it is fixed. Can estimate this from the data or can
-get input from subject-matter experts about the likely proportion.
+get input from subject-matter experts about the likely proportion. The
+following estimates it from the data.
 
 In order to prepare for this final decision we developed two models. One
 model assumes (approach one) that the proportion of none-moderate which
-are moderate lies, with equal probability, somehere between 0 and 1 and
+are moderate lies, with equal probability, somewhere between 0 and 1 and
 that the proportion of moderate-severe which are moderate lies between 0
 and 1 (ie a uniform prior). A second model (approach two) assumes that
 the proportion in each category is exchangeable between studies, using a
@@ -582,19 +591,19 @@ summary(LINE.out)
     ## 
     ##          Mean     SD Naive SE Time-series SE
     ## d[1]   0.0000 0.0000 0.000000       0.000000
-    ## d[2]   0.7199 0.1255 0.003969       0.009651
-    ## d[3]   1.6024 0.1200 0.003795       0.010931
-    ## theta1 0.1986 0.1740 0.005503       0.012979
-    ## theta2 0.7458 0.1782 0.005634       0.011322
+    ## d[2]   0.7090 0.1134 0.003585       0.009056
+    ## d[3]   1.5916 0.1058 0.003347       0.007797
+    ## theta1 0.2071 0.1738 0.005495       0.012920
+    ## theta2 0.7618 0.1759 0.005564       0.009399
     ## 
     ## 2. Quantiles for each variable:
     ## 
     ##            2.5%     25%    50%    75%  97.5%
     ## d[1]   0.000000 0.00000 0.0000 0.0000 0.0000
-    ## d[2]   0.478054 0.63621 0.7181 0.8028 0.9747
-    ## d[3]   1.372446 1.52146 1.6011 1.6862 1.8302
-    ## theta1 0.007349 0.06689 0.1526 0.2822 0.6335
-    ## theta2 0.331511 0.64589 0.7739 0.8869 0.9866
+    ## d[2]   0.473610 0.63860 0.7118 0.7856 0.9181
+    ## d[3]   1.383114 1.52307 1.5884 1.6604 1.8107
+    ## theta1 0.005676 0.07043 0.1636 0.2949 0.6352
+    ## theta2 0.371684 0.65049 0.7988 0.9070 0.9923
 
 ``` r
 inits <- function() {
@@ -607,25 +616,106 @@ mode2_bugs <- bugs(data = list_data3_openbugs,
                    parameters.to.save = c("d", "theta1", "theta2"), n.iter = 1000,
                    inits = inits,
                    model.file = "FE_model_estimate_prop_openbugs.txt")
-print(mode2_bugs)
+print(mode2_bugs, digits.summary = 3)
 ```
 
     ## Inference for Bugs model at "FE_model_estimate_prop_openbugs.txt", 
     ## Current: 3 chains, each with 1000 iterations (first 500 discarded)
     ## Cumulative: n.sims = 1500 iterations saved
-    ##           mean  sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
-    ## d[2]       0.7 0.1   0.5   0.6   0.7   0.8   0.9    1  1500
-    ## d[3]       1.6 0.1   1.4   1.5   1.6   1.7   1.8    1  1500
-    ## theta1     0.2 0.2   0.0   0.1   0.2   0.3   0.6    1  1500
-    ## theta2     0.8 0.2   0.3   0.6   0.8   0.9   1.0    1   320
-    ## deviance 149.6 5.2 141.2 145.9 148.9 152.8 161.1    1  1500
+    ##             mean    sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+    ## d[2]       0.723 0.117   0.488   0.645   0.726   0.804   0.946 1.000  1500
+    ## d[3]       1.602 0.117   1.373   1.517   1.597   1.682   1.841 1.001  1500
+    ## theta1     0.207 0.176   0.006   0.071   0.160   0.301   0.640 1.005  1500
+    ## theta2     0.756 0.185   0.317   0.646   0.788   0.902   0.990 1.012   320
+    ## deviance 149.580 5.239 141.200 145.900 148.900 152.825 161.100 1.000  1500
     ## 
     ## For each parameter, n.eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
     ## 
     ## DIC info (using the rule, pD = Dbar-Dhat)
-    ## pD = 12.5 and DIC = 162.1
+    ## pD = 12.490 and DIC = 162.100
     ## DIC is an estimate of expected predictive error (lower deviance is better).
+
+Show get similar result with Dirichlet prior, just a check on Dirichlet
+coding. **Not sure that I (DM) have coded this correctly.**
+
+``` r
+list_data3 <- list_data2
+list_data3[["pi2"]] <- NULL
+list_data3[["coll12"]] <- grp_lbls2_col12
+mod2 <- jags.model(file = "Supporting/FE_model_estimate_prop_dirich.txt",
+                            data = list_data3, n.chains = 1, n.adapt = 1000)
+```
+
+    ## Compiling model graph
+    ##    Resolving undeclared variables
+    ##    Allocating nodes
+    ## Graph information:
+    ##    Observed stochastic nodes: 26
+    ##    Unobserved stochastic nodes: 13
+    ##    Total graph size: 543
+    ## 
+    ## Initializing model
+    ## 
+    ##   |                                                          |                                                  |   0%  |                                                          |+                                                 |   2%  |                                                          |++                                                |   4%  |                                                          |+++                                               |   6%  |                                                          |++++                                              |   8%  |                                                          |+++++                                             |  10%  |                                                          |++++++                                            |  12%  |                                                          |+++++++                                           |  14%  |                                                          |++++++++                                          |  16%  |                                                          |+++++++++                                         |  18%  |                                                          |++++++++++                                        |  20%  |                                                          |+++++++++++                                       |  22%  |                                                          |++++++++++++                                      |  24%  |                                                          |+++++++++++++                                     |  26%  |                                                          |++++++++++++++                                    |  28%  |                                                          |+++++++++++++++                                   |  30%  |                                                          |++++++++++++++++                                  |  32%  |                                                          |+++++++++++++++++                                 |  34%  |                                                          |++++++++++++++++++                                |  36%  |                                                          |+++++++++++++++++++                               |  38%  |                                                          |++++++++++++++++++++                              |  40%  |                                                          |+++++++++++++++++++++                             |  42%  |                                                          |++++++++++++++++++++++                            |  44%  |                                                          |+++++++++++++++++++++++                           |  46%  |                                                          |++++++++++++++++++++++++                          |  48%  |                                                          |+++++++++++++++++++++++++                         |  50%  |                                                          |++++++++++++++++++++++++++                        |  52%  |                                                          |+++++++++++++++++++++++++++                       |  54%  |                                                          |++++++++++++++++++++++++++++                      |  56%  |                                                          |+++++++++++++++++++++++++++++                     |  58%  |                                                          |++++++++++++++++++++++++++++++                    |  60%  |                                                          |+++++++++++++++++++++++++++++++                   |  62%  |                                                          |++++++++++++++++++++++++++++++++                  |  64%  |                                                          |+++++++++++++++++++++++++++++++++                 |  66%  |                                                          |++++++++++++++++++++++++++++++++++                |  68%  |                                                          |+++++++++++++++++++++++++++++++++++               |  70%  |                                                          |++++++++++++++++++++++++++++++++++++              |  72%  |                                                          |+++++++++++++++++++++++++++++++++++++             |  74%  |                                                          |++++++++++++++++++++++++++++++++++++++            |  76%  |                                                          |+++++++++++++++++++++++++++++++++++++++           |  78%  |                                                          |++++++++++++++++++++++++++++++++++++++++          |  80%  |                                                          |+++++++++++++++++++++++++++++++++++++++++         |  82%  |                                                          |++++++++++++++++++++++++++++++++++++++++++        |  84%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++       |  86%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++      |  88%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++     |  90%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++    |  92%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++   |  94%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++  |  96%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++++ |  98%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++++| 100%
+
+``` r
+update(mod2, 1000)
+```
+
+    ##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%
+
+``` r
+data(LINE)
+LINE$recompile()
+```
+
+    ## Compiling model graph
+    ##    Resolving undeclared variables
+    ##    Allocating nodes
+    ## Graph information:
+    ##    Observed stochastic nodes: 5
+    ##    Unobserved stochastic nodes: 3
+    ##    Total graph size: 36
+    ## 
+    ## Initializing model
+
+``` r
+LINE.out <- coda.samples(mod2, c("d", "theta"),n.iter = 1000)
+```
+
+    ##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%
+
+``` r
+summary(LINE.out)
+```
+
+    ## 
+    ## Iterations = 2001:3000
+    ## Thinning interval = 1 
+    ## Number of chains = 1 
+    ## Sample size per chain = 1000 
+    ## 
+    ## 1. Empirical mean and standard deviation for each variable,
+    ##    plus standard error of the mean:
+    ## 
+    ##            Mean      SD Naive SE Time-series SE
+    ## d[1]     0.0000 0.00000 0.000000       0.000000
+    ## d[2]     0.7423 0.12134 0.003837       0.009389
+    ## d[3]     1.5994 0.11531 0.003647       0.009946
+    ## theta[1] 0.1964 0.15132 0.004785       0.019973
+    ## theta[2] 0.1175 0.09561 0.003023       0.010662
+    ## theta[3] 0.6861 0.16937 0.005356       0.026885
+    ## 
+    ## 2. Quantiles for each variable:
+    ## 
+    ##              2.5%     25%     50%    75%  97.5%
+    ## d[1]     0.000000 0.00000 0.00000 0.0000 0.0000
+    ## d[2]     0.496199 0.66680 0.73942 0.8244 0.9751
+    ## d[3]     1.358140 1.52988 1.60047 1.6781 1.8295
+    ## theta[1] 0.005393 0.07078 0.17015 0.2902 0.6159
+    ## theta[2] 0.007612 0.03951 0.09029 0.1766 0.3470
+    ## theta[3] 0.322654 0.59191 0.70898 0.8013 0.9594
 
 ### Approach Two
 
@@ -646,7 +736,7 @@ list_data4[["ns_complete"]] <- length(pi2_choose12)
 
 
 mod3 <- jags.model(file = "Supporting/FE_model_estimate_prop2.txt",
-                            data = list_data4, n.chains = 1, n.adapt = 1000)
+                            data = list_data4, n.chains = 2, n.adapt = 1000)
 ```
 
     ## Compiling model graph
@@ -655,7 +745,7 @@ mod3 <- jags.model(file = "Supporting/FE_model_estimate_prop2.txt",
     ## Graph information:
     ##    Observed stochastic nodes: 38
     ##    Unobserved stochastic nodes: 48
-    ##    Total graph size: 665
+    ##    Total graph size: 681
     ## 
     ## Initializing model
     ## 
@@ -668,6 +758,7 @@ update(mod3, 1000)
     ##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%
 
 ``` r
+# mcmcplot(as.mcmc(mod3))
 data(LINE)
 LINE$recompile()
 ```
@@ -695,7 +786,7 @@ summary(LINE.out)
     ## 
     ## Iterations = 2001:3000
     ## Thinning interval = 1 
-    ## Number of chains = 1 
+    ## Number of chains = 2 
     ## Sample size per chain = 1000 
     ## 
     ## 1. Empirical mean and standard deviation for each variable,
@@ -703,21 +794,21 @@ summary(LINE.out)
     ## 
     ##               Mean      SD Naive SE Time-series SE
     ## d[1]        0.0000 0.00000 0.000000       0.000000
-    ## d[2]        0.6940 0.12522 0.003960       0.010531
-    ## d[3]        1.5001 0.12555 0.003970       0.013396
-    ## theta1_prop 0.3805 0.08039 0.002542       0.004033
-    ## theta2_prop 0.6423 0.07210 0.002280       0.003225
+    ## d[2]        0.6999 0.12359 0.002764       0.006013
+    ## d[3]        1.5924 0.11322 0.002532       0.007079
+    ## theta1_prop 0.3396 0.09382 0.002098       0.003758
+    ## theta2_prop 0.6490 0.09527 0.002130       0.003565
     ## 
     ## 2. Quantiles for each variable:
     ## 
     ##               2.5%    25%    50%    75%  97.5%
     ## d[1]        0.0000 0.0000 0.0000 0.0000 0.0000
-    ## d[2]        0.4444 0.6102 0.7000 0.7715 0.9498
-    ## d[3]        1.2532 1.4159 1.5021 1.5808 1.7476
-    ## theta1_prop 0.2368 0.3286 0.3746 0.4265 0.5488
-    ## theta2_prop 0.4947 0.5975 0.6405 0.6911 0.7820
+    ## d[2]        0.4616 0.6136 0.6999 0.7833 0.9407
+    ## d[3]        1.3651 1.5192 1.5943 1.6652 1.8122
+    ## theta1_prop 0.1536 0.2806 0.3401 0.3969 0.5352
+    ## theta2_prop 0.4552 0.5904 0.6480 0.7105 0.8340
 
-# Random effects model
+# Random effects model - RE for effects but not for proportions
 
 Return to approach 1, but re-run the model assuming random effects model
 for the effect of malnutrition on mortality.
@@ -727,25 +818,61 @@ mode3_bugs <- bugs(data = list_data3_openbugs,
                    parameters.to.save = c("d", "theta1", "theta2"), n.iter = 10000,
                    inits = inits,
                    model.file = "RE_model_estimate_prop_openbugs.txt")
-print(mode3_bugs)
+print(mode3_bugs, digits.summary = 3)
 ```
 
     ## Inference for Bugs model at "RE_model_estimate_prop_openbugs.txt", 
     ## Current: 3 chains, each with 10000 iterations (first 5000 discarded)
     ## Cumulative: n.sims = 15000 iterations saved
-    ##           mean  sd  2.5%   25%   50%   75% 97.5% Rhat n.eff
-    ## d[2]       0.7 0.2   0.4   0.6   0.7   0.8   1.1    1  4000
-    ## d[3]       1.7 0.2   1.4   1.6   1.7   1.8   2.0    1  2800
-    ## theta1     0.3 0.2   0.0   0.1   0.2   0.4   0.8    1   790
-    ## theta2     0.7 0.2   0.2   0.6   0.8   0.9   1.0    1  1000
-    ## deviance 145.7 6.5 134.3 141.2 145.4 149.8 159.8    1  2300
+    ##             mean    sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+    ## d[2]       0.738 0.170   0.411   0.628   0.736   0.848   1.082 1.001  4000
+    ## d[3]       1.664 0.169   1.350   1.553   1.656   1.763   2.030 1.005  2800
+    ## theta1     0.282 0.226   0.009   0.100   0.226   0.414   0.845 1.005   790
+    ## theta2     0.709 0.218   0.199   0.578   0.753   0.887   0.989 1.008  1000
+    ## deviance 145.750 6.492 134.300 141.200 145.400 149.800 159.800 1.003  2300
     ## 
     ## For each parameter, n.eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
     ## 
     ## DIC info (using the rule, pD = Dbar-Dhat)
-    ## pD = 17.2 and DIC = 163.0
+    ## pD = 17.250 and DIC = 163.000
     ## DIC is an estimate of expected predictive error (lower deviance is better).
 
-This gives very similar results, but with wider confidence intervals,
-than the fixed effects model.
+# RE for effects and for proportions
+
+Combine approaches 1 and 3, where assuming random effects for effect of
+malnutrition, and random effects for proportion in each malnutrition
+category.
+
+Uncomment `mcmcplot(as.mcmc(mode4_bugs))` to see model diagnostics.Look
+reasonable to me without too much autocorrelation. Chains appear to
+converge.
+
+``` r
+list_data4_openbugs <- c(list_data3_openbugs, list_data4[c("n_complete2a", "n_complete2b", 
+                                                         "n_complete12", "n_complete23", 
+                                                         "ns_complete")])
+mode4_bugs <- bugs(data = list_data4_openbugs, 
+                   parameters.to.save = c("d", "theta1_prop", "theta2_prop"), n.iter = 10000,
+                   inits = inits,
+                   model.file = "RE_model_RE_estimate_prop_openbugs.txt")
+# mcmcplot(as.mcmc(mode4_bugs))
+print(mode4_bugs, digits.summary = 3)
+```
+
+    ## Inference for Bugs model at "RE_model_RE_estimate_prop_openbugs.txt", 
+    ## Current: 3 chains, each with 10000 iterations (first 5000 discarded)
+    ## Cumulative: n.sims = 15000 iterations saved
+    ##                mean    sd    2.5%     25%     50%     75%   97.5%  Rhat n.eff
+    ## d[2]          0.734 0.165   0.408   0.628   0.731   0.837   1.072 1.001  4500
+    ## d[3]          1.664 0.161   1.363   1.557   1.654   1.762   2.003 1.001 15000
+    ## theta1_prop   0.358 0.096   0.163   0.301   0.357   0.413   0.559 1.003  3900
+    ## theta2_prop   0.645 0.096   0.441   0.590   0.646   0.703   0.833 1.001  5700
+    ## deviance    233.115 8.040 218.900 227.500 232.600 238.200 250.402 1.002  1400
+    ## 
+    ## For each parameter, n.eff is a crude measure of effective sample size,
+    ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
+    ## 
+    ## DIC info (using the rule, pD = Dbar-Dhat)
+    ## pD = 29.030 and DIC = 262.100
+    ## DIC is an estimate of expected predictive error (lower deviance is better).

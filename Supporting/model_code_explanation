@@ -1,6 +1,6 @@
-Explanation of model code.
+Explanation of original model code from NW email
 
-Code is ofor fixed effect and random effect versions of code to combine data where some is reported in collapsed categories. Assumes that it would be either 1 vs(2+3) or (1+2)vs3 [ie not (1+3) vs 2!]
+Code is for fixed effect and random effect versions of code to combine data where some is reported in collapsed categories. Assumes that it would be either 1 vs(2+3) or (1+2)vs3 [ie not (1+3) vs 2!]
 
 Each group in each study has a group indicator g[i,k] which says which group that data corresponds to. We've numbered the groups 1,2 & 3, but for combined groups they are labelled 12 for (1+2) and 23 for (2+3). It works very much like standard NMA, but the treatment effect for the combined categories uses the proportion split between the 2 combined categories. Since this can be obtained from the proportion in group 2 (pi2) in those studies, you just need to add a column with the proportion in group 2 in the combined group. For the studies without a combined category, I’m afraid we still have to enter a number for pi2, otherwise you get an error. I’ve just put this as 1 or 0 depending on where there is a group 2, but really it doesn’t matter, since that number isn’t actually used anywhere. 
 
