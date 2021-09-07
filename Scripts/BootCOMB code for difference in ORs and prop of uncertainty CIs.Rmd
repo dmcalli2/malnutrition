@@ -1,0 +1,343 @@
+---
+title: "BootComb OR and CIs"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r cars}
+library(bootComb)
+
+#generate CIs for difference in OR of death for moderate malnutrition pre- and post- 2000
+
+dist1<-getNormFromCI(0.408,1.072)
+dist2<-getNormFromCI(0.260,1.035)
+combFun<-function(pars){exp(pars[[1]])-exp(pars[[2]])}
+set.seed(123)
+bootComb(distList=list(dist1$r,dist2$r),combFun=combFun,method="hdi",doPlot=T)
+
+#generate CIs for difference in OR of death for severe malnutrition pre- and post- 2000
+
+dist1<-getNormFromCI(1.363,2.003)
+dist2<-getNormFromCI(1.087,1.785)
+combFun<-function(pars){exp(pars[[1]])-exp(pars[[2]])}
+set.seed(123)
+bootComb(distList=list(dist1$r,dist2$r),combFun=combFun,method="hdi",doPlot=T)
+
+#propagation of uncertainty for PAF for moderate malnutrition
+
+#Tupasi 1988 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.269,qUpp=0.337,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Tupasi 1990 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.244,qUpp=0.323,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Man 1998 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.214,qUpp=0.249,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Banajeh 1997 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.486,qUpp=0.573,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Duke 2001 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.218,qUpp=0.284,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Lazzerini 2016 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.138,qUpp=0.143,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Ramachandran 2012 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.256,qUpp=0.283,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Webb 2012 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.183,qUpp=0.253,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Dembele 2019 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.173,qUpp=0.195,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Bokade 2015 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.134,qUpp=0.225,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Kuti 2013 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.167,qUpp=0.249,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Zabihullah 2017 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.163,qUpp=0.227,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Agweyu 2018 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.116,qUpp=0.126,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Johnson 2008 moderate
+dist1<-list(r = function(n){rnorm(n,mean=0.698,sd=0.120)})
+dist2<-getBetaFromCI(qLow=0.393,qUpp=0.505,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#propagation of uncertainty for PAF for moderate malnutrition
+
+#Tupasi 1988 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.092,qUpp=0.139,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Tupasi 1990 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.339,qUpp=0.424,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Nathoo 1993 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.094,qUpp=0.143,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Agrawal 1995 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.200,qUpp=0.362,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Man 1998 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.168,qUpp=0.201,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Banajeh 1997 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.194,qUpp=0.267,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Duke 2001 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.033,qUpp=0.066,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Lazzerini 2016 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.087,qUpp=0.091,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Naheed 2009 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.044,qUpp=0.057,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Chisti 2010 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.495,qUpp=0.778,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Nantanda 2008 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.189,qUpp=0.330,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Ramachandran 2012 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.206,qUpp=0.232,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Chisti 2011 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.340,qUpp=0.483,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Webb 2012 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.164,qUpp=0.230,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Dembele 2019 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.179,qUpp=0.201,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Bokade 2015 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.128,qUpp=0.217,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Kuti 2013 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.198,qUpp=0.285,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Zabihullah 2017 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.166,qUpp=0.231,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Agweyu 2018 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.070,qUpp=0.079,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+#Johnson 2008 severe
+dist1<-list(r = function(n){rnorm(n,mean=1.533,sd=0.116)})
+dist2<-getBetaFromCI(qLow=0.080,qUpp=0.152,alpha=0.05)
+distListEx<-list(dist1$r,dist2$r)
+combFunEx<-function(pars){(pars[[2]]*(exp(pars[[1]])-1))/(1+pars[[2]]*(exp(pars[[1]])-1))}
+
+set.seed(123)
+bootComb(distList=distListEx,combFun=combFunEx,method="hdi")
+
+```
+
